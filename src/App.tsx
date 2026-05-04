@@ -203,9 +203,9 @@ const HeroForm = () => {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
-      className="bg-white/10 backdrop-blur-xl border border-white/20 p-8 md:p-10 rounded-[40px] shadow-2xl relative overflow-hidden group"
+      className="bg-white/10 backdrop-blur-md border border-white/20 p-8 md:p-10 rounded-[40px] shadow-2xl relative overflow-hidden group"
     >
-      <div className="absolute top-0 right-0 w-32 h-32 bg-cta/10 blur-3xl rounded-full -mr-16 -mt-16 group-hover:bg-cta/20 transition-colors duration-500" />
+      <div className="absolute top-0 right-0 w-32 h-32 bg-cta/10 blur-2xl rounded-full -mr-16 -mt-16 group-hover:bg-cta/20 transition-colors duration-500 pointer-events-none" />
       
       <div className="relative z-10">
         <h3 className="text-2xl font-heading font-bold text-white mb-2">Get a Free Quote</h3>
@@ -379,7 +379,7 @@ const Nav = () => {
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3">
+        <Link to="/" className="flex items-center">
           <img src="/dark%20logo.png" alt={BRAND.name} className="h-12 w-auto object-contain" />
         </Link>
         
@@ -996,8 +996,8 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {testimonials.map((t, i) => (
-              <div key={i} className="bg-white p-12 rounded-[50px] shadow-2xl shadow-slate-100/30 border border-slate-50 relative group">
-                <div className="absolute top-10 right-10 text-secondary opacity-5 group-hover:opacity-20 transition-opacity">
+              <div key={i} className="bg-white p-12 rounded-[50px] shadow-2xl shadow-slate-100/30 border border-slate-50 relative group overflow-hidden">
+                <div className="absolute top-10 right-10 text-secondary opacity-5 group-hover:opacity-20 transition-opacity pointer-events-none">
                   <Quote size={80} />
                 </div>
                 <div className="flex gap-1 mb-8">
