@@ -10,14 +10,17 @@ function cn(...inputs: ClassValue[]) {
 }
 
 const BRAND = {
-  name: 'Arctic Air',
-  fullName: 'Arctic Air HVAC',
-  phone: '(800) 555-0199',
-  email: 'service@arcticairhvac.com',
-  address: '123 Comfort Lane, Irvine, CA 92602',
-  location: 'Irvine, CA',
+  name: "Dent's Heating & Cooling",
+  fullName: "Dent's Heating & Cooling",
+  phone: '(314) 420-7803',
+  email: 'dentsheatingandcooling@gmail.com',
+  address: '6942 Forest Hills Dr. St. Louis, MO 63121',
+  location: 'St. Louis, MO',
   tagline: 'Premium Heating & Cooling'
 }
+
+// TODO: Replace with your actual GoHighLevel Webhook URL
+const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/Q3nV40ZxTxM3YVFWznES/webhook-trigger/b3b719e4-1d6d-4f65-8d9e-7c960f825519';
 
 const services = [
   {
@@ -78,39 +81,39 @@ const services = [
 
 const locations = [
   {
-    id: 'irvine',
-    name: 'Irvine',
-    heroTitle: 'Serving Irvine With Excellence',
-    description: `We are proud to serve Irvine, bringing top-tier HVAC services to businesses and residents in the heart of Orange County. As a hub of innovation and family life, Irvine recognizes the value of excellence, and we are committed to delivering tailored solutions that meet the high standards of this community. From the busy commercial centers near UCI to the pristine residential neighborhoods of Turtle Rock and Woodbridge, our technicians ensure your environment remains perfectly climate-controlled year-round. We understand the specific architectural styles and environmental factors that influence heating and cooling efficiency in Irvine, allowing us to provide preventative maintenance and rapid repairs that keep your systems running at peak performance while minimizing energy costs. Whether you need a complex installation for a new office space or a delicate repair for your home's air quality system, we bring the expertise and reliability that Irvine deserves.`,
-    mapImage: '/locations/irvine.png'
+    id: 'clayton',
+    name: 'Clayton',
+    heroTitle: 'Serving Clayton With Excellence',
+    description: `We are proud to serve Clayton, providing premium HVAC services to the professional and residential heart of St. Louis. Clayton's unique mix of multi-family residential complexes and elegant historic homes requires a specialized approach to climate control. Whether you're managing a luxury apartment building near Shaw Park or maintaining a classic residence in the Wydown-Skinker area, our technicians ensure your environment remains perfectly balanced year-round. We understand the high standards of the Clayton community and are committed to delivering efficient, quiet, and reliable heating and cooling solutions that match the sophisticated lifestyle of this area.`,
+    mapImage: '/locations/clayton.png'
   },
   {
-    id: 'tustin',
-    name: 'Tustin',
-    heroTitle: 'Serving Tustin With Excellence',
-    description: `Our highly skilled team is dedicated to providing Tustin residents with HVAC services that are not only effective but also long-lasting. In a city that beautifully blends historic charm with modern development, we take a versatile approach to every project. Whether you live in a classic home in Old Town Tustin that requires careful integration of modern climate control or a contemporary residence in Tustin Legacy, we use modern techniques, innovative solutions, and best practices to ensure the highest level of comfort. Our deep understanding of Tustin’s local climate allows us to recommend the most efficient heating and cooling systems tailored to your specific needs. We prioritize transparent communication and timely service, ensuring that every Tustin family can enjoy a reliable HVAC system that stands up to the California sun. Trust us to be your local comfort partners, dedicated to maintaining the health and efficiency of your home's mechanical systems.`,
-    mapImage: '/locations/tustin.png'
+    id: 'ladue',
+    name: 'Ladue',
+    heroTitle: 'Serving Ladue With Excellence',
+    description: `Our team is dedicated to providing Ladue residents with HVAC services that meet the highest standards of luxury and reliability. In a community known for its stunning estates and lush landscapes, we take a white-glove approach to every project. We specialize in high-efficiency systems that provide whisper-quiet operation and precise temperature control, ensuring your home remains a sanctuary of comfort. From historic renovations requiring delicate ductwork integration to modern custom builds with advanced smart-home features, we bring the expertise and attention to detail that Ladue homeowners expect.`,
+    mapImage: '/locations/ladue.png'
   },
   {
-    id: 'costa-mesa',
-    name: 'Costa Mesa',
-    heroTitle: 'Serving Costa Mesa With Excellence',
-    description: `Costa Mesa families trust us for our transparent, reliable, and excellent customer service. Known as the 'City of the Arts,' Costa Mesa expects quality and precision, and we strive to reflect those values in every HVAC installation and repair we perform. No matter the size or scope of the service you require—from high-efficiency AC units for retail spaces near South Coast Plaza to custom heating solutions for suburban homes—we are prepared to assist with outstanding results and professional support. We take pride in our ability to diagnose complex issues quickly and offer cost-effective solutions that don't compromise on quality. Our technicians are trained on the latest smart home integrations and eco-friendly technologies, helping Costa Mesa residents reduce their carbon footprint while maximizing indoor comfort. We aren't just your HVAC contractors; we are members of the local community dedicated to ensuring your home is a sanctuary of clean, comfortable air regardless of the season.`,
-    mapImage: '/locations/costa-mesa.png'
+    id: 'webster-groves',
+    name: 'Webster Groves',
+    heroTitle: 'Serving Webster Groves With Excellence',
+    description: `Webster Groves families trust us for our transparent, community-focused HVAC service. Known as the 'City of the Arts,' Webster Groves has a vibrant spirit that we strive to reflect in our work. We understand the character of the century-old homes in this area and the specific challenges they present for modern heating and cooling. Our technicians are experts at retrofitting high-performance systems into older structures without compromising their architectural integrity. We take pride in keeping Webster Groves comfortable, one home at a time, ensuring that every family can enjoy clean, efficient air throughout the changing St. Louis seasons.`,
+    mapImage: '/locations/webster-groves.png'
   },
   {
-    id: 'santa-ana',
-    name: 'Santa Ana',
-    heroTitle: 'Serving Santa Ana With Excellence',
-    description: `In Santa Ana, we've built a reputation for excellence and reliability through years of dedicated service to this vibrant and diverse community. Our process is designed to be straightforward, efficient, and hassle-free, ensuring your home or business stays comfortable throughout every season. We understand that Santa Ana's unique mix of historic architecture and dense urban layout requires a specialized touch, whether it's navigating tight spaces for a furnace replacement or optimizing air distribution in a multi-story building. Our localized expertise allows us to provide targeted maintenance that addresses common regional issues like heavy dust or coastal moisture. We are committed to fast response times, recognizing that an HVAC failure in the Santa Ana heat is more than just an inconvenience—it's a priority. By choosing us, you're partnering with a team that values integrity and hard work as much as the people of Santa Ana do, ensuring your comfort is never left to chance.`,
-    mapImage: '/locations/santa-ana.png'
+    id: 'kirkwood',
+    name: 'Kirkwood',
+    heroTitle: 'Serving Kirkwood With Excellence',
+    description: `In Kirkwood, we've built a reputation for reliability through years of dedicated service to this close-knit community. From the historic Kirkwood Station to the surrounding residential neighborhoods, we provide fast and professional HVAC repairs and installations. We know that Missouri summers can be humid and winters can be harsh, which is why we prioritize responsive service for our Kirkwood neighbors. Whether you need a quick AC tune-up before the Fourth of July or a furnace replacement during a January cold snap, you can count on us for honest advice and expert workmanship.`,
+    mapImage: '/locations/kirkwood.png'
   },
   {
-    id: 'newport-beach',
-    name: 'Newport Beach',
-    heroTitle: 'Serving Newport Beach With Excellence',
-    description: `Newport Beach properties require specialized care due to the unique coastal environment, where salt air and high humidity can take a heavy toll on mechanical systems. We provide tailored cooling and heating solutions that prioritize both performance and equipment longevity for our beachside clients. From the iconic peninsula to the exclusive heights of Newport Coast, we understand the aesthetic and technical requirements of high-end coastal homes. Our team specializes in corrosion-resistant HVAC components and advanced dehumidification systems designed to protect your coastal investment from the elements. We offer white-glove service that respects the privacy and time of our Newport Beach customers, delivering precision workmanship that integrates seamlessly with your home's design. Whether you’re looking to upgrade to a whisper-quiet multi-zone system or need specialized maintenance for a luxury property, we bring the expertise and elite service level that Newport Beach demands.`,
-    mapImage: '/locations/newport-beach.png'
+    id: 'chesterfield',
+    name: 'Chesterfield',
+    heroTitle: 'Serving Chesterfield With Excellence',
+    description: `Chesterfield residents and property managers rely on us for comprehensive HVAC solutions that span from the Valley to the high-end residential developments on the bluffs. As one of the largest and most dynamic areas in West County, Chesterfield requires a versatile service team capable of handling everything from complex multi-family HVAC systems to precision residential heat pumps. We are committed to helping Chesterfield properties achieve maximum energy efficiency, reducing operational costs while ensuring peak performance. Trust us to be your local comfort partners, dedicated to maintaining the health and longevity of your HVAC systems.`,
+    mapImage: '/locations/chesterfield.png'
   }
 ]
 
@@ -136,6 +139,65 @@ const testimonials = [
 ]
 
 const HeroForm = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsLoading(true)
+
+    const formData = new FormData(e.currentTarget)
+    const data = Object.fromEntries(formData.entries())
+
+    try {
+      // Logic for GHL Webhook
+      if (GHL_WEBHOOK_URL && !GHL_WEBHOOK_URL.includes('...')) {
+        await fetch(GHL_WEBHOOK_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            ...data,
+            source: 'Website Hero Form',
+            location: BRAND.location
+          }),
+          headers: { 'Content-Type': 'application/json' }
+        })
+      }
+      
+      // Simulate success for demo if no webhook
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      setIsSubmitted(true)
+    } catch (error) {
+      console.error('Submission failed:', error)
+      alert('Something went wrong. Please try calling us instead.')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  if (isSubmitted) {
+    return (
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="bg-white p-10 md:p-12 rounded-[40px] shadow-2xl text-center border-4 border-secondary/20"
+      >
+        <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg shadow-secondary/30">
+          <CheckCircle className="text-white" size={44} />
+        </div>
+        <h3 className="text-3xl font-heading font-bold text-text mb-4">Request Sent!</h3>
+        <p className="text-text/60 text-lg mb-10 font-medium">
+          Your quote request has been received. One of our technicians will contact you shortly!
+        </p>
+        <button 
+          onClick={() => setIsSubmitted(false)}
+          className="w-full btn-primary py-5 text-lg shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all"
+        >
+          Send Another Request
+        </button>
+      </motion.div>
+    )
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -149,10 +211,12 @@ const HeroForm = () => {
         <h3 className="text-2xl font-heading font-bold text-white mb-2">Get a Free Quote</h3>
         <p className="text-white/60 text-sm mb-8 font-medium">Response within 15 minutes during business hours.</p>
         
-        <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+        <form className="space-y-3" onSubmit={handleSubmit}>
           <div className="space-y-1.5">
             <label className="text-[11px] font-black uppercase tracking-[0.1em] text-white/40 px-1">Full Name</label>
             <input 
+              required
+              name="name"
               type="text" 
               placeholder="John Doe" 
               className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary/50 transition-all font-medium"
@@ -163,18 +227,24 @@ const HeroForm = () => {
             <div className="space-y-1.5">
               <label className="text-[11px] font-black uppercase tracking-[0.1em] text-white/40 px-1">Phone</label>
               <input 
+                required
+                name="phone"
                 type="tel" 
-                placeholder="(800) 000-0000" 
+                placeholder="(314) 000-0000" 
                 className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary/50 transition-all font-medium"
               />
             </div>
             <div className="space-y-1.5">
               <label className="text-[11px] font-black uppercase tracking-[0.1em] text-white/40 px-1">Service</label>
-              <select className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary/50 transition-all font-medium appearance-none">
-                <option className="bg-primary text-white">AC Repair</option>
-                <option className="bg-primary text-white">Installation</option>
-                <option className="bg-primary text-white">Heating</option>
-                <option className="bg-primary text-white">Maintenance</option>
+              <select 
+                name="service"
+                className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary/50 transition-all font-medium appearance-none"
+              >
+                <option value="AC Repair" className="bg-primary text-white">AC Repair</option>
+                <option value="Installation" className="bg-primary text-white">Installation</option>
+                <option value="Heating" className="bg-primary text-white">Heating</option>
+                <option value="Maintenance" className="bg-primary text-white">Maintenance</option>
+                <option value="Other" className="bg-primary text-white">Other</option>
               </select>
             </div>
           </div>
@@ -182,24 +252,45 @@ const HeroForm = () => {
           <div className="space-y-1.5">
             <label className="text-[11px] font-black uppercase tracking-[0.1em] text-white/40 px-1">Email Address</label>
             <input 
+              required
+              name="email"
               type="email" 
               placeholder="john@example.com" 
               className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary/50 transition-all font-medium"
             />
           </div>
 
-          <div className="space-y-1.5">
+          <div className="space-y-1.5 -mb-2">
             <label className="text-[11px] font-black uppercase tracking-[0.1em] text-white/40 px-1">How can we help?</label>
             <textarea 
+              name="message"
               placeholder="Briefly describe your needs..." 
               rows={2}
               className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary/50 transition-all font-medium resize-none text-sm"
             />
           </div>
 
-          <button className="w-full btn-primary py-5 mt-4 group/btn relative overflow-hidden">
+          <div className="flex items-start gap-3 px-1 !mt-2">
+            <input 
+              type="checkbox" 
+              id="compliance-hero" 
+              name="compliance"
+              className="mt-1 shrink-0 accent-secondary h-4 w-4 rounded border-white/20 bg-white/5"
+              required
+            />
+            <label htmlFor="compliance-hero" className="text-[10px] leading-relaxed text-white/50 font-medium cursor-pointer">
+              I consent to receive SMS notifications, alerts, and occasional marketing from Dent's Heating & Cooling. Message frequency varies. Msg & data rates may apply. Text HELP to (314) 420-7803 for help or STOP to unsubscribe anytime.
+            </label>
+          </div>
+
+          <button 
+            type="submit" 
+            disabled={isLoading}
+            className="w-full btn-primary py-5 mt-2 group/btn relative overflow-hidden disabled:opacity-50"
+          >
             <span className="relative z-10 flex items-center justify-center gap-2 text-lg">
-              Send Request <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform" />
+              {isLoading ? 'Sending...' : 'Send Request'} 
+              {!isLoading && <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform" />}
             </span>
             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
           </button>
@@ -289,10 +380,7 @@ const Nav = () => {
     <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-primary/20">
-            AA
-          </div>
-          <span className="text-2xl font-heading font-bold text-primary tracking-tight">{BRAND.name}</span>
+          <img src="/dark%20logo.png" alt={BRAND.name} className="h-12 w-auto object-contain" />
         </Link>
         
         {/* Desktop Nav */}
@@ -468,11 +556,10 @@ const Footer = () => (
       {/* Brand column — spans 2 cols on md */}
       <div className="col-span-2 md:col-span-3 lg:col-span-1">
         <div className="flex items-center gap-3 text-white mb-6">
-          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">AA</div>
-          <span className="text-xl font-heading font-bold tracking-tight">{BRAND.name}</span>
+          <img src="/light%20logo.png" alt={BRAND.name} className="h-10 w-auto object-contain" />
         </div>
         <p className="text-base leading-relaxed mb-6">
-          Expert HVAC services providing comfort and quality air to homes and businesses across {BRAND.location} and the surrounding areas.
+          Expert HVAC services providing comfort and quality air to homes and multi-family properties across {BRAND.location} and the surrounding areas.
         </p>
         <div className="flex gap-3">
           {[Facebook, Twitter, Instagram].map((Icon, i) => (
@@ -540,10 +627,10 @@ const AboutPage = () => (
             Our Legacy
           </div>
           <h1 className="text-[32px] md:text-[48px] lg:text-[72px] font-heading font-bold text-text mb-8 leading-[1.1]">
-            Focused on Your <br/><span className="text-secondary">Comfort</span> Since 2011
+            Focused on Your <br/><span className="text-secondary">Comfort</span> Since 1986
           </h1>
           <p className="text-xl text-text/60 mb-10 leading-relaxed max-w-xl">
-            {BRAND.name} started with a simple belief: every homeowner in {BRAND.location} deserves reliable HVAC service without the stress. Over a decade later, that's still our driving force.
+            {BRAND.name} started with a simple belief: every homeowner in {BRAND.location} deserves reliable HVAC service without the stress. Four decades later, that's still our driving force.
           </p>
           <button className="btn-primary px-10 py-5 text-lg">Schedule Your Visit</button>
         </motion.div>
@@ -592,7 +679,7 @@ const AboutPage = () => (
             mb="8"
           />
           <p>
-            When we first opened our doors in 2011, we noticed a recurring theme among homeowners: they were tired of waiting for technicians who never showed up or didn't explain what they were doing. We decided to build a company that prioritized clarity and consistency.
+            When we first opened our doors in 1986, we noticed a recurring theme among homeowners: they were tired of waiting for technicians who never showed up or didn't explain what they were doing. We decided to build a company that prioritized clarity and consistency.
           </p>
           <p>
             Today, {BRAND.fullName} is recognized as a leader in premium heating and cooling across the {BRAND.location} area. We've stayed small enough to care about every individual client but grown skilled enough to handle the most complex mechanical challenges.
@@ -617,7 +704,7 @@ const AboutPage = () => (
           {[
             { title: 'Integrity First', desc: 'We only recommend what you actually need. No upsells, no pressure—just honest advice for your HVAC system.' },
             { title: 'Technical Mastery', desc: 'Our technicians undergo continuous training to stay at the absolute forefront of modern HVAC technology.' },
-            { title: 'Community Care', desc: 'Serving our neighbors in Irvine isn\'t just business; it\'s personal. We treat your home with the same respect as our own.' }
+            { title: 'Community Care', desc: 'Serving our neighbors in St. Louis isn\'t just business; it\'s personal. We treat your home with the same respect as our own.' }
           ].map((val, i) => (
             <motion.div 
               key={i}
@@ -650,125 +737,6 @@ const AboutPage = () => (
     </section>
   </div>
 )
-
-const ContactPage = () => (
-  <div className="pt-20">
-    <section className="relative py-14 md:py-20 lg:py-24 overflow-hidden bg-[#F8FAFF]">
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 translate-x-1/4 -z-10 blur-3xl opacity-30" />
-      <div className="max-w-7xl mx-auto px-4">
-
-        {/* Headline always first — above the 2-col grid */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="mb-12"
-        >
-          <div className="inline-flex items-center gap-3 text-secondary font-bold mb-6 uppercase tracking-[0.2em] text-[13px] bg-secondary/10 px-4 py-2 rounded-full">
-            <MessageSquare size={16} />
-            Contact Us
-          </div>
-          <h1 className="text-[32px] md:text-[48px] lg:text-[72px] font-heading font-bold text-text mb-4 leading-[1.1]">
-            Get Your <span className="text-secondary">Free Quote</span> Today
-          </h1>
-          <p className="text-xl text-text/60 leading-relaxed max-w-xl">
-            Ready to experience premium comfort? Fill out the form or give us a call. Our team is ready to help.
-          </p>
-        </motion.div>
-
-        {/* 2-col grid: form first in DOM (mobile), contact info second in DOM (mobile) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-
-          {/* Form: first on mobile, right on desktop */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-white p-10 md:p-12 rounded-[40px] shadow-2xl shadow-slate-200 border border-slate-50 lg:order-last"
-          >
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-text/60 px-2 uppercase tracking-wider">Full Name</label>
-                  <input type="text" placeholder="John Doe" className="w-full px-6 py-4 rounded-2xl bg-slate-50 border-transparent focus:bg-white focus:border-primary/20 focus:ring-4 focus:ring-primary/5 transition-all text-text outline-none" required />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-text/60 px-2 uppercase tracking-wider">Phone Number</label>
-                  <input type="tel" placeholder="(800) 000-0000" className="w-full px-6 py-4 rounded-2xl bg-slate-50 border-transparent focus:bg-white focus:border-primary/20 focus:ring-4 focus:ring-primary/5 transition-all text-text outline-none" required />
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-text/60 px-2 uppercase tracking-wider">Email Address</label>
-                  <input type="email" placeholder="john@example.com" className="w-full px-6 py-4 rounded-2xl bg-slate-50 border-transparent focus:bg-white focus:border-primary/20 focus:ring-4 focus:ring-primary/5 transition-all text-text outline-none" required />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-text/60 px-2 uppercase tracking-wider">Your City</label>
-                  <input type="text" placeholder="New York" className="w-full px-6 py-4 rounded-2xl bg-slate-50 border-transparent focus:bg-white focus:border-primary/20 focus:ring-4 focus:ring-primary/5 transition-all text-text outline-none" required />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-text/60 px-2 uppercase tracking-wider">Service Needed</label>
-                <select className="w-full px-6 py-4 rounded-2xl bg-slate-50 border-transparent focus:bg-white focus:border-primary/20 focus:ring-4 focus:ring-primary/5 transition-all text-text outline-none appearance-none">
-                  <option>AC Repair</option>
-                  <option>AC Installation</option>
-                  <option>Heating Service</option>
-                  <option>System Maintenance</option>
-                  <option>Other / Not Sure</option>
-                </select>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-text/60 px-2 uppercase tracking-wider">Your Message</label>
-                <textarea placeholder="How can we help you?" rows={4} className="w-full px-6 py-4 rounded-2xl bg-slate-50 border-transparent focus:bg-white focus:border-primary/20 focus:ring-4 focus:ring-primary/5 transition-all text-text outline-none resize-none" />
-              </div>
-              <button type="submit" className="w-full btn-primary py-6 text-xl flex items-center justify-center gap-3 active:scale-95 transition-transform">
-                <Send size={20} />
-                Submit My Request
-              </button>
-            </form>
-          </motion.div>
-
-          {/* Contact info: second on mobile, left on desktop */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="space-y-8 lg:order-first"
-          >
-            <div className="flex items-center gap-6">
-              <div className="w-16 h-16 rounded-2xl bg-white shadow-lg flex items-center justify-center text-primary border border-slate-50">
-                <Phone size={24} />
-              </div>
-              <div>
-                <p className="text-text/40 font-bold uppercase tracking-wider text-xs mb-1">Call Us Anywhere</p>
-                <a href={`tel:${BRAND.phone}`} className="text-2xl font-bold text-text hover:text-primary transition-colors">{BRAND.phone}</a>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-6">
-              <div className="w-16 h-16 rounded-2xl bg-white shadow-lg flex items-center justify-center text-primary border border-slate-50">
-                <Mail size={24} />
-              </div>
-              <div>
-                <p className="text-text/40 font-bold uppercase tracking-wider text-xs mb-1">Email Our Team</p>
-                <p className="text-2xl font-bold text-text">{BRAND.email}</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-6">
-              <div className="w-16 h-16 rounded-2xl bg-white shadow-lg flex items-center justify-center text-primary border border-slate-50">
-                <Clock size={24} />
-              </div>
-              <div>
-                <p className="text-text/40 font-bold uppercase tracking-wider text-xs mb-1">Service Hours</p>
-                <p className="text-2xl font-bold text-text">Mon - Sat: 8am - 6pm</p>
-              </div>
-            </div>
-          </motion.div>
-
-        </div>
-      </div>
-    </section>
-  </div>
-)
-
 
 const HomePage = () => {
   const [activeTab, setActiveTab] = useState('Vision')
@@ -1157,6 +1125,183 @@ const HomePage = () => {
   )
 }
 
+const ContactPage = () => {
+  const [isLoading, setIsLoading] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsLoading(true)
+    
+    const formData = new FormData(e.currentTarget)
+    const data = Object.fromEntries(formData.entries())
+
+    try {
+      if (GHL_WEBHOOK_URL && !GHL_WEBHOOK_URL.includes('...')) {
+        await fetch(GHL_WEBHOOK_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            ...data,
+            source: 'Website Contact Form',
+            location: BRAND.location
+          }),
+          headers: { 'Content-Type': 'application/json' }
+        })
+      }
+      
+      // Simulate success for demo
+      await new Promise(resolve => setTimeout(resolve, 1500))
+      setIsSubmitted(true)
+    } catch (error) {
+      console.error('Submission failed:', error)
+      alert('Something went wrong. Please try calling us instead.')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  if (isSubmitted) {
+    return (
+      <div className="pt-40 pb-20 px-4">
+        <div className="max-w-xl mx-auto text-center bg-white p-12 rounded-[40px] shadow-2xl border border-slate-50">
+          <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-8">
+            <CheckCircle size={40} />
+          </div>
+          <h2 className="text-4xl font-heading font-bold text-text mb-4">Request Received!</h2>
+          <p className="text-xl text-text/60 mb-10">Thanks for reaching out. A specialist from Dent's Heating & Cooling will contact you shortly to discuss your needs.</p>
+          <button 
+            onClick={() => setIsSubmitted(false)}
+            className="btn-primary px-10 py-5 text-lg w-full"
+          >
+            Send Another Message
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="pt-24 pb-20 bg-white">
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/[0.02] -skew-x-12 translate-x-1/4" />
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+          >
+            <SectionHeader 
+              icon={Phone} 
+              subtitle="Contact Us" 
+              title="Let's Get Your Comfort Back on Track" 
+              description="Whether it's a routine check-up or an emergency repair, our team is ready to help."
+            />
+            
+            <div className="space-y-10 mt-12">
+              <div className="flex items-start gap-6">
+                <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary shrink-0">
+                  <Phone size={28} />
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-text mb-1">Call Us Directly</h4>
+                  <a href={`tel:${BRAND.phone}`} className="text-2xl font-black text-secondary hover:opacity-80 transition-opacity">
+                    {BRAND.phone}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary shrink-0">
+                  <Mail size={28} />
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-text mb-1">Email Our Team</h4>
+                  <a href={`mailto:${BRAND.email}`} className="text-lg font-medium text-text/60 hover:text-primary transition-colors">
+                    {BRAND.email}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary shrink-0">
+                  <MapPin size={28} />
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-text mb-1">Visit Our Office</h4>
+                  <p className="text-lg font-medium text-text/60 leading-relaxed">
+                    {BRAND.address}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="order-1 lg:order-2"
+          >
+            <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 md:p-12 rounded-[40px] shadow-2xl border border-slate-50">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-3">
+                  <label className="text-sm font-black uppercase tracking-widest text-text/40 ml-1">Full Name</label>
+                  <input required name="name" type="text" placeholder="John Doe" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium" />
+                </div>
+                <div className="space-y-3">
+                  <label className="text-sm font-black uppercase tracking-widest text-text/40 ml-1">Phone Number</label>
+                  <input required name="phone" type="tel" placeholder="(314) 000-0000" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium" />
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <label className="text-sm font-black uppercase tracking-widest text-text/40 ml-1">Email Address</label>
+                <input required name="email" type="email" placeholder="john@example.com" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium" />
+              </div>
+
+              <div className="space-y-3">
+                <label className="text-sm font-black uppercase tracking-widest text-text/40 ml-1">Service Needed</label>
+                <select required name="service" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium">
+                  <option value="">Select a service...</option>
+                  {services.map(s => <option key={s.id} value={s.id}>{s.title}</option>)}
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div className="space-y-3">
+                <label className="text-sm font-black uppercase tracking-widest text-text/40 ml-1">Your Message</label>
+                <textarea rows={4} name="message" placeholder="How can we help you today?" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium resize-none"></textarea>
+              </div>
+
+              <div className="space-y-3 pt-0">
+                <div className="flex items-start gap-3">
+                  <input required name="compliance" type="checkbox" id="compliance" className="mt-1 w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary" />
+                  <label htmlFor="compliance" className="text-sm text-text/60 leading-relaxed">
+                    I consent to receive SMS notifications, alerts, and occasional marketing from Dent's Heating & Cooling. Message frequency varies. Msg & data rates may apply. Text HELP to {BRAND.phone} for help or STOP to unsubscribe anytime.
+                  </label>
+                </div>
+              </div>
+
+              <button 
+                disabled={isLoading}
+                type="submit" 
+                className="w-full btn-primary py-6 text-xl shadow-xl shadow-primary/20 flex items-center justify-center gap-3 disabled:opacity-70"
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="animate-spin" size={24} />
+                    Sending Request...
+                  </>
+                ) : (
+                  'Submit Request'
+                )}
+              </button>
+            </form>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  )
+}
+
 const ServicePage = () => {
   const { id } = useParams()
   const service = services.find(s => (s as any).id === id) as any
@@ -1312,7 +1457,7 @@ const LocationPage = () => {
               />
             </div>
             <p className="text-center text-sm text-text/40 font-bold uppercase tracking-widest mt-4">
-              Our Service Coverage — {location.name}, CA
+              Our Service Coverage — {location.name}, {BRAND.location}
             </p>
           </div>
 
