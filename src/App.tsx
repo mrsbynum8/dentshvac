@@ -568,9 +568,9 @@ const Footer = () => (
         <h4 className="text-white font-black uppercase tracking-widest text-xs mb-6">Company</h4>
         <ul className="space-y-4 text-base">
           <li><Link to="/about" className="hover:text-primary transition-colors">About Us</Link></li>
-          <li><a href="#" className="hover:text-primary transition-colors">Our Team</a></li>
-          <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
           <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
+          <li><Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+          <li><Link to="/terms" className="hover:text-primary transition-colors">Terms of Service</Link></li>
         </ul>
       </div>
 
@@ -1509,6 +1509,152 @@ const LocationPage = () => {
   )
 }
 
+const PrivacyPage = () => (
+  <div className="pt-32 pb-24 bg-white">
+    <div className="max-w-4xl mx-auto px-6">
+      <div className="inline-flex items-center gap-3 text-secondary font-bold mb-8 uppercase tracking-[0.2em] text-[13px] bg-secondary/10 px-4 py-2 rounded-full">
+        <ShieldCheck size={16} />
+        Legal Information
+      </div>
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-text mb-12 leading-tight">Privacy Policy</h1>
+      
+      <div className="space-y-12 text-text/70 leading-relaxed text-lg">
+        <section>
+          <p className="font-bold text-text uppercase tracking-widest text-sm mb-4">Effective Date: May 4, 2026</p>
+          <p>At {BRAND.name}, we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and safeguard your information when you visit our website or use our services.</p>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-text">1. Information We Collect</h2>
+          <p>We collect information you provide directly to us through forms on our website, including your name, email address, phone number, and details about your service needs. We also collect non-personal information through cookies and similar technologies to improve your experience.</p>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-text">2. How We Use Your Information</h2>
+          <p>We use the information we collect to:</p>
+          <ul className="list-disc pl-6 space-y-3">
+            <li>Provide and manage the services you request.</li>
+            <li>Contact you regarding appointments, service updates, and inquiries.</li>
+            <li>Send you marketing and promotional communications (with your consent).</li>
+            <li>Improve our website, customer service, and overall business operations.</li>
+          </ul>
+        </section>
+
+        <section className="bg-slate-50 p-8 md:p-12 rounded-[40px] border border-slate-100 shadow-sm relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full -mr-16 -mt-16" />
+          <h2 className="text-2xl font-bold text-primary mb-6 flex items-center gap-3">
+            <MessageSquare size={24} />
+            3. SMS & Mobile Information
+          </h2>
+          <div className="space-y-4 text-text font-medium italic bg-white/50 backdrop-blur-sm p-6 rounded-2xl border border-primary/10">
+            <p>No mobile information will be shared with third parties/affiliates for marketing/promotional purposes. Information sharing to subcontractors in support services, such as customer service, is permitted.</p>
+            <p>All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.</p>
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-text">4. Data Security</h2>
+          <p>We implement robust physical, technical, and administrative security measures to protect your personal information from unauthorized access, disclosure, or misuse. However, no method of transmission over the internet is 100% secure.</p>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-text">5. Your Rights & Choices</h2>
+          <p>You have the right to access, correct, or delete your personal information. You can opt-out of marketing communications at any time by following the instructions in those messages or by contacting us directly. For SMS communications, you can reply "STOP" to any message.</p>
+        </section>
+
+        <section className="pt-12 border-t border-slate-100">
+          <h2 className="text-2xl font-bold text-text mb-4">6. Contact Us</h2>
+          <p className="mb-4">If you have any questions or concerns about this Privacy Policy, please reach out to us:</p>
+          <div className="space-y-2">
+            <div className="flex items-center gap-3 font-bold text-text">
+              <Mail size={18} className="text-primary" />
+              {BRAND.email}
+            </div>
+            <div className="flex items-center gap-3 font-bold text-text">
+              <Phone size={18} className="text-primary" />
+              {BRAND.phone}
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+);
+
+const TermsPage = () => (
+  <div className="pt-32 pb-24 bg-white">
+    <div className="max-w-4xl mx-auto px-6">
+      <div className="inline-flex items-center gap-3 text-secondary font-bold mb-8 uppercase tracking-[0.2em] text-[13px] bg-secondary/10 px-4 py-2 rounded-full">
+        <CheckCircle size={16} />
+        Legal Information
+      </div>
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-text mb-12 leading-tight">Terms & Conditions</h1>
+      
+      <div className="space-y-12 text-text/70 leading-relaxed text-lg">
+        <section>
+          <p className="font-bold text-text uppercase tracking-widest text-sm mb-4">Last Updated: May 4, 2026</p>
+          <p>Welcome to {BRAND.name}. By accessing our website or using our heating and cooling services, you agree to be bound by the following terms and conditions. Please read them carefully.</p>
+        </section>
+
+        <section className="bg-slate-50 p-8 md:p-12 rounded-[40px] border border-slate-100 shadow-sm relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 blur-3xl rounded-full -mr-16 -mt-16" />
+          <h2 className="text-2xl font-bold text-text mb-6 flex items-center gap-3">
+            <MessageSquare size={24} className="text-secondary" />
+            1. SMS Communication & Consent
+          </h2>
+          <div className="space-y-6">
+            <p>By providing your phone number on this website, you consent to receive text messages from {BRAND.name}. This is part of our commitment to providing fast and reliable service.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-white p-6 rounded-2xl border border-slate-200">
+                <div className="font-bold text-text mb-1">Purpose</div>
+                <div className="text-sm">Appointment reminders, service alerts, and occasional promotional updates.</div>
+              </div>
+              <div className="bg-white p-6 rounded-2xl border border-slate-200">
+                <div className="font-bold text-text mb-1">Frequency</div>
+                <div className="text-sm">Message frequency varies based on your needs and requests.</div>
+              </div>
+              <div className="bg-white p-6 rounded-2xl border border-slate-200">
+                <div className="font-bold text-text mb-1">Opt-Out</div>
+                <div className="text-sm">Text <strong>STOP</strong> at any time to unsubscribe from all future messages.</div>
+              </div>
+              <div className="bg-white p-6 rounded-2xl border border-slate-200">
+                <div className="font-bold text-text mb-1">Help</div>
+                <div className="text-sm">Text <strong>HELP</strong> for assistance or call us directly.</div>
+              </div>
+            </div>
+            <p className="text-sm font-medium italic border-l-4 border-secondary pl-4">Disclaimer: Message and data rates may apply. Carriers are not liable for delayed or undelivered messages.</p>
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-text">2. Services & Availability</h2>
+          <p>{BRAND.name} provides HVAC installation, repair, and maintenance services. All services are subject to scheduling and availability in the {BRAND.location} area. We reserve the right to refuse service to anyone for any reason at any time.</p>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-text">3. Pricing & Payment</h2>
+          <p>Pricing for services is provided via official quotes and is subject to change based on the actual scope of work discovered during inspection. Payment terms are specified at the time of service or in our service agreements.</p>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-text">4. Limitation of Liability</h2>
+          <p>To the maximum extent permitted by law, {BRAND.name} shall not be liable for any direct, indirect, incidental, or consequential damages resulting from the use of our website or services. This includes, but is not limited to, damages for loss of profits, data, or other intangible losses.</p>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-text">5. Governing Law</h2>
+          <p>These terms and conditions are governed by and construed in accordance with the laws of the State of Missouri. Any disputes shall be subject to the exclusive jurisdiction of the courts in St. Louis, MO.</p>
+        </section>
+
+        <section className="pt-12 border-t border-slate-100">
+          <h2 className="text-2xl font-bold text-text mb-4">6. Contact</h2>
+          <p>If you have questions about these Terms & Conditions, please contact us at {BRAND.phone} or via email at {BRAND.email}.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+);
+
 export default function App() {
   return (
     <div className="min-h-screen selection:bg-primary selection:text-white">
@@ -1522,6 +1668,8 @@ export default function App() {
           <Route path="/services/:id" element={<ServicePage />} />
           <Route path="/locations/:id" element={<LocationPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
         </Routes>
       </main>
 
