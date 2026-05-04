@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Phone, CheckCircle, Thermometer, ShieldCheck, Settings, Wind, Star, ArrowRight, ChevronDown, MessageSquare, Quote, Facebook, Twitter, Instagram, Menu, X, Mail, Clock, Send, MapPin } from 'lucide-react'
+import { Phone, CheckCircle, Thermometer, ShieldCheck, Settings, Wind, Star, ArrowRight, ChevronDown, MessageSquare, Quote, Facebook, Twitter, Instagram, Menu, X, Mail, Loader2, MapPin } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { Routes, Route, Link, useLocation, useParams } from 'react-router-dom'
 import { clsx, type ClassValue } from 'clsx'
