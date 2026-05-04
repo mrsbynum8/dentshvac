@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Phone, CheckCircle, Thermometer, ShieldCheck, Settings, Wind, Star, ArrowRight, ChevronDown, MessageSquare, Quote, Facebook, Twitter, Instagram, Menu, X, Mail, Loader2, MapPin } from 'lucide-react'
+import { Phone, CheckCircle, Thermometer, ShieldCheck, Settings, Wind, Star, ArrowRight, ChevronDown, MessageSquare, Quote, Menu, X, Mail, Loader2, MapPin } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { Routes, Route, Link, useLocation, useParams } from 'react-router-dom'
 import { clsx, type ClassValue } from 'clsx'
@@ -561,12 +561,6 @@ const Footer = () => (
         <p className="text-base leading-relaxed mb-6">
           Expert HVAC services providing comfort and quality air to homes and multi-family properties across {BRAND.location} and the surrounding areas.
         </p>
-        <div className="flex gap-3">
-          {[Facebook, Twitter, Instagram].map((Icon, i) => (
-            <div key={i} className="w-9 h-9 border border-white/10 rounded-lg flex items-center justify-center hover:bg-primary hover:border-primary transition-all cursor-pointer">
-              <Icon size={16} />
-            </div>
-          ))}
         </div>
       </div>
 
