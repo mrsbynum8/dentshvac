@@ -562,7 +562,7 @@ const Footer = () => (
           Expert HVAC services providing comfort and quality air to homes and multi-family properties across {BRAND.location} and the surrounding areas.
         </p>
         </div>
-      </div>
+
 
       <div>
         <h4 className="text-white font-black uppercase tracking-widest text-xs mb-6">Company</h4>
