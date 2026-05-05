@@ -1852,7 +1852,7 @@ const PMRequestPage = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
-          className="bg-white rounded-[2rem] p-4 md:p-8 shadow-2xl shadow-slate-200/50 border border-slate-100 min-h-[800px] relative overflow-hidden"
+          className="bg-white rounded-[2rem] p-4 md:p-8 shadow-2xl shadow-slate-200/50 border border-slate-100 min-h-[1250px] relative overflow-hidden"
         >
           <div className="absolute inset-0 flex items-center justify-center -z-10">
             <div className="text-center">
@@ -1863,17 +1863,17 @@ const PMRequestPage = () => {
 
           <iframe
             src="https://brand.dentsheatingandcooling.com/widget/form/2iAos47rxlfqZ2VuHYaf"
-            style={{ display: 'none', width: '100%', height: '100%', border: 'none', borderRadius: '8px' }}
+            style={{ width: '100%', height: '100%', border: 'none', borderRadius: '8px' }}
             id="inline-2iAos47rxlfqZ2VuHYaf" 
             data-layout="{'id':'INLINE'}"
             data-trigger-type="alwaysShow"
             data-trigger-value=""
             data-activation-type="alwaysActivated"
             data-activation-value=""
-            data-deactivation-type="leadCollected"
+            data-deactivation-type="neverDeactivate"
             data-deactivation-value=""
             data-form-name="Dents HC — Property Management Request"
-            data-height="800"
+            data-height="1207"
             data-layout-iframe-id="inline-2iAos47rxlfqZ2VuHYaf"
             data-form-id="2iAos47rxlfqZ2VuHYaf"
             title="Dents HC — Property Management Request"
