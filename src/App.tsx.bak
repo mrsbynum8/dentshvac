@@ -151,8 +151,8 @@ const HeroForm = () => {
     const formData = new FormData(e.currentTarget)
     const data = Object.fromEntries(formData.entries())
 
-    if (!data.email) {
-      alert('Please provide an email address so we can reach you.')
+    if (!data.phone && !data.email) {
+      alert('Please provide either a phone number or an email address so we can reach you.')
       setIsLoading(false)
       return
     }
@@ -231,24 +231,34 @@ const HeroForm = () => {
             />
           </div>
           
-          <div className="space-y-1.5">
-            <label className="text-[11px] font-black uppercase tracking-[0.1em] text-white/40 px-1">Service</label>
-            <select 
-              name="service"
-              className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary/50 transition-all font-medium appearance-none"
-            >
-              <option value="AC Repair" className="bg-primary text-white">AC Repair</option>
-              <option value="Installation" className="bg-primary text-white">Installation</option>
-              <option value="Heating" className="bg-primary text-white">Heating</option>
-              <option value="Maintenance" className="bg-primary text-white">Maintenance</option>
-              <option value="Other" className="bg-primary text-white">Other</option>
-            </select>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-1.5">
+              <label className="text-[11px] font-black uppercase tracking-[0.1em] text-white/40 px-1">Phone</label>
+              <input 
+                name="phone"
+                type="tel" 
+                placeholder="(314) 000-0000" 
+                className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary/50 transition-all font-medium"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-[11px] font-black uppercase tracking-[0.1em] text-white/40 px-1">Service</label>
+              <select 
+                name="service"
+                className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary/50 transition-all font-medium appearance-none"
+              >
+                <option value="AC Repair" className="bg-primary text-white">AC Repair</option>
+                <option value="Installation" className="bg-primary text-white">Installation</option>
+                <option value="Heating" className="bg-primary text-white">Heating</option>
+                <option value="Maintenance" className="bg-primary text-white">Maintenance</option>
+                <option value="Other" className="bg-primary text-white">Other</option>
+              </select>
+            </div>
           </div>
           
           <div className="space-y-1.5">
             <label className="text-[11px] font-black uppercase tracking-[0.1em] text-white/40 px-1">Email Address</label>
             <input 
-              required
               name="email"
               type="email" 
               placeholder="john@example.com" 
@@ -265,7 +275,31 @@ const HeroForm = () => {
               className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary/50 transition-all font-medium resize-none text-sm"
             />
           </div>
+                    <div className="space-y-4 !mt-4">
+            <div className="flex items-start gap-3 px-1">
+              <input 
+                type="checkbox" 
+                id="consent-transactional-hero" 
+                name="consent_transactional"
+                className="mt-1 shrink-0 accent-secondary h-4 w-4 rounded border-white/20 bg-white/5"
+              />
+              <label htmlFor="consent-transactional-hero" className="text-[10px] leading-relaxed text-white/50 font-medium cursor-pointer">
+                I agree to the <Link to="/terms" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">Terms and Conditions</Link> and <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">Privacy Policy</Link> and consent to receive text messages for appointment reminders, service updates, and customer support responses from {BRAND.dbaName}. Message frequency varies. Message & data rates may apply. Reply STOP to opt-out, HELP for help.
+              </label>
+            </div>
 
+            <div className="flex items-start gap-3 px-1">
+              <input 
+                type="checkbox" 
+                id="consent-marketing-hero" 
+                name="consent_marketing"
+                className="mt-1 shrink-0 accent-secondary h-4 w-4 rounded border-white/20 bg-white/5"
+              />
+              <label htmlFor="consent-marketing-hero" className="text-[10px] leading-relaxed text-white/50 font-medium cursor-pointer">
+                I agree to receive marketing and promotional text messages from {BRAND.dbaName} at the number provided. Consent is not a condition of purchase. Message frequency varies. Message & data rates may apply. Reply STOP to opt-out, HELP for help.
+              </label>
+            </div>
+          </div>
 
           <button 
             type="submit" 
@@ -1119,8 +1153,8 @@ const ContactPage = () => {
     const formData = new FormData(e.currentTarget)
     const data = Object.fromEntries(formData.entries())
 
-    if (!data.email) {
-      alert('Please provide an email address so we can reach you.')
+    if (!data.phone && !data.email) {
+      alert('Please provide either a phone number or an email address so we can reach you.')
       setIsLoading(false)
       return
     }
@@ -1230,14 +1264,20 @@ const ContactPage = () => {
             className="order-1 lg:order-2"
           >
             <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 md:p-12 rounded-[40px] shadow-2xl border border-slate-50">
-              <div className="space-y-3">
-                <label className="text-sm font-black uppercase tracking-widest text-text/40 ml-1">Full Name</label>
-                <input required name="name" type="text" placeholder="John Doe" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-3">
+                  <label className="text-sm font-black uppercase tracking-widest text-text/40 ml-1">Full Name</label>
+                  <input required name="name" type="text" placeholder="John Doe" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium" />
+                </div>
+                <div className="space-y-3">
+                  <label className="text-sm font-black uppercase tracking-widest text-text/40 ml-1">Phone Number</label>
+                  <input name="phone" type="tel" placeholder="(314) 000-0000" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium" />
+                </div>
               </div>
 
               <div className="space-y-3">
                 <label className="text-sm font-black uppercase tracking-widest text-text/40 ml-1">Email Address</label>
-                <input required name="email" type="email" placeholder="john@example.com" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium" />
+                <input name="email" type="email" placeholder="john@example.com" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium" />
               </div>
 
               <div className="space-y-3">
@@ -1254,12 +1294,37 @@ const ContactPage = () => {
                 <textarea rows={4} name="message" placeholder="How can we help you today?" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium resize-none"></textarea>
               </div>
 
+              <div className="space-y-4 pt-2">
+                <div className="flex items-start gap-3">
+                  <input 
+                    type="checkbox" 
+                    id="consent-transactional-contact" 
+                    name="consent_transactional"
+                    className="mt-1 shrink-0 accent-primary h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary"
+                  />
+                  <label htmlFor="consent-transactional-contact" className="text-xs leading-relaxed text-text/60 font-medium cursor-pointer">
+                    I agree to the <Link to="/terms" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Terms and Conditions</Link> and <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Privacy Policy</Link> and consent to receive text messages for appointment reminders, service updates, and customer support responses from {BRAND.dbaName}. Message frequency varies. Message & data rates may apply. Reply STOP to opt-out, HELP for help.
+                  </label>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <input 
+                    type="checkbox" 
+                    id="consent-marketing-contact" 
+                    name="consent_marketing"
+                    className="mt-1 shrink-0 accent-primary h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary"
+                  />
+                  <label htmlFor="consent-marketing-contact" className="text-xs leading-relaxed text-text/60 font-medium cursor-pointer">
+                    I agree to receive marketing and promotional text messages from {BRAND.dbaName} at the number provided. Consent is not a condition of purchase. Message frequency varies. Message & data rates may apply. Reply STOP to opt-out, HELP for help.
+                  </label>
+                </div>
+
                 <div className="text-center pt-4 border-t border-slate-100 mt-4">
                   <p className="text-[10px] text-text/40 font-medium">
                     View our <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="text-primary/60 hover:text-primary underline transition-colors">Privacy Policy</Link> and <Link to="/terms" target="_blank" rel="noopener noreferrer" className="text-primary/60 hover:text-primary underline transition-colors">Terms of Service</Link>
                   </p>
                 </div>
-
+              </div>
 
               <button 
                 disabled={isLoading}
