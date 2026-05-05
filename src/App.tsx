@@ -10,13 +10,15 @@ function cn(...inputs: ClassValue[]) {
 }
 
 const BRAND = {
-  name: "Dent's Heating & Cooling",
-  fullName: "Dent's Heating & Cooling",
+  name: "Dent's Heating And Cooling",
+  legalName: "Dent's Heating And Cooling Co., LLC",
+  dbaName: "Dent's Heating And Cooling Co., LLC DBA Dent’s Heating And Cooling",
   phone: '(314) 420-7803',
-  email: 'dentsheatingandcooling@gmail.com',
+  email: 'info@dentsheatingandcooling.com',
   address: '6942 Forest Hills Dr. St. Louis, MO 63121',
   location: 'St. Louis, MO',
-  tagline: 'Premium Heating & Cooling'
+  tagline: 'Premium Heating & Cooling',
+  website: 'dentsheatingandcooling.com'
 }
 
 // TODO: Replace with your actual GoHighLevel Webhook URL
@@ -149,6 +151,12 @@ const HeroForm = () => {
     const formData = new FormData(e.currentTarget)
     const data = Object.fromEntries(formData.entries())
 
+    if (!data.phone && !data.email) {
+      alert('Please provide either a phone number or an email address so we can reach you.')
+      setIsLoading(false)
+      return
+    }
+
     try {
       // Logic for GHL Webhook
       if (GHL_WEBHOOK_URL && !GHL_WEBHOOK_URL.includes('...')) {
@@ -203,9 +211,9 @@ const HeroForm = () => {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
-      className="bg-white/10 backdrop-blur-md border border-white/20 p-8 md:p-10 rounded-[40px] shadow-2xl relative overflow-hidden group"
+      className="bg-slate-900/40 backdrop-blur-xl border border-white/10 p-8 md:p-10 rounded-[40px] shadow-2xl relative overflow-hidden"
     >
-      <div className="absolute top-0 right-0 w-32 h-32 bg-cta/10 blur-2xl rounded-full -mr-16 -mt-16 group-hover:bg-cta/20 transition-colors duration-500 pointer-events-none" />
+      
       
       <div className="relative z-10">
         <h3 className="text-2xl font-heading font-bold text-white mb-2">Get a Free Quote</h3>
@@ -227,7 +235,6 @@ const HeroForm = () => {
             <div className="space-y-1.5">
               <label className="text-[11px] font-black uppercase tracking-[0.1em] text-white/40 px-1">Phone</label>
               <input 
-                required
                 name="phone"
                 type="tel" 
                 placeholder="(314) 000-0000" 
@@ -252,7 +259,6 @@ const HeroForm = () => {
           <div className="space-y-1.5">
             <label className="text-[11px] font-black uppercase tracking-[0.1em] text-white/40 px-1">Email Address</label>
             <input 
-              required
               name="email"
               type="email" 
               placeholder="john@example.com" 
@@ -269,18 +275,30 @@ const HeroForm = () => {
               className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary/50 transition-all font-medium resize-none text-sm"
             />
           </div>
+                    <div className="space-y-4 !mt-4">
+            <div className="flex items-start gap-3 px-1">
+              <input 
+                type="checkbox" 
+                id="consent-transactional-hero" 
+                name="consent_transactional"
+                className="mt-1 shrink-0 accent-secondary h-4 w-4 rounded border-white/20 bg-white/5"
+              />
+              <label htmlFor="consent-transactional-hero" className="text-[10px] leading-relaxed text-white/50 font-medium cursor-pointer">
+                I agree to the <Link to="/terms" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">Terms and Conditions</Link> and <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">Privacy Policy</Link> and consent to receive text messages for appointment reminders, service updates, and customer support responses from {BRAND.dbaName}. Message frequency varies. Message & data rates may apply. Reply STOP to opt-out, HELP for help.
+              </label>
+            </div>
 
-          <div className="flex items-start gap-3 px-1 !mt-2">
-            <input 
-              type="checkbox" 
-              id="compliance-hero" 
-              name="compliance"
-              className="mt-1 shrink-0 accent-secondary h-4 w-4 rounded border-white/20 bg-white/5"
-              required
-            />
-            <label htmlFor="compliance-hero" className="text-[10px] leading-relaxed text-white/50 font-medium cursor-pointer">
-              I consent to receive SMS notifications, alerts, and occasional marketing from Dent's Heating & Cooling. Message frequency varies. Msg & data rates may apply. Text HELP to (314) 420-7803 for help or STOP to unsubscribe anytime.
-            </label>
+            <div className="flex items-start gap-3 px-1">
+              <input 
+                type="checkbox" 
+                id="consent-marketing-hero" 
+                name="consent_marketing"
+                className="mt-1 shrink-0 accent-secondary h-4 w-4 rounded border-white/20 bg-white/5"
+              />
+              <label htmlFor="consent-marketing-hero" className="text-[10px] leading-relaxed text-white/50 font-medium cursor-pointer">
+                I agree to receive marketing and promotional text messages from {BRAND.dbaName} at the number provided. Consent is not a condition of purchase. Message frequency varies. Message & data rates may apply. Reply STOP to opt-out, HELP for help.
+              </label>
+            </div>
           </div>
 
           <button 
@@ -295,9 +313,14 @@ const HeroForm = () => {
             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
           </button>
           
-          <p className="text-[10px] text-center text-white/30 pt-4 font-bold uppercase tracking-widest">
-            <ShieldCheck size={10} className="inline mr-1 mb-0.5" /> Your data is secure & encrypted
-          </p>
+          <div className="text-center pt-4">
+            <p className="text-[10px] text-white/30 font-medium">
+              View our <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-secondary underline transition-colors">Privacy Policy</Link> and <Link to="/terms" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-secondary underline transition-colors">Terms of Service</Link>
+            </p>
+            <p className="text-[9px] text-white/20 mt-2 font-bold uppercase tracking-widest">
+              Secured & Encrypted
+            </p>
+          </div>
         </form>
       </div>
     </motion.div>
@@ -377,7 +400,7 @@ const Nav = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+    <nav className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-slate-100/50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center">
           <img src="/dark%20logo.png" alt={BRAND.name} className="h-12 w-auto object-contain" />
@@ -567,10 +590,10 @@ const Footer = () => (
       <div>
         <h4 className="text-white font-black uppercase tracking-widest text-xs mb-6">Company</h4>
         <ul className="space-y-4 text-base">
-          <li><Link to="/about" className="hover:text-primary transition-colors">About Us</Link></li>
-          <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
-          <li><Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-          <li><Link to="/terms" className="hover:text-primary transition-colors">Terms of Service</Link></li>
+          <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
+          <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+          <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+          <li><Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
         </ul>
       </div>
 
@@ -578,7 +601,7 @@ const Footer = () => (
         <h4 className="text-white font-black uppercase tracking-widest text-xs mb-6">Services</h4>
         <ul className="space-y-4 text-base">
           {services.map(s => (
-            <li key={s.id}><Link to={s.link} className="hover:text-primary transition-colors">{s.title}</Link></li>
+            <li key={s.id}><Link to={s.link} className="hover:text-white transition-colors">{s.title}</Link></li>
           ))}
         </ul>
       </div>
@@ -587,7 +610,7 @@ const Footer = () => (
         <h4 className="text-white font-black uppercase tracking-widest text-xs mb-6">Locations</h4>
         <ul className="space-y-4 text-base">
           {locations.map(loc => (
-            <li key={loc.id}><Link to={`/locations/${loc.id}`} className="hover:text-primary transition-colors">{loc.name}</Link></li>
+            <li key={loc.id}><Link to={`/locations/${loc.id}`} className="hover:text-white transition-colors">{loc.name}</Link></li>
           ))}
         </ul>
       </div>
@@ -596,13 +619,13 @@ const Footer = () => (
         <h4 className="text-white font-black uppercase tracking-widest text-xs mb-6">Reach Us</h4>
         <div className="space-y-4 text-base">
           <p className="leading-relaxed">{BRAND.address}</p>
-          <a href={`tel:${BRAND.phone}`} className="block text-white font-bold text-2xl tracking-tight hover:text-primary transition-colors">{BRAND.phone}</a>
-          <a href={`mailto:${BRAND.email}`} className="block text-secondary font-medium underline hover:text-primary transition-colors">{BRAND.email}</a>
+          <a href={`tel:${BRAND.phone}`} className="block text-white font-bold text-2xl tracking-tight hover:text-secondary transition-colors">{BRAND.phone}</a>
+          <a href={`mailto:${BRAND.email}`} className="block text-secondary font-medium underline hover:text-white transition-colors">{BRAND.email}</a>
         </div>
       </div>
     </div>
     <div className="max-w-7xl mx-auto px-4 mt-8 pt-6 border-t border-white/5 text-center text-[10px] tracking-[0.5em] uppercase opacity-30 font-bold">
-      © 2026 {BRAND.fullName}. All rights reserved. Professional comfort since 2011.
+      © 2026 {BRAND.legalName}. All rights reserved. Professional comfort since 1986.
     </div>
   </footer>
 )
@@ -610,7 +633,7 @@ const AboutPage = () => (
   <div className="pt-20">
     {/* Page Hero - Aligned with Service Pages */}
     <section className="relative py-14 md:py-20 lg:py-24 overflow-hidden bg-[#F8FAFF]">
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 translate-x-1/4 -z-10 blur-3xl opacity-30" />
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 translate-x-1/4 -z-10 blur-3xl opacity-30 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -676,7 +699,7 @@ const AboutPage = () => (
             When we first opened our doors in 1986, we noticed a recurring theme among homeowners: they were tired of waiting for technicians who never showed up or didn't explain what they were doing. We decided to build a company that prioritized clarity and consistency.
           </p>
           <p>
-            Today, {BRAND.fullName} is recognized as a leader in premium heating and cooling across the {BRAND.location} area. We've stayed small enough to care about every individual client but grown skilled enough to handle the most complex mechanical challenges.
+            Today, {BRAND.name} is recognized as a leader in premium heating and cooling across the {BRAND.location} area. We've stayed small enough to care about every individual client but grown skilled enough to handle the most complex mechanical challenges.
           </p>
           <p>
             Our team members aren't just technicians; they're environmental comfort specialists who take pride in making your home a better place to live. We specialize in precision diagnostics, high-efficiency system transitions, and breathable air solutions.
@@ -762,7 +785,7 @@ const HomePage = () => {
               transition={{ duration: 0.8 }}
               className="lg:col-span-7"
             >
-              <div className="inline-flex items-center gap-3 text-secondary font-bold mb-8 uppercase tracking-[0.2em] text-[13px] bg-secondary/10 backdrop-blur-md px-6 py-2.5 rounded-full border border-secondary/20">
+              <div className="inline-flex items-center gap-3 text-secondary font-bold mb-8 uppercase tracking-[0.2em] text-[13px] bg-secondary/10 px-6 py-2.5 rounded-full border border-secondary/20">
                 <Wind size={16} className="animate-pulse" />
                 Premium HVAC Engineering
               </div>
@@ -974,7 +997,7 @@ const HomePage = () => {
             </button>
           </div>
           <div className="relative">
-            <div className="absolute -inset-10 bg-white/5 rounded-[60px] blur-3xl -z-10" />
+            <div className="absolute -inset-10 bg-white/5 rounded-[60px] blur-3xl -z-10 pointer-events-none" />
             <img 
               src="/wp-content/uploads/2024/11/why_chose_us_img_2.png" 
               alt="Quality HVAC Service" 
@@ -1099,7 +1122,7 @@ const HomePage = () => {
         <div className="max-w-6xl mx-auto px-4 text-center">
           <div className="bg-primary rounded-[40px] md:rounded-[60px] lg:rounded-[80px] px-8 py-16 md:p-20 lg:p-24 text-white relative overflow-hidden shadow-[0_50px_100px_-20px_rgba(99,102,241,0.5)]">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.15),transparent)] opacity-50" />
-            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
+            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none" />
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold mb-8 relative z-10 leading-[1.1]">Ready to restore <br className="hidden md:block"/>your comfort?</h2>
             <p className="text-lg md:text-2xl text-white/80 mb-10 max-w-2xl mx-auto relative z-10 opacity-80 leading-relaxed font-medium">
               Join thousands of satisfied homeowners who trust {BRAND.name} for their heating and cooling needs.
@@ -1129,6 +1152,12 @@ const ContactPage = () => {
     
     const formData = new FormData(e.currentTarget)
     const data = Object.fromEntries(formData.entries())
+
+    if (!data.phone && !data.email) {
+      alert('Please provide either a phone number or an email address so we can reach you.')
+      setIsLoading(false)
+      return
+    }
 
     try {
       if (GHL_WEBHOOK_URL && !GHL_WEBHOOK_URL.includes('...')) {
@@ -1242,13 +1271,13 @@ const ContactPage = () => {
                 </div>
                 <div className="space-y-3">
                   <label className="text-sm font-black uppercase tracking-widest text-text/40 ml-1">Phone Number</label>
-                  <input required name="phone" type="tel" placeholder="(314) 000-0000" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium" />
+                  <input name="phone" type="tel" placeholder="(314) 000-0000" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium" />
                 </div>
               </div>
 
               <div className="space-y-3">
                 <label className="text-sm font-black uppercase tracking-widest text-text/40 ml-1">Email Address</label>
-                <input required name="email" type="email" placeholder="john@example.com" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium" />
+                <input name="email" type="email" placeholder="john@example.com" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium" />
               </div>
 
               <div className="space-y-3">
@@ -1265,12 +1294,35 @@ const ContactPage = () => {
                 <textarea rows={4} name="message" placeholder="How can we help you today?" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium resize-none"></textarea>
               </div>
 
-              <div className="space-y-3 pt-0">
+              <div className="space-y-4 pt-2">
                 <div className="flex items-start gap-3">
-                  <input required name="compliance" type="checkbox" id="compliance" className="mt-1 w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary" />
-                  <label htmlFor="compliance" className="text-sm text-text/60 leading-relaxed">
-                    I consent to receive SMS notifications, alerts, and occasional marketing from Dent's Heating & Cooling. Message frequency varies. Msg & data rates may apply. Text HELP to {BRAND.phone} for help or STOP to unsubscribe anytime.
+                  <input 
+                    type="checkbox" 
+                    id="consent-transactional-contact" 
+                    name="consent_transactional"
+                    className="mt-1 shrink-0 accent-primary h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary"
+                  />
+                  <label htmlFor="consent-transactional-contact" className="text-xs leading-relaxed text-text/60 font-medium cursor-pointer">
+                    I agree to the <Link to="/terms" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Terms and Conditions</Link> and <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Privacy Policy</Link> and consent to receive text messages for appointment reminders, service updates, and customer support responses from {BRAND.dbaName}. Message frequency varies. Message & data rates may apply. Reply STOP to opt-out, HELP for help.
                   </label>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <input 
+                    type="checkbox" 
+                    id="consent-marketing-contact" 
+                    name="consent_marketing"
+                    className="mt-1 shrink-0 accent-primary h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary"
+                  />
+                  <label htmlFor="consent-marketing-contact" className="text-xs leading-relaxed text-text/60 font-medium cursor-pointer">
+                    I agree to receive marketing and promotional text messages from {BRAND.dbaName} at the number provided. Consent is not a condition of purchase. Message frequency varies. Message & data rates may apply. Reply STOP to opt-out, HELP for help.
+                  </label>
+                </div>
+
+                <div className="text-center pt-4 border-t border-slate-100 mt-4">
+                  <p className="text-[10px] text-text/40 font-medium">
+                    View our <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="text-primary/60 hover:text-primary underline transition-colors">Privacy Policy</Link> and <Link to="/terms" target="_blank" rel="noopener noreferrer" className="text-primary/60 hover:text-primary underline transition-colors">Terms of Service</Link>
+                  </p>
                 </div>
               </div>
 
@@ -1305,7 +1357,7 @@ const ServicePage = () => {
   return (
     <div className="pt-20">
       <section className="relative py-14 md:py-20 lg:py-24 overflow-hidden bg-[#F8FAFF]">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 translate-x-1/4 -z-10 blur-3xl opacity-30" />
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 translate-x-1/4 -z-10 blur-3xl opacity-30 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -1401,7 +1453,7 @@ const ServicePage = () => {
             </div>
           </div>
           <div className="bg-primary text-white p-8 md:p-12 lg:p-20 rounded-[40px] md:rounded-[60px] lg:rounded-[80px] relative overflow-hidden flex flex-col justify-center">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none" />
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6 leading-tight">Need immediate assistance?</h2>
             <p className="text-base md:text-xl text-white/70 mb-8 leading-relaxed font-medium">
               Our technicians are on standby to help you with your {service.title.toLowerCase()} needs. Experience the {BRAND.name} difference today.
@@ -1410,7 +1462,7 @@ const ServicePage = () => {
               <a href={`tel:${BRAND.phone}`} className="bg-cta text-white px-8 py-4 rounded-2xl font-bold text-base md:text-xl hover:opacity-90 transition-all text-center whitespace-nowrap">
                 Call {BRAND.phone}
               </a>
-              <Link to="/contact" className="bg-white/10 border border-white/20 text-white px-8 py-4 rounded-2xl font-bold text-base md:text-xl hover:bg-white/20 transition-all text-center backdrop-blur-md whitespace-nowrap">
+              <Link to="/contact" className="bg-white/10 border border-white/20 text-white px-8 py-4 rounded-2xl font-bold text-base md:text-xl hover:bg-white/20 transition-all text-center whitespace-nowrap">
                 Get a Custom Quote
               </Link>
             </div>
@@ -1512,69 +1564,216 @@ const LocationPage = () => {
 const PrivacyPage = () => (
   <div className="pt-32 pb-24 bg-white">
     <div className="max-w-4xl mx-auto px-6">
-      <div className="inline-flex items-center gap-3 text-secondary font-bold mb-8 uppercase tracking-[0.2em] text-[13px] bg-secondary/10 px-4 py-2 rounded-full">
-        <ShieldCheck size={16} />
-        Legal Information
-      </div>
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-text mb-12 leading-tight">Privacy Policy</h1>
       
       <div className="space-y-12 text-text/70 leading-relaxed text-lg">
         <section>
-          <p className="font-bold text-text uppercase tracking-widest text-sm mb-4">Effective Date: May 4, 2026</p>
-          <p>At {BRAND.name}, we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and safeguard your information when you visit our website or use our services.</p>
+          <p className="text-2xl font-bold text-primary mb-2">{BRAND.legalName}</p>
+          <p className="font-bold text-text uppercase tracking-widest text-sm mb-8">Effective Date: January 1, 2026</p>
+          
+          <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+            <h2 className="text-xl font-bold text-text mb-4">
+              IMPORTANT NOTICE REGARDING TEXT MESSAGING DATA
+            </h2>
+            <p className="text-text leading-relaxed">
+              {BRAND.legalName} ("we," "us," or "our") DOES NOT share customer opt-in information, including phone numbers and consent records, with any affiliates or third parties for marketing, promotional, or any other purposes unrelated to providing our direct services. All text messaging originator opt-in data is kept strictly confidential.
+            </p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-2xl font-bold text-text">1. Information We Collect</h3>
+          <p>We collect the following types of information:</p>
+          <div className="space-y-4">
+            <p><strong>Personal Information:</strong></p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>Name, email address, phone number, physical address</li>
+              <li>Payment information when you make a purchase or request a quote</li>
+              <li>Opt-in records and timestamps for all communication channels (SMS, email, etc.)</li>
+            </ul>
+            
+            <p><strong>Non-Personal Information:</strong></p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>IP address, browser type, device information</li>
+              <li>Website usage patterns and analytics</li>
+              <li>Cookies and similar technologies</li>
+            </ul>
+
+            <p><strong>Customer Communication:</strong></p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>Records of inquiries and service requests</li>
+              <li>Appointment details and preferences</li>
+              <li>Service history and feedback</li>
+            </ul>
+          </div>
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-text">1. Information We Collect</h2>
-          <p>We collect information you provide directly to us through forms on our website, including your name, email address, phone number, and details about your service needs. We also collect non-personal information through cookies and similar technologies to improve your experience.</p>
-        </section>
-
-        <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-text">2. How We Use Your Information</h2>
-          <p>We use the information we collect to:</p>
-          <ul className="list-disc pl-6 space-y-3">
-            <li>Provide and manage the services you request.</li>
-            <li>Contact you regarding appointments, service updates, and inquiries.</li>
-            <li>Send you marketing and promotional communications (with your consent).</li>
-            <li>Improve our website, customer service, and overall business operations.</li>
+          <h3 className="text-2xl font-bold text-text">2. How We Use Your Information</h3>
+          <p>We use collected data for:</p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Providing and improving our services</li>
+            <li>Processing transactions and payments</li>
+            <li>Communicating with you about your inquiries, appointments, and promotions</li>
+            <li>Enhancing website functionality and user experience</li>
+            <li>Ensuring security and fraud prevention</li>
+            <li>Maintaining records of your communication preferences and consent</li>
           </ul>
         </section>
 
-        <section className="bg-slate-50 p-8 md:p-12 rounded-[40px] border border-slate-100 shadow-sm relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full -mr-16 -mt-16" />
-          <h2 className="text-2xl font-bold text-primary mb-6 flex items-center gap-3">
-            <MessageSquare size={24} />
-            3. SMS & Mobile Information
-          </h2>
-          <div className="space-y-4 text-text font-medium italic bg-white/50 backdrop-blur-sm p-6 rounded-2xl border border-primary/10">
-            <p>No mobile information will be shared with third parties/affiliates for marketing/promotional purposes. Information sharing to subcontractors in support services, such as customer service, is permitted.</p>
-            <p>All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.</p>
+        <section className="space-y-8">
+          <h3 className="text-2xl font-bold text-text">3. SMS Messaging & Compliance</h3>
+          
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-xl font-bold text-text mb-3">Text Message Program Terms & Conditions</h4>
+              <p>By opting into our SMS messaging services, you agree to receive text messages related to our services, including appointment reminders, customer support, and important updates.</p>
+            </div>
+
+            <div>
+              <p><strong>Opt-In & Consent:</strong></p>
+              <ul className="list-disc pl-5 space-y-2 mt-2">
+                <li>You will only receive messages if you have explicitly opted in</li>
+                <li>We maintain timestamped records of all opt-in actions</li>
+                <li>We comply with the Telephone Consumer Protection Act (TCPA) and all applicable laws</li>
+              </ul>
+            </div>
+
+            <div>
+              <p><strong>Opt-Out Instructions:</strong></p>
+              <ul className="list-disc pl-5 space-y-2 mt-2">
+                <li>You can cancel SMS notifications at any time by replying "STOP"</li>
+                <li>You will receive a final confirmation message, and no further messages will be sent unless you re-opt in</li>
+                <li>All opt-out requests are processed immediately.</li>
+              </ul>
+            </div>
+
+            <div>
+              <p><strong>Message Frequency & Content:</strong></p>
+              <ul className="list-disc pl-5 space-y-2 mt-2">
+                <li>Message frequency varies based on your interactions with our business</li>
+                <li>Messages will be directly related to the services you have requested</li>
+                <li>We do not send promotional content without specific consent</li>
+              </ul>
+            </div>
+
+            <div>
+              <p><strong>Help & Support:</strong></p>
+              <ul className="list-disc pl-5 space-y-2 mt-2">
+                <li>Reply "HELP" for assistance or contact us at {BRAND.email}</li>
+                <li>Customer support is available during regular business hours</li>
+              </ul>
+            </div>
+
+            <div>
+              <p><strong>Carrier Information:</strong></p>
+              <ul className="list-disc pl-5 space-y-2 mt-2">
+                <li>Standard message and data rates may apply</li>
+                <li>Carriers are not liable for delayed or undelivered messages</li>
+                <li>Supported carriers include AT&T, Verizon, T-Mobile, Sprint, and most regional carriers</li>
+              </ul>
+            </div>
+
+            <div className="bg-primary/5 p-8 rounded-3xl border border-primary/10">
+              <h4 className="text-xl font-bold text-primary mb-4">SMS Data Protection Statement</h4>
+              <p className="mb-4">No mobile information will be shared with third parties/affiliates for marketing/promotional purposes. Information sharing to subcontractors in support services, such as customer service is permitted. All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.</p>
+              <p>We implement strict data protection measures to safeguard your SMS opt-in information and consent records.</p>
+            </div>
           </div>
         </section>
 
-        <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-text">4. Data Security</h2>
-          <p>We implement robust physical, technical, and administrative security measures to protect your personal information from unauthorized access, disclosure, or misuse. However, no method of transmission over the internet is 100% secure.</p>
+        <section className="space-y-6">
+          <h3 className="text-2xl font-bold text-text">4. Information Sharing & Disclosure</h3>
+          <p>We do not sell, rent, or trade personal information. We may share information with:</p>
+          
+          <div className="space-y-4">
+            <p><strong>Service Providers:</strong></p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>Third-party vendors who assist in our operations (e.g., payment processing, appointment scheduling)</li>
+              <li>SMS aggregators and providers solely for the purpose of delivering messages you've consented to receive</li>
+              <li>All service providers are contractually obligated to maintain confidentiality and security</li>
+            </ul>
+
+            <p><strong>Legal Compliance:</strong></p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>If required by law, legal process, or to protect our rights</li>
+              <li>In response to valid law enforcement requests or court orders</li>
+            </ul>
+
+            <p><strong>Business Transfers:</strong></p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>In case of mergers, acquisitions, or sale of assets</li>
+              <li>In such cases, your data remains protected under the terms of this policy</li>
+            </ul>
+          </div>
+          
+          <p className="mt-6">All the above categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties, excluding aggregators and providers of the Text Message services.</p>
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-text">5. Your Rights & Choices</h2>
-          <p>You have the right to access, correct, or delete your personal information. You can opt-out of marketing communications at any time by following the instructions in those messages or by contacting us directly. For SMS communications, you can reply "STOP" to any message.</p>
+          <h3 className="text-2xl font-bold text-text">5. Data Security</h3>
+          <p>We implement and maintain reasonable security measures to protect your personal information:</p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Encryption of sensitive data in transit and at rest</li>
+            <li>Secure access controls and authentication mechanisms</li>
+            <li>Regular security assessments and updates</li>
+            <li>Employee training on data protection</li>
+            <li>Breach notification protocols in accordance with applicable laws</li>
+            <li>Secure backup systems and disaster recovery procedures</li>
+          </ul>
+          <p className="mt-4 italic">Despite these measures, no method of transmission over the Internet or electronic storage is 100% secure. We strive to use commercially acceptable means to protect your personal information but cannot guarantee absolute security.</p>
+        </section>
+
+        <section className="space-y-4">
+          <h3 className="text-2xl font-bold text-text">6. Cookies & Tracking Technologies</h3>
+          <p>We use cookies and similar technologies to:</p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Analyze site traffic and user behavior</li>
+            <li>Remember your preferences</li>
+            <li>Improve website functionality and user experience</li>
+            <li>Measure the effectiveness of our services</li>
+          </ul>
+          <p className="mt-4">You may control cookies through your browser settings. Disabling cookies may limit your ability to use certain features of our website.</p>
+        </section>
+
+        <section className="space-y-4">
+          <h3 className="text-2xl font-bold text-text">7. Your Rights & Choices</h3>
+          <p>You have the right to:</p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Access, update, or delete your personal information</li>
+            <li>Opt-out of marketing emails by clicking "unsubscribe" in our emails</li>
+            <li>Opt-out of SMS messages by replying "STOP"</li>
+            <li>Request information on how we process your data</li>
+            <li>Withdraw consent at any time for future communications</li>
+            <li>Lodge a complaint with a supervisory authority if you believe your rights have been violated</li>
+          </ul>
+          <p className="mt-4">To exercise these rights, please contact us using the information in Section 10.</p>
+        </section>
+
+        <section className="space-y-4">
+          <h3 className="text-2xl font-bold text-text">8. Third-Party Links</h3>
+          <p>Our website may contain links to third-party websites. We are not responsible for their privacy practices and encourage you to review their policies. This privacy policy applies only to information collected by {BRAND.legalName}.</p>
+        </section>
+
+        <section className="space-y-4">
+          <h3 className="text-2xl font-bold text-text">9. Changes to This Privacy Policy</h3>
+          <p>We may update this policy periodically. The latest version will always be available on our website with the effective date. For significant changes, we will notify you by email or through a notice on our website.</p>
         </section>
 
         <section className="pt-12 border-t border-slate-100">
-          <h2 className="text-2xl font-bold text-text mb-4">6. Contact Us</h2>
-          <p className="mb-4">If you have any questions or concerns about this Privacy Policy, please reach out to us:</p>
-          <div className="space-y-2">
-            <div className="flex items-center gap-3 font-bold text-text">
-              <Mail size={18} className="text-primary" />
-              {BRAND.email}
-            </div>
-            <div className="flex items-center gap-3 font-bold text-text">
-              <Phone size={18} className="text-primary" />
-              {BRAND.phone}
+          <h3 className="text-2xl font-bold text-text mb-6">10. Contact Us</h3>
+          <p className="mb-8">If you have questions about this Privacy Policy or how your information is handled, contact us at:</p>
+          
+          <div className="bg-slate-50 p-8 rounded-3xl space-y-4">
+            <p className="text-xl font-bold text-text">{BRAND.legalName}</p>
+            <div className="space-y-2">
+              <p><strong>Phone:</strong> {BRAND.phone}</p>
+              <p><strong>Email:</strong> {BRAND.email}</p>
+              <p><strong>Website:</strong> {BRAND.website}</p>
             </div>
           </div>
+          
+          <p className="mt-12 text-sm font-bold text-text/50">By using our website and services, you consent to this Privacy Policy.</p>
         </section>
       </div>
     </div>
@@ -1584,76 +1783,109 @@ const PrivacyPage = () => (
 const TermsPage = () => (
   <div className="pt-32 pb-24 bg-white">
     <div className="max-w-4xl mx-auto px-6">
-      <div className="inline-flex items-center gap-3 text-secondary font-bold mb-8 uppercase tracking-[0.2em] text-[13px] bg-secondary/10 px-4 py-2 rounded-full">
-        <CheckCircle size={16} />
-        Legal Information
-      </div>
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-text mb-12 leading-tight">Terms & Conditions</h1>
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-text mb-12 leading-tight">Terms of Service</h1>
       
       <div className="space-y-12 text-text/70 leading-relaxed text-lg">
         <section>
-          <p className="font-bold text-text uppercase tracking-widest text-sm mb-4">Last Updated: May 4, 2026</p>
-          <p>Welcome to {BRAND.name}. By accessing our website or using our heating and cooling services, you agree to be bound by the following terms and conditions. Please read them carefully.</p>
+          <p className="text-2xl font-bold text-primary mb-2">{BRAND.legalName}</p>
+          <p className="font-bold text-text uppercase tracking-widest text-sm mb-8">Effective Date: January 1, 2026</p>
         </section>
 
         <section className="bg-slate-50 p-8 md:p-12 rounded-[40px] border border-slate-100 shadow-sm relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 blur-3xl rounded-full -mr-16 -mt-16" />
-          <h2 className="text-2xl font-bold text-text mb-6 flex items-center gap-3">
-            <MessageSquare size={24} className="text-secondary" />
-            1. SMS Communication & Consent
+          <h2 className="text-2xl font-bold text-text mb-6">
+            SMS Messaging Terms & Compliance
           </h2>
           <div className="space-y-6">
-            <p>By providing your phone number on this website, you consent to receive text messages from {BRAND.name}. This is part of our commitment to providing fast and reliable service.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-white p-6 rounded-2xl border border-slate-200">
-                <div className="font-bold text-text mb-1">Purpose</div>
-                <div className="text-sm">Appointment reminders, service alerts, and occasional promotional updates.</div>
-              </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-200">
-                <div className="font-bold text-text mb-1">Frequency</div>
-                <div className="text-sm">Message frequency varies based on your needs and requests.</div>
-              </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-200">
-                <div className="font-bold text-text mb-1">Opt-Out</div>
-                <div className="text-sm">Text <strong>STOP</strong> at any time to unsubscribe from all future messages.</div>
-              </div>
-              <div className="bg-white p-6 rounded-2xl border border-slate-200">
-                <div className="font-bold text-text mb-1">Help</div>
-                <div className="text-sm">Text <strong>HELP</strong> for assistance or call us directly.</div>
-              </div>
-            </div>
-            <p className="text-sm font-medium italic border-l-4 border-secondary pl-4">Disclaimer: Message and data rates may apply. Carriers are not liable for delayed or undelivered messages.</p>
+            <p><strong>1. Program Description:</strong> This messaging program sends appointment confirmation and reminder messages to customers who have booked an appointment with {BRAND.legalName} through our website at {BRAND.website}, or via our scheduling forms, and have explicitly opted in to receive SMS notifications. Opt-in is collected via web forms with a dedicated checkbox for SMS consent. Messages include scheduling confirmations, appointment reminders, rescheduling updates, and customer support communications.</p>
+            
+            <p><strong>2. Cancellation Instructions:</strong> You can cancel the SMS service at any time. Simply text "STOP" to the same number that sent you messages. Upon sending "STOP," we will confirm your unsubscribe status via SMS. Following this confirmation, you will no longer receive SMS messages from us. To rejoin, sign up as you did initially, and we will resume sending SMS messages to you.</p>
+            
+            <p><strong>3. Support Information:</strong> If you experience issues with the messaging program, reply with the keyword "HELP" for more assistance, or reach out directly to {BRAND.email} or call {BRAND.phone} during business hours.</p>
+            
+            <p><strong>4. Carrier Liability:</strong> Carriers are not liable for delayed or undelivered messages.</p>
+            
+            <p><strong>5. Message & Data Rates:</strong> Message and data rates may apply for messages sent to you from us and to us from you. Message frequency varies based on your service usage and appointment schedule. For questions about your text plan or data plan, contact your wireless provider.</p>
+            
+            <p><strong>6. Supported Carriers:</strong> Our SMS program works with all major U.S. wireless carriers, including AT&T, T-Mobile, Verizon, Sprint, and most regional carriers.</p>
+            
+            <p><strong>7. Age Restriction:</strong> You must be 18 years or older to participate in our SMS program.</p>
+            
+            <p><strong>8. Privacy Policy:</strong> For privacy-related inquiries, please refer to our Privacy Policy at <Link to="/privacy" className="text-primary hover:underline">{BRAND.website}/privacy</Link></p>
+            
+            <p className="mt-4">We comply with all applicable laws and regulations, including the Telephone Consumer Protection Act (TCPA) and CTIA guidelines, regarding the use of SMS communications.</p>
           </div>
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-text">2. Services & Availability</h2>
-          <p>{BRAND.name} provides HVAC installation, repair, and maintenance services. All services are subject to scheduling and availability in the {BRAND.location} area. We reserve the right to refuse service to anyone for any reason at any time.</p>
+          <h2 className="text-2xl font-bold text-text">General Terms</h2>
+          <p>This website (the "Site") is owned and operated by {BRAND.legalName} ("COMPANY," "we" or "us"). By using the Site, you agree to be bound by these Terms of Service and to use the Site in accordance with these Terms of Service, our Privacy Policy, and any additional terms and conditions that may apply to specific sections of the Site or to products and services available through the Site or from {BRAND.legalName}.</p>
+          <p>Accessing the Site, in any manner, whether automated or otherwise, constitutes use of the Site and your agreement to be bound by these Terms of Service.</p>
+          <p>We reserve the right to change these Terms of Service or to impose new conditions on the use of the Site from time to time, in which case we will post the revised Terms of Service on this website. By continuing to use the Site after we post any such changes, you accept the Terms of Service, as modified.</p>
+        </section>
+
+        <section className="space-y-6">
+          <h2 className="text-2xl font-bold text-text">Intellectual Property Rights</h2>
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-text">Our Limited License to You</h3>
+            <p>This Site and all the materials available on the Site are the property of {BRAND.legalName} and/or our affiliates or licensors and are protected by copyright, trademark, and other intellectual property laws. The Site is provided solely for your personal non-commercial use.</p>
+            <p>You may not use the Site or the materials available on the Site in a manner that constitutes an infringement of our rights or that has not been authorized by us.</p>
+            <p>Unless explicitly authorized, you may not modify, copy, reproduce, republish, upload, post, transmit, translate, sell, create derivative works, exploit, or distribute in any manner or medium any material from the Site. However, you may download and/or print one copy of individual pages for your personal, non-commercial use, provided that you keep intact all copyright and other proprietary notices.</p>
+          </div>
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-text">Your License to Us</h3>
+            <p>By posting or submitting any material (including comments, blog entries, social media posts, photos, and videos) to us via the Site, internet groups, or other digital venues, you represent that you own the material or have obtained the necessary permissions. You grant us a royalty-free, perpetual, irrevocable, non-exclusive, worldwide license to use, modify, transmit, sell, exploit, create derivative works from, distribute, and publicly perform or display such material.</p>
+          </div>
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-text">3. Pricing & Payment</h2>
-          <p>Pricing for services is provided via official quotes and is subject to change based on the actual scope of work discovered during inspection. Payment terms are specified at the time of service or in our service agreements.</p>
+          <h2 className="text-2xl font-bold text-text">Disclaimers</h2>
+          <p>Throughout the Site, we may provide links and pointers to Internet sites maintained by third parties. Our linking to such third-party sites does not imply an endorsement or sponsorship of such sites or the information, products, or services offered on or through the sites.</p>
+          <p>The information, products, and services offered on or through the Site are provided "as is" and without warranties of any kind, either express or implied. To the fullest extent permissible pursuant to applicable law, we disclaim all warranties, including implied warranties of merchantability and fitness for a particular purpose.</p>
+          <p>You agree at all times to indemnify and hold harmless {BRAND.legalName}, its affiliates, and their respective officers, directors, agents, and employees from any claims, causes of action, damages, liabilities, costs, and expenses arising out of or related to your breach of any obligation, warranty, or representation under these Terms of Service.</p>
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-text">4. Limitation of Liability</h2>
-          <p>To the maximum extent permitted by law, {BRAND.name} shall not be liable for any direct, indirect, incidental, or consequential damages resulting from the use of our website or services. This includes, but is not limited to, damages for loss of profits, data, or other intangible losses.</p>
+          <h2 className="text-2xl font-bold text-text">Online Commerce</h2>
+          <p>Certain sections of the Site may allow you to purchase products and services from third-party vendors. We are not responsible for the quality, accuracy, timeliness, reliability, or any other aspect of these products and services. If you make a purchase from a third party linked through the Site, the information obtained during your visit, including payment information, may be collected by both the merchant and us.</p>
+          <p>Your participation in any dealings with third-party vendors is solely between you and the third party. {BRAND.legalName} shall not be responsible for any loss or damage incurred as a result of such dealings.</p>
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-text">5. Governing Law</h2>
-          <p>These terms and conditions are governed by and construed in accordance with the laws of the State of Missouri. Any disputes shall be subject to the exclusive jurisdiction of the courts in St. Louis, MO.</p>
+          <h2 className="text-2xl font-bold text-text">Registration & Passwords</h2>
+          <p>To access certain features of the Site, you may be required to register and create an account. You agree to provide accurate, current, and complete information during the registration process. You are responsible for maintaining the confidentiality of your login credentials and for all activities conducted under your account.</p>
+          <p>If you suspect unauthorized use of your account, notify us immediately at {BRAND.email}. We are not liable for any loss or damage arising from your failure to comply with this obligation.</p>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-text">Termination</h2>
+          <p>We reserve the right to terminate or suspend your access to the Site, without notice, if we determine that you have violated these Terms of Service or engaged in conduct that we deem inappropriate or unlawful. Upon termination, you must cease all use of the Site and any content obtained from it.</p>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-text">Governing Law</h2>
+          <p>These Terms of Service shall be governed by and construed in accordance with the laws of the state in which {BRAND.legalName} operates. Any dispute arising under these Terms shall be resolved exclusively through binding arbitration in that jurisdiction.</p>
         </section>
 
         <section className="pt-12 border-t border-slate-100">
-          <h2 className="text-2xl font-bold text-text mb-4">6. Contact</h2>
-          <p>If you have questions about these Terms & Conditions, please contact us at {BRAND.phone} or via email at {BRAND.email}.</p>
+          <p className="mb-4">We may update these Terms of Service from time to time. The latest version will always be available on our website with the effective date.</p>
+          <p className="mb-8">For any questions regarding these Terms of Service, please contact us at:</p>
+          
+          <div className="bg-slate-50 p-8 rounded-3xl space-y-4">
+            <p className="text-xl font-bold text-text">{BRAND.legalName}</p>
+            <div className="space-y-2">
+              <p><strong>Phone:</strong> {BRAND.phone}</p>
+              <p><strong>Email:</strong> {BRAND.email}</p>
+              <p><strong>Website:</strong> {BRAND.website}</p>
+            </div>
+          </div>
+          
+          <p className="mt-12 text-sm font-bold text-text/50">By using our website and services, you consent to these Terms of Service.</p>
         </section>
       </div>
     </div>
   </div>
 );
+
 
 export default function App() {
   return (
