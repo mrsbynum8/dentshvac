@@ -1821,6 +1821,69 @@ const TermsPage = () => (
   </div>
 );
 
+const PMRequestPage = () => {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://brand.dentsheatingandcooling.com/js/form_embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      const existingScript = document.querySelector(`script[src="${script.src}"]`);
+      if (existingScript) {
+        document.body.removeChild(existingScript);
+      }
+    };
+  }, []);
+
+  return (
+    <div className="pt-32 pb-20 px-6 min-h-screen bg-slate-50">
+      <div className="max-w-4xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-12"
+        >
+          <h1 className="text-4xl md:text-5xl font-bold text-text mb-4">Property Management Service Request</h1>
+          <p className="text-xl text-text/70">Dedicated support for our property management partners. Submit your request below.</p>
+        </motion.div>
+        
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2 }}
+          className="bg-white rounded-[2rem] p-4 md:p-8 shadow-2xl shadow-slate-200/50 border border-slate-100 min-h-[800px] relative overflow-hidden"
+        >
+          <div className="absolute inset-0 flex items-center justify-center -z-10">
+            <div className="text-center">
+              <Loader2 className="w-10 h-10 animate-spin text-primary mx-auto mb-4" />
+              <p className="text-text/40 font-medium">Loading secure form...</p>
+            </div>
+          </div>
+
+          <iframe
+            src="https://brand.dentsheatingandcooling.com/widget/form/2iAos47rxlfqZ2VuHYaf"
+            style={{ display: 'none', width: '100%', height: '100%', border: 'none', borderRadius: '8px' }}
+            id="inline-2iAos47rxlfqZ2VuHYaf" 
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="leadCollected"
+            data-deactivation-value=""
+            data-form-name="Dents HC — Property Management Request"
+            data-height="800"
+            data-layout-iframe-id="inline-2iAos47rxlfqZ2VuHYaf"
+            data-form-id="2iAos47rxlfqZ2VuHYaf"
+            title="Dents HC — Property Management Request"
+          ></iframe>
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
 
 export default function App() {
   return (
@@ -1837,6 +1900,7 @@ export default function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/terms" element={<TermsPage />} />
+          <Route path="/pm-request" element={<PMRequestPage />} />
         </Routes>
       </main>
 
