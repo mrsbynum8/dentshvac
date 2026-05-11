@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Phone, CheckCircle, Thermometer, ShieldCheck, Settings, Wind, Star, ArrowRight, ChevronDown, MessageSquare, Quote, Menu, X, Mail, Loader2, MapPin } from 'lucide-react'
+import { Phone, CheckCircle, Thermometer, ShieldCheck, Settings, Wind, Star, ArrowRight, ChevronDown, MessageSquare, Quote, Menu, X, Mail, Loader2, MapPin, Calendar, Building2 } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { Routes, Route, Link, useLocation, useParams } from 'react-router-dom'
 import { clsx, type ClassValue } from 'clsx'
@@ -151,8 +151,8 @@ const HeroForm = () => {
     const formData = new FormData(e.currentTarget)
     const data = Object.fromEntries(formData.entries())
 
-    if (!data.email) {
-      alert('Please provide an email address so we can reach you.')
+    if (!data.phone && !data.email) {
+      alert('Please provide either a phone number or an email address so we can reach you.')
       setIsLoading(false)
       return
     }
@@ -231,24 +231,34 @@ const HeroForm = () => {
             />
           </div>
           
-          <div className="space-y-1.5">
-            <label className="text-[11px] font-black uppercase tracking-[0.1em] text-white/40 px-1">Service</label>
-            <select 
-              name="service"
-              className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary/50 transition-all font-medium appearance-none"
-            >
-              <option value="AC Repair" className="bg-primary text-white">AC Repair</option>
-              <option value="Installation" className="bg-primary text-white">Installation</option>
-              <option value="Heating" className="bg-primary text-white">Heating</option>
-              <option value="Maintenance" className="bg-primary text-white">Maintenance</option>
-              <option value="Other" className="bg-primary text-white">Other</option>
-            </select>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-1.5">
+              <label className="text-[11px] font-black uppercase tracking-[0.1em] text-white/40 px-1">Phone</label>
+              <input 
+                name="phone"
+                type="tel" 
+                placeholder="(314) 000-0000" 
+                className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary/50 transition-all font-medium"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-[11px] font-black uppercase tracking-[0.1em] text-white/40 px-1">Service</label>
+              <select 
+                name="service"
+                className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary/50 transition-all font-medium appearance-none"
+              >
+                <option value="AC Repair" className="bg-primary text-white">AC Repair</option>
+                <option value="Installation" className="bg-primary text-white">Installation</option>
+                <option value="Heating" className="bg-primary text-white">Heating</option>
+                <option value="Maintenance" className="bg-primary text-white">Maintenance</option>
+                <option value="Other" className="bg-primary text-white">Other</option>
+              </select>
+            </div>
           </div>
           
           <div className="space-y-1.5">
             <label className="text-[11px] font-black uppercase tracking-[0.1em] text-white/40 px-1">Email Address</label>
             <input 
-              required
               name="email"
               type="email" 
               placeholder="john@example.com" 
@@ -266,6 +276,31 @@ const HeroForm = () => {
             />
           </div>
 
+          <div className="space-y-4 !mt-4">
+            <div className="flex items-start gap-3 px-1">
+              <input 
+                type="checkbox" 
+                id="consent-transactional-hero" 
+                name="consent_transactional"
+                className="mt-1 shrink-0 accent-secondary h-4 w-4 rounded border-white/20 bg-white/5"
+              />
+              <label htmlFor="consent-transactional-hero" className="text-[10px] leading-relaxed text-white/50 font-medium cursor-pointer">
+                I agree to the <Link to="/terms" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">Terms and Conditions</Link> and <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">Privacy Policy</Link> and consent to receive text messages for appointment reminders, service updates, and customer support responses from {BRAND.dbaName}. Message frequency varies. Message & data rates may apply. Reply STOP to opt-out, HELP for help.
+              </label>
+            </div>
+
+            <div className="flex items-start gap-3 px-1">
+              <input 
+                type="checkbox" 
+                id="consent-marketing-hero" 
+                name="consent_marketing"
+                className="mt-1 shrink-0 accent-secondary h-4 w-4 rounded border-white/20 bg-white/5"
+              />
+              <label htmlFor="consent-marketing-hero" className="text-[10px] leading-relaxed text-white/50 font-medium cursor-pointer">
+                I agree to receive marketing and promotional text messages from {BRAND.dbaName} at the number provided. Consent is not a condition of purchase. Message frequency varies. Message & data rates may apply. Reply STOP to opt-out, HELP for help.
+              </label>
+            </div>
+          </div>
 
           <button 
             type="submit" 
@@ -363,6 +398,7 @@ const Nav = () => {
   const isHome = location.pathname === '/'
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [isLocationsOpen, setIsLocationsOpen] = useState(false)
+  const [isContactOpen, setIsContactOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
@@ -468,7 +504,74 @@ const Nav = () => {
               )}
             </AnimatePresence>
           </div>
-          <Link to="/contact" className="text-text hover:text-primary transition-colors">Contact</Link>
+          <div 
+            className="relative"
+            onMouseEnter={() => setIsContactOpen(true)}
+            onMouseLeave={() => setIsContactOpen(false)}
+          >
+            <button 
+              className={cn(
+                "flex items-center gap-1 py-4 transition-colors",
+                isContactOpen || location.pathname === '/contact' || location.pathname === '/request-service' || location.pathname === '/pm-request' ? "text-primary" : "text-text hover:text-primary"
+              )}
+              onClick={() => setIsContactOpen(!isContactOpen)}
+            >
+              Contact
+              <ChevronDown size={16} className={cn("transition-transform duration-300", isContactOpen && "rotate-180")} />
+            </button>
+            <AnimatePresence>
+              {isContactOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className="absolute right-0 top-full pt-2 w-72 h-auto"
+                >
+                  <div className="bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-slate-100 p-4 ring-1 ring-black/5 overflow-hidden">
+                    <Link
+                      to="/contact"
+                      className="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-colors group"
+                      onClick={() => setIsContactOpen(false)}
+                    >
+                      <div className="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
+                        <Mail size={20} />
+                      </div>
+                      <div>
+                        <div className="font-bold text-text mb-0.5">Contact Us</div>
+                        <div className="text-[11px] text-text/40 font-bold uppercase tracking-widest leading-none">General Inquiry</div>
+                      </div>
+                    </Link>
+                    <Link
+                      to="/request-service"
+                      className="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-colors group"
+                      onClick={() => setIsContactOpen(false)}
+                    >
+                      <div className="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
+                        <Calendar size={20} />
+                      </div>
+                      <div>
+                        <div className="font-bold text-text mb-0.5">Request Service</div>
+                        <div className="text-[11px] text-text/40 font-bold uppercase tracking-widest leading-none">Residential Repair</div>
+                      </div>
+                    </Link>
+                    <Link
+                      to="/pm-request"
+                      className="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-colors group"
+                      onClick={() => setIsContactOpen(false)}
+                    >
+                      <div className="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
+                        <Building2 size={20} />
+                      </div>
+                      <div>
+                        <div className="font-bold text-text mb-0.5">PM Request</div>
+                        <div className="text-[11px] text-text/40 font-bold uppercase tracking-widest leading-none">Property Managers</div>
+                      </div>
+                    </Link>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
 
         <div className="flex items-center gap-4">
@@ -529,7 +632,21 @@ const Nav = () => {
                   </Link>
                 ))}
               </div>
-              <a href="/#contact" className="block text-lg font-bold text-text hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
+              <div className="space-y-3">
+                <div className="text-sm font-black uppercase tracking-widest text-text/30 pt-2">Contact & Requests</div>
+                <Link to="/contact" className="flex items-center gap-4 p-3 rounded-xl bg-slate-50 text-text font-bold" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Mail size={20} className="text-primary" />
+                  Contact Us
+                </Link>
+                <Link to="/request-service" className="flex items-center gap-4 p-3 rounded-xl bg-slate-50 text-text font-bold" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Calendar size={20} className="text-primary" />
+                  Request Service
+                </Link>
+                <Link to="/pm-request" className="flex items-center gap-4 p-3 rounded-xl bg-slate-50 text-text font-bold" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Building2 size={20} className="text-primary" />
+                  Property Management
+                </Link>
+              </div>
               <button className="w-full btn-primary py-4 mt-4">Get a Quote</button>
             </div>
           </motion.div>
@@ -558,6 +675,8 @@ const Footer = () => (
         <ul className="space-y-4 text-base">
           <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
           <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+          <li><Link to="/request-service" className="hover:text-white transition-colors">Request Service</Link></li>
+          <li><Link to="/pm-request" className="hover:text-white transition-colors">Property Management</Link></li>
           <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
           <li><Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
         </ul>
@@ -584,7 +703,6 @@ const Footer = () => (
       <div>
         <h4 className="text-white font-black uppercase tracking-widest text-xs mb-6">Reach Us</h4>
         <div className="space-y-4 text-base">
-          <p className="leading-relaxed">{BRAND.address}</p>
           <a href={`tel:${BRAND.phone}`} className="block text-white font-bold text-2xl tracking-tight hover:text-secondary transition-colors">{BRAND.phone}</a>
           <a href={`mailto:${BRAND.email}`} className="block text-secondary font-medium underline hover:text-white transition-colors">{BRAND.email}</a>
         </div>
@@ -1119,8 +1237,8 @@ const ContactPage = () => {
     const formData = new FormData(e.currentTarget)
     const data = Object.fromEntries(formData.entries())
 
-    if (!data.email) {
-      alert('Please provide an email address so we can reach you.')
+    if (!data.phone && !data.email) {
+      alert('Please provide either a phone number or an email address so we can reach you.')
       setIsLoading(false)
       return
     }
@@ -1230,14 +1348,20 @@ const ContactPage = () => {
             className="order-1 lg:order-2"
           >
             <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 md:p-12 rounded-[40px] shadow-2xl border border-slate-50">
-              <div className="space-y-3">
-                <label className="text-sm font-black uppercase tracking-widest text-text/40 ml-1">Full Name</label>
-                <input required name="name" type="text" placeholder="John Doe" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-3">
+                  <label className="text-sm font-black uppercase tracking-widest text-text/40 ml-1">Full Name</label>
+                  <input required name="name" type="text" placeholder="John Doe" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium" />
+                </div>
+                <div className="space-y-3">
+                  <label className="text-sm font-black uppercase tracking-widest text-text/40 ml-1">Phone Number</label>
+                  <input name="phone" type="tel" placeholder="(314) 000-0000" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium" />
+                </div>
               </div>
 
               <div className="space-y-3">
                 <label className="text-sm font-black uppercase tracking-widest text-text/40 ml-1">Email Address</label>
-                <input required name="email" type="email" placeholder="john@example.com" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium" />
+                <input name="email" type="email" placeholder="john@example.com" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium" />
               </div>
 
               <div className="space-y-3">
@@ -1254,11 +1378,37 @@ const ContactPage = () => {
                 <textarea rows={4} name="message" placeholder="How can we help you today?" className="w-full px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-medium resize-none"></textarea>
               </div>
 
+              <div className="space-y-4 pt-2">
+                <div className="flex items-start gap-3">
+                  <input 
+                    type="checkbox" 
+                    id="consent-transactional-contact" 
+                    name="consent_transactional"
+                    className="mt-1 shrink-0 accent-primary h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary"
+                  />
+                  <label htmlFor="consent-transactional-contact" className="text-xs leading-relaxed text-text/60 font-medium cursor-pointer">
+                    I agree to the <Link to="/terms" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Terms and Conditions</Link> and <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Privacy Policy</Link> and consent to receive text messages for appointment reminders, service updates, and customer support responses from {BRAND.dbaName}. Message frequency varies. Message & data rates may apply. Reply STOP to opt-out, HELP for help.
+                  </label>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <input 
+                    type="checkbox" 
+                    id="consent-marketing-contact" 
+                    name="consent_marketing"
+                    className="mt-1 shrink-0 accent-primary h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary"
+                  />
+                  <label htmlFor="consent-marketing-contact" className="text-xs leading-relaxed text-text/60 font-medium cursor-pointer">
+                    I agree to receive marketing and promotional text messages from {BRAND.dbaName} at the number provided. Consent is not a condition of purchase. Message frequency varies. Message & data rates may apply. Reply STOP to opt-out, HELP for help.
+                  </label>
+                </div>
+
                 <div className="text-center pt-4 border-t border-slate-100 mt-4">
                   <p className="text-[10px] text-text/40 font-medium">
                     View our <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="text-primary/60 hover:text-primary underline transition-colors">Privacy Policy</Link> and <Link to="/terms" target="_blank" rel="noopener noreferrer" className="text-primary/60 hover:text-primary underline transition-colors">Terms of Service</Link>
                   </p>
                 </div>
+              </div>
 
 
               <button 
