@@ -1,0 +1,36 @@
+---
+// SMS consent: two separate, unchecked, optional boxes (carrier/A2P rules require
+// separate consent per message type, not bundled into the Terms). Full wording lives
+// on /terms under "Text message consent".
+interface Props { id: string }
+const { id } = Astro.props;
+---
+<div class="cs">
+  <div class="rf-consent">
+    <input type="checkbox" id={`${id}-ct`} name="consent_transactional" />
+    <label for={`${id}-ct`}>
+      Text me about my service request from Dent's Heating And Cooling (reminders and updates). Msg frequency varies; msg &amp; data
+      rates may apply. Reply STOP to opt out, HELP for help.
+    </label>
+  </div>
+  <div class="rf-consent">
+    <input type="checkbox" id={`${id}-cm`} name="consent_marketing" />
+    <label for={`${id}-cm`}>Also text me offers and seasonal maintenance reminders. Optional; not required for service.</label>
+  </div>
+  <p class="cs-terms">
+    See our <a href="/terms#text-consent" target="_blank" rel="noopener">Terms</a> and{' '}
+    <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>.
+  </p>
+</div>
+
+<style>
+  .cs {
+    display: grid;
+    gap: 0.55rem;
+  }
+  .cs-terms {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    padding-left: calc(20px + 0.65rem);
+  }
+</style>

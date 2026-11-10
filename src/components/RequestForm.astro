@@ -1,0 +1,51 @@
+---
+import Icon from './Icon.astro';
+import Consent from './Consent.astro';
+import { BRAND, GHL } from '../data/site';
+interface Props { id?: string; source?: string }
+const { id = 'req', source = 'Website Form' } = Astro.props;
+---
+<form class="rf" data-webhook={GHL.webhook} data-source={source} novalidate>
+  <div class="rf-row">
+    <label for={`${id}-name`}>Your name</label>
+    <input id={`${id}-name`} name="name" type="text" autocomplete="name" required />
+  </div>
+  <div class="rf-two">
+    <div class="rf-row">
+      <label for={`${id}-phone`}>Phone</label>
+      <input id={`${id}-phone`} name="phone" type="tel" autocomplete="tel" inputmode="tel" />
+    </div>
+    <div class="rf-row">
+      <label for={`${id}-service`}>What's going on?</label>
+      <select id={`${id}-service`} name="service">
+        <option>No heat / furnace problem</option>
+        <option>No AC / cooling problem</option>
+        <option>Tune-up / maintenance</option>
+        <option>New system / installation</option>
+        <option>Property management unit</option>
+        <option>Other</option>
+      </select>
+    </div>
+  </div>
+  <div class="rf-row">
+    <label for={`${id}-email`}>Email <span>(if you'd rather not get a call)</span></label>
+    <input id={`${id}-email`} name="email" type="email" autocomplete="email" />
+  </div>
+  <div class="rf-row">
+    <label for={`${id}-message`}>Anything Gerald should know?</label>
+    <textarea id={`${id}-message`} name="message" rows="3"></textarea>
+  </div>
+  <div class="rf-hp" aria-hidden="true">
+    <label for={`${id}-company`}>Company</label>
+    <input id={`${id}-company`} name="company_website" type="text" tabindex="-1" autocomplete="off" />
+  </div>
+  <Consent id={id} />
+  <p class="rf-msg" role="status" aria-live="polite"></p>
+  <button class="btn btn-red rf-send" type="submit">Send to Gerald <Icon name="arrow" /></button>
+  <p class="rf-alt">Rather talk? <a href={BRAND.phoneHref}>Call {BRAND.phone}</a></p>
+</form>
+
+<script>
+  import '../scripts/request-form';
+</script>
+

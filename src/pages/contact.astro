@@ -1,0 +1,107 @@
+---
+import Base from '../layouts/Base.astro';
+import PageBand from '../components/PageBand.astro';
+import Icon from '../components/Icon.astro';
+import RequestForm from '../components/RequestForm.astro';
+import { BRAND } from '../data/site';
+---
+<Base
+  title="Contact Dent's Heating And Cooling | (314) 420-7803 | St. Louis"
+  description="Call or text Gerald at (314) 420-7803, email info@dentsheatingandcooling.com, or send a service request. Heating and cooling for St. Louis and North County."
+>
+  <PageBand title="Call, text, or send a request." lead="The fastest way to Gerald is the phone. If he's on a job, the line takes your details so you're never stuck in voicemail." tone="cool" />
+
+  <section class="section">
+    <div class="wrap contact">
+      <div class="ways">
+        <a class="way way-call" href={BRAND.phoneHref}>
+          <Icon name="phone" />
+          <span><strong>Call or text</strong>{BRAND.phone}</span>
+        </a>
+        <a class="way" href={`mailto:${BRAND.email}`}>
+          <Icon name="mail" />
+          <span><strong>Email</strong>{BRAND.email}</span>
+        </a>
+        <div class="way">
+          <Icon name="pin" />
+          <span><strong>Based in</strong>{BRAND.street}, {BRAND.city}, {BRAND.region} {BRAND.zip}</span>
+        </div>
+        <div class="forms">
+          <h2>Full request forms</h2>
+          <a class="btn btn-red" href="/request-service">Residential request <Icon name="arrow" /></a>
+          <a class="btn btn-navy" href="/pm-request">Property management request <Icon name="arrow" /></a>
+        </div>
+      </div>
+      <div class="ask-form">
+        <h2>Quick message</h2>
+        <RequestForm id="contact" source="Website Contact Page" />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contact {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .way {
+    display: grid;
+    grid-template-columns: 2.25rem 1fr;
+    gap: 1rem;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+  }
+  .way:first-child {
+    border-top: 3px solid var(--navy);
+  }
+  .way :global(svg) {
+    width: 1.6rem;
+    height: 1.6rem;
+    color: var(--blue);
+    margin-top: 0.15rem;
+  }
+  .way strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    font-weight: 700;
+  }
+  .way span {
+    font-size: 1.15rem;
+    font-weight: 650;
+    overflow-wrap: anywhere;
+  }
+  .way-call span {
+    font-stretch: var(--wide);
+    font-weight: 800;
+    font-size: 1.6rem;
+  }
+  .way-call :global(svg) {
+    color: var(--red);
+  }
+  .forms {
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 2.5rem;
+  }
+  h2 {
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    margin-bottom: 1.25rem;
+  }
+  .forms h2 {
+    margin-bottom: 0.4rem;
+  }
+  .ask-form {
+    background: var(--wash);
+    padding: clamp(1.5rem, 3.5vw, 2.5rem);
+  }
+  @media (max-width: 860px) {
+    .contact {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

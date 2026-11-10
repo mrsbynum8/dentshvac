@@ -1,0 +1,65 @@
+{
+  "title": "Dent's homepage: choose the layout (his logo, red and blue stay as they are)",
+  "question": "Pick one layout. All three use his logo, red #D8183C, blue #2470B4 and wide lettering.",
+  "options": [
+    {
+      "id": "arrow-loop",
+      "label": "The Arrow Loop",
+      "kicker": "THE ROLL",
+      "lineage": "his logo's circle of red and blue arrows, turned into the page's backbone",
+      "thesis": "The logo's loop becomes the visit: you call, Gerald comes, he fixes it, and it stays fixed.",
+      "palette": ["#FFFFFF", "#D8183C", "#2470B4", "#10233F"],
+      "materials": ["white ground", "red heat arc and blue cool arc", "wide extended caps", "big tap-to-call number"],
+      "viewport": "A huge half-circle of the red and blue arrows wraps the headline and the phone number. The four stops on the arc (Call · Gerald comes · Fixed · Tune-up reminder) are real links into the page, and the request form sits inside the circle.",
+      "risk": "The loop has to work as a path, not decoration, or it becomes a big logo.",
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "logo + phone bar", "x": 0, "y": 0, "w": 12, "h": 1},
+        {"label": "red/blue arrow arc", "x": 1, "y": 1, "w": 10, "h": 5, "accent": true},
+        {"label": "headline + call", "x": 3, "y": 2, "w": 6, "h": 2},
+        {"label": "request form in circle", "x": 4, "y": 4, "w": 4, "h": 2},
+        {"label": "Homes | Property managers", "x": 0, "y": 6, "w": 12, "h": 2},
+        {"label": "services", "x": 0, "y": 8, "w": 12, "h": 2}
+      ]}
+    },
+    {
+      "id": "heat-cool",
+      "label": "Heat | Cool",
+      "lineage": "the logo's own red-heat / blue-cool split",
+      "thesis": "Two doors by symptom: red for 'my heat's out', blue for 'my AC's out', each going straight to the call.",
+      "palette": ["#D8183C", "#2470B4", "#FFFFFF", "#10233F"],
+      "materials": ["full-bleed red field and blue field", "white wide caps", "season-aware order (heat first in winter)"],
+      "viewport": "The screen splits into a red half and a blue half, each a full working door with its symptom headline, call button and request link. A property-manager strip runs across the seam.",
+      "risk": "Colour does a lot of work here. Labels must carry the meaning for colour-blind visitors.",
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "logo + phone bar", "x": 0, "y": 0, "w": 12, "h": 1},
+        {"label": "RED: no heat?", "x": 0, "y": 1, "w": 6, "h": 5, "accent": true},
+        {"label": "BLUE: no AC?", "x": 6, "y": 1, "w": 6, "h": 5},
+        {"label": "property managers strip", "x": 0, "y": 6, "w": 12, "h": 1},
+        {"label": "owner-operated proof", "x": 0, "y": 7, "w": 12, "h": 1},
+        {"label": "services + request", "x": 0, "y": 8, "w": 12, "h": 2}
+      ]}
+    },
+    {
+      "id": "directory-listing",
+      "label": "The Directory Listing",
+      "lineage": "the local phone-book page, reset in his red and blue on white",
+      "thesis": "The site is Dent's listing: a display ad with a giant number, and every service a listing line.",
+      "palette": ["#FFFFFF", "#10233F", "#D8183C", "#2470B4"],
+      "materials": ["column rules and dotted leaders", "boxed display ad", "edge tabs as navigation"],
+      "viewport": "A ruled page headed HEATING & AIR CONDITIONING · ST. LOUIS. Dent's boxed ad (logo, giant phone number, request form) takes most of it, and services run as dotted-leader lines ending in 'Call'.",
+      "risk": "Can read as retro if the rules and type are timid.",
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "guide-word header", "x": 0, "y": 0, "w": 11, "h": 1},
+        {"label": "edge tabs", "x": 11, "y": 0, "w": 1, "h": 10},
+        {"label": "Dent's display ad: logo, giant number, form", "x": 0, "y": 1, "w": 7, "h": 5, "accent": true},
+        {"label": "service listing lines", "x": 7, "y": 1, "w": 4, "h": 5},
+        {"label": "property managers ad", "x": 0, "y": 6, "w": 6, "h": 2},
+        {"label": "areas + reviews", "x": 6, "y": 6, "w": 5, "h": 2},
+        {"label": "footer", "x": 0, "y": 8, "w": 11, "h": 2}
+      ]}
+    }
+  ],
+  "reroll": true,
+  "buildPath": {"value": "code"},
+  "steer": true
+}

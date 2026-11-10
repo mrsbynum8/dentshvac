@@ -1,0 +1,124 @@
+---
+import Base from '../layouts/Base.astro';
+import PageBand from '../components/PageBand.astro';
+import Icon from '../components/Icon.astro';
+import { BRAND, GOOGLE } from '../data/site';
+---
+<Base
+  title="About Gerald Pickett | Dent's Heating And Cooling, St. Louis"
+  description="Dent's Heating And Cooling is owner-operated by Gerald Pickett: the person who answers your call diagnoses your system and does the work. St. Louis and North County."
+>
+  <PageBand title="The owner is the technician." lead={`${BRAND.name} is ${BRAND.owner}'s business. He's the one who answers, shows up, and fixes it.`} tone="heat" />
+
+  <section class="section">
+    <div class="wrap about">
+      <div class="about-copy">
+        <h2>Why owner-operated matters</h2>
+        <p>
+          A lot of HVAC companies send whoever is free. With Dent's, the person on the phone is the person in your basement. Gerald
+          diagnoses the system himself, so the price you hear comes from someone who has actually seen the problem.
+        </p>
+        <p>
+          He works on homes across {BRAND.area}, and on apartment complexes and multifamily properties for the managers who run them.
+        </p>
+        <p>
+          Part prices change week to week, so Gerald doesn't guess at a quote. He checks the current supplier price and calls you with the
+          number before he starts.
+        </p>
+      </div>
+      <aside class="facts">
+        <h2>The basics</h2>
+        <dl>
+          <div><dt>Owner</dt><dd>{BRAND.owner}</dd></div>
+          <div><dt>Business</dt><dd>{BRAND.legalName}</dd></div>
+          <div><dt>Based in</dt><dd>{BRAND.city}, {BRAND.region} {BRAND.zip}</dd></div>
+          <div><dt>Works on</dt><dd>Homes, apartments, multifamily</dd></div>
+          <div><dt>Phone</dt><dd><a href={BRAND.phoneHref}>{BRAND.phone}</a></dd></div>
+        </dl>
+        <a class="link-arrow" href={GOOGLE.reviewsUrl} target="_blank" rel="noopener">Read his Google reviews <Icon name="arrow" /></a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="cta">
+    <a class="cta-heat" href="/services/heating"><span>No heat?</span><Icon name="arrow" /></a>
+    <a class="cta-cool" href="/services/cooling"><span>No AC?</span><Icon name="arrow" /></a>
+  </section>
+</Base>
+
+<style>
+  .about {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: clamp(2.5rem, 6vw, 5.5rem);
+  }
+  h2 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    margin-bottom: 1.4rem;
+  }
+  .about-copy p {
+    color: var(--ink-soft);
+    font-size: 1.125rem;
+    margin-bottom: 1.1rem;
+  }
+  .facts {
+    background: var(--wash);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    align-self: start;
+  }
+  .facts h2 {
+    font-size: 1.4rem;
+  }
+  dl {
+    margin: 0 0 1.5rem;
+  }
+  dl div {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  dt {
+    font-weight: 700;
+  }
+  dd {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+  .cta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .cta a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(2.5rem, 6vw, 4.5rem) var(--gutter);
+    color: var(--white);
+    text-decoration: none;
+    font-stretch: var(--wide);
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 4rem);
+  }
+  .cta :global(svg) {
+    width: 0.7em;
+    height: 0.7em;
+    transition: transform 0.3s var(--ease);
+  }
+  .cta a:hover :global(svg) {
+    transform: translateX(8px);
+  }
+  .cta-heat {
+    background: var(--red);
+  }
+  .cta-cool {
+    background: var(--blue);
+  }
+  @media (max-width: 860px) {
+    .about,
+    .cta {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

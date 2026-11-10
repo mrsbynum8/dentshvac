@@ -1,0 +1,125 @@
+{
+  "title": "Dent's Heating & Cooling: choose the visual world",
+  "question": "The roll assigned The Directory Page. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "The Directory Page",
+      "kicker": "THE ROLL",
+      "lineage": "the local phone-book page, where you found a real man with a truck and called him",
+      "thesis": "The whole site is Dent's listing: the heading, the display ad, the number you call.",
+      "palette": ["#F2CC0C", "#141414"],
+      "materials": ["directory yellow stock", "black ink only", "column rules and dotted leaders", "thumb-index edge tabs"],
+      "viewport": "A yellow directory page headed HEATING & AIR CONDITIONING · ST. LOUIS. Dent's boxed display ad takes the page, with the phone number as its giant initial and a request-service form inside the ad. Thumb tabs on the edge are the navigation.",
+      "risk": "Directory nostalgia can tip into retro kitsch if the type is timid or the yellow is softened.",
+      "raised": [
+        {"from": "Datamatics field (Ikeda)", "raise": "Ink discipline: two inks only, black on directory yellow, no greys. Inverting to yellow on black is the only state change."},
+        {"from": "Teletext service", "raise": "Grid discipline: every block snaps to the directory's column lattice and has a fixed address (section guide words), with no free-floating cards."},
+        {"from": "Daylight section", "raise": "Annotation honesty: every listing line carries a concrete specific (zip, the step, who answers), never an adjective."},
+        {"from": "Illuminated initial", "raise": "One giant entry point: the phone number is set at initial scale and outranks everything else on the page."},
+        {"from": "Festival lineup poster", "raise": "Type economy: one condensed grotesque family. Hierarchy comes only from size, weight and inversion."}
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Truck-Door Lettering",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "sign-painted service-truck doors and shop windows",
+      "thesis": "The site is lettered like the door of the one truck that shows up.",
+      "palette": ["#163D2E", "#C9A13B", "#FFFFFF", "#0E0E0E"],
+      "materials": ["enamel green ground", "gold-leaf letters with drop shade", "white pinstripe", "hand-lettered numerals"],
+      "viewport": "A door-panel field in deep green with DENT'S lettered in gold and a drop shadow, the phone number painted underneath, and a pinstripe border holding the request form.",
+      "risk": "The most familiar 'trades heritage' look. Many local trade sites land near here."
+    },
+    {
+      "id": "challenger-ikeda",
+      "label": "Datamatics Field",
+      "verdict": "declined",
+      "lineage": "Ryoji Ikeda data installations",
+      "thesis": "Temperature data as strobing black-and-white barcode fields.",
+      "palette": ["#000000", "#FFFFFF"],
+      "materials": ["hairline bars", "monospace numerics"],
+      "viewport": "A barcode wall of St. Louis temperatures, with one sine curve for a service year.",
+      "case": "Fuses poorly: North County homeowners mid-breakdown don't see themselves in a data installation, and the offer gets buried.",
+      "kept": "Two-ink total commitment, no greys.",
+      "risk": "Cold and abstract for a neighborly owner-operator."
+    },
+    {
+      "id": "challenger-teletext",
+      "label": "Teletext Service",
+      "verdict": "declined",
+      "lineage": "broadcast teletext magazines",
+      "thesis": "Services as numbered broadcast pages keyed by digits.",
+      "palette": ["#000000", "#FFFF00", "#00FFFF", "#FF0000"],
+      "materials": ["block mosaic", "bitmap grid"],
+      "viewport": "Page 100 lists AC, furnace, maintenance and property management as numbered rows.",
+      "case": "Fuses, but US homeowners never lived with teletext, so audience identification is low, and the clarity is no better than the directory.",
+      "kept": "A rigid lattice with fixed addresses for every block.",
+      "risk": "Reads as novelty."
+    },
+    {
+      "id": "challenger-daylight",
+      "label": "Daylight Section",
+      "verdict": "declined",
+      "lineage": "architectural daylight sections",
+      "thesis": "A section through a brick bungalow showing warm and cool air moving room to room.",
+      "palette": ["#F1EEE6", "#2B2B2B", "#D9A441", "#5E7A99"],
+      "materials": ["limewash", "section poche"],
+      "viewport": "One continuous house section, with comfort zones annotated by time.",
+      "case": "Shows what HVAC does, but not the mechanism (the owner shows up), and architectural drawing is foreign to the audience.",
+      "kept": "Every annotation pinned to a concrete fact.",
+      "risk": "Explains comfort, sells nothing."
+    },
+    {
+      "id": "challenger-film",
+      "label": "Hand-Processed Film",
+      "verdict": "declined",
+      "lineage": "16mm film with light leaks",
+      "thesis": "The service story as a scratched film strip.",
+      "palette": ["#0F0F0F", "#9A9A9A", "#E8782A"],
+      "materials": ["emulsion grain", "sprocket margins"],
+      "viewport": "Frames of a repair call along a sprocket strip.",
+      "case": "Loses both axes. There's no real footage to carry it, and it would fake his work.",
+      "kept": "The medium is part of the surface, not a filter.",
+      "risk": "Needs real footage that doesn't exist."
+    },
+    {
+      "id": "challenger-initial",
+      "label": "Illuminated Initial",
+      "verdict": "declined",
+      "lineage": "medieval historiated initials",
+      "thesis": "One giant letter opens into the whole story.",
+      "palette": ["#C9A13B", "#1F3F8F", "#B3261E", "#F4EAD5"],
+      "materials": ["gold leaf", "lapis vine"],
+      "viewport": "A great D whose vine circles the services.",
+      "case": "Loses both: manuscript ornament is far from a North County HVAC call.",
+      "kept": "One oversized entry point that outranks all text.",
+      "risk": "Ornament over offer."
+    },
+    {
+      "id": "challenger-lineup",
+      "label": "Festival Lineup Sheet",
+      "verdict": "declined",
+      "lineage": "type-only festival posters",
+      "thesis": "Services billed like acts, ranked by size alone.",
+      "palette": ["#E5402A", "#FFFFFF"],
+      "materials": ["one condensed face", "justified blocks"],
+      "viewport": "AC REPAIR as the headliner, with the rest as a justified block below.",
+      "case": "Close to the directory's grammar, but weaker on why you'd call. It holds neither axis.",
+      "kept": "One face at many sizes; size alone carries the hierarchy.",
+      "risk": "Billing services like bands confuses the offer."
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code"},
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A clean, trustworthy local HVAC site, done at full craft.",
+    "palette": ["#FFFFFF", "#0F2A4A", "#F26B1D"],
+    "materials": ["white grid", "navy and orange", "service icon cards"],
+    "viewport": "A headline with the phone number and quote form beside it, then three service cards and a reviews link.",
+    "risk": "Looks like every other HVAC site in St. Louis by design."
+  },
+  "steer": true
+}

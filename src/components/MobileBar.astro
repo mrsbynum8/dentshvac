@@ -1,0 +1,52 @@
+---
+import Icon from './Icon.astro';
+import { BRAND } from '../data/site';
+---
+<div class="mbar" aria-label="Quick actions">
+  <a class="mbar-call" href={BRAND.phoneHref}><Icon name="phone" /> Call</a>
+  <a class="mbar-req" href="/request-service">Request Service</a>
+</div>
+
+<style>
+  .mbar {
+    display: none;
+  }
+  @media (max-width: 760px) {
+    .mbar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 30;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      /* leave room on the right for the GHL chat bubble */
+      padding: 10px 92px calc(10px + env(safe-area-inset-bottom)) 10px;
+      gap: 8px;
+      background: var(--white);
+      box-shadow: 0 -1px 0 var(--line), 0 -10px 24px -16px rgb(16 35 63 / 0.35);
+    }
+    .mbar a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      min-height: 50px;
+      font-stretch: var(--wide);
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-decoration: none;
+      color: var(--white);
+    }
+    .mbar :global(svg) {
+      width: 1.1rem;
+      height: 1.1rem;
+    }
+    .mbar-call {
+      background: var(--red);
+    }
+    .mbar-req {
+      background: var(--blue);
+    }
+  }
+</style>

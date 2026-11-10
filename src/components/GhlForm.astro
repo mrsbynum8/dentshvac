@@ -1,0 +1,46 @@
+---
+import { GHL } from '../data/site';
+interface Props { form: { id: string; name: string; height: number } }
+const { form } = Astro.props;
+---
+<div class="ghl" style={`min-height:${form.height + 40}px`}>
+  <p class="ghl-loading">Loading the request form… If it doesn't appear, call (314) 420-7803.</p>
+  <iframe
+    src={`https://brand.dentsheatingandcooling.com/widget/form/${form.id}`}
+    style="width:100%;height:100%;border:none"
+    id={`inline-${form.id}`}
+    data-layout="{'id':'INLINE'}"
+    data-trigger-type="alwaysShow"
+    data-trigger-value=""
+    data-activation-type="alwaysActivated"
+    data-activation-value=""
+    data-deactivation-type="neverDeactivate"
+    data-deactivation-value=""
+    data-form-name={form.name}
+    data-height={String(form.height)}
+    data-layout-iframe-id={`inline-${form.id}`}
+    data-form-id={form.id}
+    title={form.name}
+    loading="lazy"
+  ></iframe>
+</div>
+<script is:inline src={GHL.formEmbedScript} defer></script>
+
+<style>
+  .ghl {
+    position: relative;
+    background: var(--white);
+  }
+  .ghl iframe {
+    position: relative;
+    z-index: 1;
+    display: block;
+    min-height: inherit;
+  }
+  .ghl-loading {
+    position: absolute;
+    inset: 2rem 1rem auto;
+    text-align: center;
+    color: var(--ink-soft);
+  }
+</style>

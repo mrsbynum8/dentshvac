@@ -1,0 +1,146 @@
+---
+import Icon from './Icon.astro';
+import Consent from './Consent.astro';
+import { BRAND, GHL } from '../data/site';
+interface Props { id?: string; source?: string }
+const { id = 'q', source = 'Website Hero Form' } = Astro.props;
+const choices = ['No heat', 'No AC', 'Tune-up', 'New system', 'Property unit', 'Other'];
+---
+<form class="rf qc" data-webhook={GHL.webhook} data-source={source} novalidate aria-labelledby={`${id}-title`}>
+  <h2 class="qc-title" id={`${id}-title`}>Get help from Gerald</h2>
+  <p class="qc-note">Tell him what's going on. He'll call you back to set a time.</p>
+
+  <fieldset class="qc-choices">
+    <legend>What do you need?</legend>
+    <div class="qc-grid">
+      {choices.map((c, i) => (
+        <button type="button" class:list={['qc-choice', { heat: i === 0, cool: i === 1 }]} aria-pressed="false" data-v={c}>{c}</button>
+      ))}
+    </div>
+    <input type="hidden" name="service" value="" />
+  </fieldset>
+
+  <div class="qc-fields">
+    <div class="rf-row">
+      <label for={`${id}-name`}>Name</label>
+      <input id={`${id}-name`} name="name" type="text" autocomplete="name" required />
+    </div>
+    <div class="rf-row">
+      <label for={`${id}-phone`}>Phone</label>
+      <input id={`${id}-phone`} name="phone" type="tel" autocomplete="tel" inputmode="tel" required />
+    </div>
+    <div class="rf-row qc-wide">
+      <label for={`${id}-zip`}>ZIP code</label>
+      <input id={`${id}-zip`} name="zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" />
+    </div>
+  </div>
+
+  <div class="rf-hp" aria-hidden="true">
+    <label for={`${id}-company`}>Company</label>
+    <input id={`${id}-company`} name="company_website" type="text" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <Consent id={id} />
+
+  <p class="rf-msg" role="status" aria-live="polite"></p>
+  <button class="btn btn-red rf-send" type="submit">Send my request <Icon name="arrow" /></button>
+</form>
+
+<script>
+  import '../scripts/request-form';
+  for (const card of document.querySelectorAll<HTMLFormElement>('form.qc')) {
+    const hidden = card.querySelector<HTMLInputElement>('input[name="service"]')!;
+    card.querySelectorAll<HTMLButtonElement>('.qc-choice').forEach((b) => {
+      b.addEventListener('click', () => {
+        card.querySelectorAll('.qc-choice').forEach((o) => o.setAttribute('aria-pressed', 'false'));
+        b.setAttribute('aria-pressed', 'true');
+        hidden.value = b.dataset.v || '';
+      });
+    });
+  }
+</script>
+
+<style>
+  .qc {
+    background: var(--white);
+    padding: clamp(1.4rem, 2.4vw, 2rem);
+    gap: 0.9rem;
+  }
+  .qc-title {
+    font-size: clamp(1.45rem, 2vw, 1.8rem);
+    line-height: 1.1;
+  }
+  .qc-note {
+    color: var(--ink-soft);
+    margin-top: -0.4rem;
+  }
+  .qc-choices {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .qc-choices legend {
+    font-weight: 700;
+    font-size: 0.92rem;
+    margin-bottom: 0.45rem;
+  }
+  .qc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.45rem;
+  }
+  .qc-choice {
+    min-height: 46px;
+    padding: 0.35rem 0.4rem;
+    line-height: 1.15;
+    font: inherit;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--ink);
+    background: var(--white);
+    border: 2px solid var(--line);
+    cursor: pointer;
+    transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease), color 0.2s var(--ease);
+  }
+  .qc-choice:hover {
+    border-color: var(--navy);
+  }
+  .qc-choice[aria-pressed='true'] {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
+  }
+  .qc-choice.heat[aria-pressed='true'] {
+    background: var(--red);
+    border-color: var(--red);
+  }
+  .qc-choice.cool[aria-pressed='true'] {
+    background: var(--blue);
+    border-color: var(--blue);
+  }
+  .qc-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .qc-wide {
+    grid-column: 1 / -1;
+  }
+  .qc :global(.rf-consent label) {
+    font-size: 0.72rem;
+    line-height: 1.45;
+  }
+  @media (min-width: 960px) and (max-width: 1279px) {
+    .qc-choice {
+      font-size: 0.84rem;
+    }
+  }
+  @media (max-width: 420px) {
+    .qc-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .qc-fields {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

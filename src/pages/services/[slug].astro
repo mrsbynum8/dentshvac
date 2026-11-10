@@ -1,0 +1,331 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import RequestForm from '../../components/RequestForm.astro';
+import { BRAND, SERVICES, type Service } from '../../data/site';
+
+export function getStaticPaths() {
+  return SERVICES.map((s) => ({ params: { slug: s.slug }, props: { service: s } }));
+}
+const { service } = Astro.props as { service: Service };
+const site = Astro.site!.origin;
+const others = SERVICES.filter((s) => s.slug !== service.slug);
+const isPM = service.slug === 'property-management';
+const schema = [
+  {
+    '@type': 'Service',
+    name: service.h1,
+    serviceType: service.nav,
+    provider: { '@id': `${site}/#business` },
+    areaServed: 'St. Louis, MO',
+    description: service.description,
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: service.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site}/` },
+      { '@type': 'ListItem', position: 2, name: service.nav, item: `${site}/services/${service.slug}` },
+    ],
+  },
+];
+---
+<Base title={service.title} description={service.description} schema={schema}>
+  <section class={`band band-${service.tone}`}>
+    <div class="wrap band-in">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <span>{service.nav}</span></nav>
+      <h1>{service.h1}</h1>
+      <p class="band-lead">{service.lead}</p>
+      <div class="band-act">
+        <a class="btn band-call" href={BRAND.phoneHref}><Icon name="phone" /> Call {BRAND.phone}</a>
+        <a class="link-arrow band-link" href={isPM ? '/pm-request' : '/request-service'}>
+          {isPM ? 'Send a property request' : 'Request service online'} <Icon name="arrow" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap two">
+      <div>
+        <h2>What Gerald handles</h2>
+        <ul class="ticks">
+          {service.covers.map((c) => <li><Icon name="check" /><span>{c}</span></li>)}
+        </ul>
+      </div>
+      <div class="signs">
+        <h2>{service.signs.heading}</h2>
+        <ul>
+          {service.signs.items.map((i) => <li>{i}</li>)}
+        </ul>
+        <div class="price">
+          <h3>How pricing works</h3>
+          <p>
+            {isPM
+              ? 'Repairs are diagnosed first. When the part is on the truck, the fix happens on the spot; when it isn’t, Gerald gets supply-house pricing, orders it, and schedules the return with your office.'
+              : 'Part prices change with the supplier, so there’s no guessing over the phone. Gerald diagnoses the system, checks the current price of the part, and calls you with the number before any work begins.'}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faqs">
+    <div class="wrap two">
+      <h2>Questions people ask</h2>
+      <div class="faq-list">
+        {service.faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section ask">
+    <div class="wrap two">
+      <div>
+        <h2>Ready when you are.</h2>
+        <p class="ask-p">Call, or send the basics and Gerald will get back to you.</p>
+        <a class="ask-phone" href={BRAND.phoneHref}><Icon name="phone" /> {BRAND.phone}</a>
+      </div>
+      <div class="ask-form"><RequestForm id={service.slug} source={`Website ${service.nav} Page`} /></div>
+    </div>
+  </section>
+
+  <nav class="more" aria-label="Other services">
+    {others.map((o) => (
+      <a class={`more-${o.tone}`} href={`/services/${o.slug}`}><span>{o.nav}</span> <Icon name="arrow" /></a>
+    ))}
+  </nav>
+</Base>
+
+<style>
+  .band {
+    color: var(--white);
+  }
+  .band-heat {
+    background: var(--red);
+  }
+  .band-cool {
+    background: var(--blue);
+  }
+  .band-navy {
+    background: var(--navy);
+  }
+  .band-split {
+    background: linear-gradient(90deg, var(--red) 0 50%, var(--blue) 50% 100%);
+  }
+  .band-in {
+    padding-block: clamp(3rem, 7vw, 6rem) clamp(3.5rem, 8vw, 6.5rem);
+  }
+  .crumbs {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  .crumbs a {
+    color: inherit;
+  }
+  .band h1 {
+    font-size: clamp(2.4rem, 5.4vw, 5rem);
+    max-width: 15ch;
+    margin-bottom: 1.5rem;
+  }
+  .band-lead {
+    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+    max-width: 40rem;
+    margin-bottom: 2.25rem;
+    color: var(--white);
+  }
+  .band-act {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.75rem;
+  }
+  .band-call {
+    background: var(--white);
+    color: var(--navy);
+    font-variant-numeric: tabular-nums;
+  }
+  .band-call:hover {
+    background: var(--navy);
+    color: var(--white);
+  }
+  .band-navy .band-call:hover {
+    background: var(--red);
+  }
+  .band-link {
+    color: var(--white);
+  }
+  .two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 6vw, 5.5rem);
+    align-items: start;
+  }
+  h2 {
+    font-size: clamp(1.75rem, 3.2vw, 2.6rem);
+    margin-bottom: 1.5rem;
+  }
+  .ticks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 3px solid var(--navy);
+  }
+  .ticks li {
+    display: grid;
+    grid-template-columns: 1.5rem 1fr;
+    gap: 0.75rem;
+    padding: 0.95rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .ticks :global(svg) {
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-top: 0.15rem;
+    color: var(--blue);
+  }
+  .signs ul {
+    margin: 0 0 2.5rem;
+    padding-left: 1.2rem;
+    color: var(--ink-soft);
+    font-size: 1.08rem;
+  }
+  .signs li {
+    margin-bottom: 0.55rem;
+  }
+  .signs li::marker {
+    color: var(--red);
+  }
+  .price {
+    background: var(--wash);
+    padding: 1.75rem;
+  }
+  .price h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.6rem;
+  }
+  .price p {
+    color: var(--ink-soft);
+  }
+  .faqs {
+    padding-top: 0;
+  }
+  .faq-list {
+    border-top: 3px solid var(--navy);
+  }
+  details {
+    border-bottom: 1px solid var(--line);
+  }
+  summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.2rem 0;
+    font-weight: 750;
+    font-size: 1.08rem;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::after {
+    content: '+';
+    font-stretch: var(--wide);
+    font-weight: 800;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--red);
+    transition: rotate 0.3s var(--ease);
+  }
+  details[open] summary::after {
+    rotate: 45deg;
+  }
+  details p {
+    padding-bottom: 1.3rem;
+    color: var(--ink-soft);
+  }
+  .ask {
+    background: var(--navy);
+    color: var(--white);
+  }
+  .ask-p {
+    color: #c9d6e8;
+    font-size: 1.125rem;
+  }
+  .ask-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-top: 1.75rem;
+    color: var(--white);
+    font-stretch: var(--wide);
+    font-weight: 800;
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    text-decoration: none;
+    font-variant-numeric: tabular-nums;
+  }
+  .ask-phone :global(svg) {
+    width: 0.85em;
+    height: 0.85em;
+    color: #ff8fa3;
+  }
+  .ask-form {
+    background: var(--white);
+    color: var(--ink);
+    padding: clamp(1.5rem, 3.5vw, 2.5rem);
+  }
+  .more {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .more a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem var(--gutter);
+    color: var(--white);
+    text-decoration: none;
+    font-stretch: var(--wide);
+    font-weight: 800;
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  }
+  .more a :global(svg) {
+    width: 1.3rem;
+    height: 1.3rem;
+    transition: transform 0.3s var(--ease);
+  }
+  .more a:hover :global(svg) {
+    transform: translateX(6px);
+  }
+  .more-heat {
+    background: var(--red);
+  }
+  .more-cool {
+    background: var(--blue);
+  }
+  .more-navy {
+    background: var(--navy);
+    box-shadow: inset 0 1px 0 #2a4366;
+  }
+  .more-split {
+    background: linear-gradient(90deg, var(--red) 0 50%, var(--blue) 50% 100%);
+  }
+  @media (max-width: 900px) {
+    .two {
+      grid-template-columns: 1fr;
+    }
+    .more {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

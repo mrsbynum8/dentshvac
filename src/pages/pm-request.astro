@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import PageBand from '../components/PageBand.astro';
+import GhlForm from '../components/GhlForm.astro';
+import { GHL } from '../data/site';
+---
+<Base
+  title="Property Management HVAC Request | Dent's Heating And Cooling"
+  description="Property managers: send an HVAC service request for a unit or building in St. Louis. Gerald diagnoses and fixes it himself."
+>
+  <PageBand title="Property management service request" lead="Send the property, the unit and the issue, and Gerald will follow up to get it scheduled." tone="navy" />
+  <section class="section form-wrap">
+    <div class="wrap narrow"><GhlForm form={GHL.forms.property} /></div>
+  </section>
+</Base>
+<style>
+  .form-wrap {
+    background: var(--wash);
+  }
+  .narrow {
+    max-width: 860px;
+  }
+</style>

@@ -1,0 +1,78 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { BRAND } from '../data/site';
+---
+<Base title="Page Not Found | Dent's Heating And Cooling" description="That page doesn't exist." noindex>
+  <section class="nf">
+    <div class="nf-side nf-heat">
+      <p class="nf-code">404</p>
+      <h1>That page went out like a pilot light.</h1>
+    </div>
+    <div class="nf-side nf-cool">
+      <p>The link may be old or mistyped. Here's where to go instead:</p>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/services/heating">Furnace &amp; heating repair</a></li>
+        <li><a href="/services/cooling">AC repair &amp; installation</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <a class="btn nf-call" href={BRAND.phoneHref}><Icon name="phone" /> Call {BRAND.phone}</a>
+    </div>
+  </section>
+</Base>
+<style>
+  .nf {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 70svh;
+    color: var(--white);
+  }
+  .nf-side {
+    padding: clamp(2.5rem, 7vw, 6rem) var(--gutter);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .nf-heat {
+    background: var(--red);
+  }
+  .nf-cool {
+    background: var(--blue);
+  }
+  .nf-code {
+    font-stretch: var(--wide);
+    font-weight: 800;
+    font-size: clamp(4rem, 10vw, 6rem);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: clamp(1.8rem, 3.6vw, 3rem);
+    max-width: 16ch;
+  }
+  .nf-cool p {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+  ul {
+    margin: 0 0 2rem;
+    padding-left: 1.2rem;
+    font-size: 1.1rem;
+    display: grid;
+    gap: 0.4rem;
+  }
+  ul a {
+    color: var(--white);
+  }
+  .nf-call {
+    background: var(--white);
+    color: var(--blue-deep);
+    align-self: flex-start;
+  }
+  @media (max-width: 760px) {
+    .nf {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

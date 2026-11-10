@@ -1,0 +1,128 @@
+---
+import { BRAND, SERVICES } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="ftr">
+  <div class="wrap ftr-grid">
+    <div class="ftr-brand">
+      <img src="/brand/logo-light.webp" alt={BRAND.name} width="1745" height="316" />
+      <p>Owner-operated heating and cooling for {BRAND.area}.</p>
+      <a class="ftr-phone" href={BRAND.phoneHref}>{BRAND.phone}</a>
+      <a class="ftr-mail" href={`mailto:${BRAND.email}`}>{BRAND.email}</a>
+    </div>
+    <nav aria-label="Services">
+      <h2>Services</h2>
+      <ul>
+        {SERVICES.map((s) => <li><a href={`/services/${s.slug}`}>{s.nav}</a></li>)}
+      </ul>
+    </nav>
+    <nav aria-label="Company">
+      <h2>Company</h2>
+      <ul>
+        <li><a href="/about">About Gerald</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/request-service">Request Service</a></li>
+        <li><a href="/pm-request">Property Request</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h2>Visit</h2>
+      <address>
+        {BRAND.street}<br />{BRAND.city}, {BRAND.region} {BRAND.zip}
+      </address>
+    </div>
+  </div>
+  <div class="wrap ftr-base">
+    <p>© {year} {BRAND.legalName}</p>
+    <p><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms of Service</a></p>
+    <p>Site by <a href="https://getbookedfirst.com" rel="noopener">BookedFirst</a></p>
+  </div>
+</footer>
+
+<style>
+  .ftr {
+    background: var(--navy);
+    color: #c9d6e8;
+    padding-top: clamp(3.5rem, 7vw, 5.5rem);
+  }
+  .ftr-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+  }
+  .ftr-brand img {
+    width: 220px;
+    margin-bottom: 1.25rem;
+  }
+  .ftr-brand p {
+    max-width: 30ch;
+    margin-bottom: 1.25rem;
+  }
+  .ftr-phone {
+    display: block;
+    color: var(--white);
+    font-stretch: var(--wide);
+    font-weight: 800;
+    font-size: 1.6rem;
+    text-decoration: none;
+    font-variant-numeric: tabular-nums;
+  }
+  .ftr-phone:hover {
+    color: #ff8fa3;
+  }
+  .ftr-mail {
+    display: inline-block;
+    margin-top: 0.35rem;
+    color: #a9c8ec;
+  }
+  .ftr h2 {
+    color: var(--white);
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .ftr ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.55rem;
+  }
+  .ftr a {
+    color: inherit;
+  }
+  .ftr ul a {
+    text-decoration: none;
+  }
+  .ftr ul a:hover {
+    color: var(--white);
+    text-decoration: underline;
+  }
+  address {
+    font-style: normal;
+  }
+  .ftr-base {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem 2rem;
+    margin-top: 3.5rem;
+    padding-block: 1.5rem;
+    border-top: 1px solid #2a4366;
+    font-size: 0.9rem;
+  }
+  @media (max-width: 900px) {
+    .ftr-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .ftr-brand {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (max-width: 760px) {
+    .ftr {
+      padding-bottom: 76px; /* room for the mobile call bar */
+    }
+  }
+</style>

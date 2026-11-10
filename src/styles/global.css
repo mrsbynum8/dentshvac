@@ -1,0 +1,342 @@
+@import '@fontsource-variable/archivo/wdth.css';
+
+:root {
+  /* Brand, sampled from Dent's logo */
+  --red: #d8183c;
+  --red-deep: #b0102f;
+  --blue: #2470b4;
+  --blue-deep: #1b5893;
+  --navy: #10233f;
+  --navy-2: #1a3355;
+  --white: #ffffff;
+  /* Tints derived from the brand, never grey */
+  --ink: #10233f;
+  --ink-soft: #3d5270;
+  --line: #d6dfeb;
+  --wash: #f2f6fb;
+  --on-red-soft: #ffe3e8;
+  --on-blue-soft: #e1eefb;
+
+  --font: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
+  --wide: 125%;
+
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --section: clamp(4rem, 9vw, 7.5rem);
+  --max: 1240px;
+  --header-h: 76px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + 1rem);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--white);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+::selection {
+  background: var(--blue);
+  color: var(--white);
+}
+
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 2px;
+}
+
+h1,
+h2,
+h3 {
+  font-stretch: var(--wide);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--navy);
+  color: var(--white);
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+}
+.skip:focus {
+  top: 1rem;
+}
+
+/* Buttons: hard edges, block weight, wide caps */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 56px;
+  padding: 0.95rem 1.5rem;
+  border: 0;
+  font: inherit;
+  font-stretch: var(--wide);
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.25s var(--ease), color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn svg {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+}
+.btn-red {
+  background: var(--red);
+  color: var(--white);
+}
+.btn-red:hover {
+  background: var(--red-deep);
+}
+.btn-blue {
+  background: var(--blue);
+  color: var(--white);
+}
+.btn-blue:hover {
+  background: var(--blue-deep);
+}
+.btn-navy {
+  background: var(--navy);
+  color: var(--white);
+}
+.btn-navy:hover {
+  background: var(--navy-2);
+}
+.btn-line {
+  background: transparent;
+  color: var(--navy);
+  box-shadow: inset 0 0 0 2px var(--navy);
+}
+.btn-line:hover {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.link-arrow svg {
+  width: 1.05em;
+  height: 1.05em;
+  transition: transform 0.3s var(--ease);
+}
+.link-arrow:hover svg {
+  transform: translateX(4px);
+}
+
+/* Prose for legal and long text pages */
+.prose {
+  max-width: 46rem;
+  color: var(--ink-soft);
+  font-size: 1.0625rem;
+}
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: var(--ink);
+  margin: 2.75rem 0 0.9rem;
+  line-height: 1.15;
+}
+.prose h2 {
+  font-size: 1.6rem;
+}
+.prose h3 {
+  font-size: 1.3rem;
+}
+.prose h4 {
+  font-size: 1.1rem;
+  font-stretch: 100%;
+}
+.prose p,
+.prose ul {
+  margin: 0 0 1rem;
+}
+.prose ul {
+  padding-left: 1.2rem;
+}
+.prose li {
+  margin-bottom: 0.4rem;
+}
+.prose strong {
+  color: var(--ink);
+}
+.prose .box {
+  background: var(--wash);
+  padding: 1.5rem 1.75rem;
+  margin: 1.5rem 0;
+}
+
+/* ---------- Shared form styles (RequestForm + QuoteCard) ---------- */
+  .rf {
+    display: grid;
+    gap: 1rem;
+  }
+  .rf-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .rf-row {
+    display: grid;
+    gap: 0.35rem;
+  }
+  .rf label {
+    font-weight: 700;
+    font-size: 0.92rem;
+  }
+  .rf label span {
+    font-weight: 400;
+    color: var(--ink-soft);
+  }
+  .rf input:not([type='checkbox']),
+  .rf select,
+  .rf textarea {
+    width: 100%;
+    font: inherit;
+    color: var(--ink);
+    background: var(--white);
+    border: 2px solid var(--line);
+    border-radius: 0;
+    min-height: 52px;
+    padding: 0.7rem 0.85rem;
+    transition: border-color 0.2s var(--ease);
+  }
+  .rf textarea {
+    resize: vertical;
+  }
+  .rf input:focus,
+  .rf select:focus,
+  .rf textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+  }
+  .rf-consent {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.65rem;
+    align-items: start;
+  }
+  .rf-consent input {
+    width: 20px;
+    height: 20px;
+    margin-top: 0.15rem;
+    accent-color: var(--blue);
+  }
+  .rf-consent label {
+    font-weight: 400;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .rf-hp {
+    position: absolute;
+    left: -9999px;
+  }
+  .rf-msg:empty {
+    display: none;
+  }
+  .rf-msg {
+    font-weight: 700;
+    color: var(--red-deep);
+  }
+  .rf-send {
+    width: 100%;
+  }
+  .rf-send:disabled {
+    opacity: 0.65;
+    cursor: wait;
+  }
+  .rf-alt {
+    font-size: 0.92rem;
+    text-align: center;
+    color: var(--ink-soft);
+  }
+  .rf .rf-done h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+  }
+  @media (max-width: 520px) {
+    .rf-two {
+      grid-template-columns: 1fr;
+    }
+  }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

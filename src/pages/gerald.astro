@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import GhlForm from '../components/GhlForm.astro';
+import { GHL } from '../data/site';
+// Gerald's private post-job form. noindex, kept out of the sitemap, no marketing chrome.
+---
+<Base title="Completed Work Form | Dent's" description="Internal form." noindex bare>
+  <section class="section g">
+    <div class="wrap narrow">
+      <h1>Completed Work Form</h1>
+      <p>Fill in the details for the job you just finished.</p>
+      <GhlForm form={GHL.forms.gerald} />
+    </div>
+  </section>
+</Base>
+<style>
+  .g {
+    background: var(--wash);
+    padding-top: 2.5rem;
+  }
+  .narrow {
+    max-width: 860px;
+  }
+  h1 {
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    margin-bottom: 0.5rem;
+  }
+  p {
+    color: var(--ink-soft);
+    margin-bottom: 1.5rem;
+  }
+</style>

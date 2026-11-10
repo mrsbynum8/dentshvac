@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageBand from '../../components/PageBand.astro';
+import Icon from '../../components/Icon.astro';
+import { BRAND, LOCATIONS } from '../../data/site';
+
+// Old-site city pages, kept so existing links don't break. noindex and out of the sitemap
+// until Gerald confirms which cities he wants work in (then they get real local pages).
+export function getStaticPaths() {
+  return LOCATIONS.map((l) => ({ params: { slug: l.slug }, props: { loc: l } }));
+}
+const { loc } = Astro.props as { loc: { slug: string; name: string } };
+---
+<Base
+  title={`Heating & Cooling Near ${loc.name}, MO | Dent's Heating And Cooling`}
+  description={`Furnace and AC repair near ${loc.name}. Call Gerald at Dent's Heating And Cooling, (314) 420-7803, to check availability.`}
+  noindex
+>
+  <PageBand title={`Heating and cooling near ${loc.name}`} lead={`Dent's is based in North St. Louis County (${BRAND.zip}). Call to check that Gerald can get to you in ${loc.name}.`} tone="cool">
+    <a class="btn loc-call" href={BRAND.phoneHref}><Icon name="phone" /> Call {BRAND.phone}</a>
+  </PageBand>
+  <section class="section">
+    <div class="wrap links">
+      <a class="btn btn-red" href="/services/heating">Furnace &amp; heating repair <Icon name="arrow" /></a>
+      <a class="btn btn-blue" href="/services/cooling">AC repair &amp; installation <Icon name="arrow" /></a>
+      <a class="btn btn-line" href="/services/maintenance">Tune-ups <Icon name="arrow" /></a>
+    </div>
+  </section>
+</Base>
+<style>
+  .loc-call {
+    margin-top: 1.75rem;
+    background: var(--white);
+    color: var(--navy);
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+</style>

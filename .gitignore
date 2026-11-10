@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.astro
+
+# Impeccable working files (keep PRODUCT/DESIGN + surfaces; drop review captures)
+.impeccable/review/
