@@ -1,0 +1,461 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-10T23:35:39+00:00",
+  "title": "Design System: Dent's Heating And Cooling",
+  "extensions": {
+    "colorMeta": {
+      "heat-red": {
+        "role": "primary",
+        "displayName": "Heat Red",
+        "canonical": "#D8183C",
+        "tonalRamp": [
+          "#450813",
+          "#730D20",
+          "#A1122D",
+          "#CF1739",
+          "#EA3E5E",
+          "#F17E94",
+          "#F7BAC6",
+          "#FCE8EC"
+        ]
+      },
+      "heat-red-deep": {
+        "role": "primary",
+        "displayName": "Heat Red Deep",
+        "canonical": "#B0102F",
+        "tonalRamp": [
+          "#460613",
+          "#750B1F",
+          "#A40F2C",
+          "#D21338",
+          "#ED3B5D",
+          "#F37C93",
+          "#F9B9C5",
+          "#FDE8EC"
+        ]
+      },
+      "cool-blue": {
+        "role": "secondary",
+        "displayName": "Cool Blue",
+        "canonical": "#2470B4",
+        "tonalRamp": [
+          "#0D2840",
+          "#15426A",
+          "#1E5D95",
+          "#2677BF",
+          "#4C98DB",
+          "#88BAE7",
+          "#BFDAF2",
+          "#EAF3FB"
+        ]
+      },
+      "cool-blue-deep": {
+        "role": "secondary",
+        "displayName": "Cool Blue Deep",
+        "canonical": "#1B5893",
+        "tonalRamp": [
+          "#0C2741",
+          "#14406C",
+          "#1C5A97",
+          "#2474C2",
+          "#4A95DE",
+          "#86B8E9",
+          "#BED9F3",
+          "#E9F2FB"
+        ]
+      },
+      "navy-ink": {
+        "role": "tertiary",
+        "displayName": "Navy Ink",
+        "canonical": "#10233F",
+        "tonalRamp": [
+          "#0F223D",
+          "#1A3866",
+          "#244F8E",
+          "#2E66B7",
+          "#5488D4",
+          "#8DAFE2",
+          "#C2D4F0",
+          "#EBF1FA"
+        ]
+      },
+      "navy-raised": {
+        "role": "tertiary",
+        "displayName": "Navy Raised",
+        "canonical": "#1A3355",
+        "tonalRamp": [
+          "#12233B",
+          "#1E3B62",
+          "#2A5289",
+          "#3669B0",
+          "#5B8BCD",
+          "#92B2DE",
+          "#C4D6ED",
+          "#EBF1F9"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Ink Soft",
+        "canonical": "#3D5270",
+        "tonalRamp": [
+          "#1B2432",
+          "#2D3C53",
+          "#3F5574",
+          "#516D95",
+          "#748EB3",
+          "#A3B4CD",
+          "#CDD7E4",
+          "#EEF2F6"
+        ]
+      },
+      "rule-line": {
+        "role": "neutral",
+        "displayName": "Rule Line",
+        "canonical": "#D6DFEB",
+        "tonalRamp": [
+          "#192433",
+          "#2A3D56",
+          "#3B5578",
+          "#4B6D9A",
+          "#6F8FB9",
+          "#9FB4D0",
+          "#CCD7E6",
+          "#EEF2F7"
+        ]
+      },
+      "wash": {
+        "role": "neutral",
+        "displayName": "Wash",
+        "canonical": "#F2F6FB",
+        "tonalRamp": [
+          "#12243A",
+          "#1E3C62",
+          "#2A5488",
+          "#366CB0",
+          "#5B8ECD",
+          "#92B3DD",
+          "#C4D7ED",
+          "#EBF2F9"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#12243A",
+          "#1E3C62",
+          "#2A5488",
+          "#366CB0",
+          "#5B8ECD",
+          "#92B3DD",
+          "#C4D7ED",
+          "#FFFFFF"
+        ]
+      },
+      "navy-mist": {
+        "role": "neutral",
+        "displayName": "Navy Mist (text on navy)",
+        "canonical": "#C9D6E8",
+        "tonalRamp": [
+          "#172436",
+          "#263C59",
+          "#35537D",
+          "#456BA1",
+          "#698DBF",
+          "#9BB3D4",
+          "#C9D6E8",
+          "#EDF1F7"
+        ]
+      },
+      "navy-sky": {
+        "role": "neutral",
+        "displayName": "Navy Sky (link on navy)",
+        "canonical": "#A9C8EC",
+        "tonalRamp": [
+          "#0E243F",
+          "#173D68",
+          "#205592",
+          "#2A6DBC",
+          "#508FD8",
+          "#8AB4E5",
+          "#C0D7F1",
+          "#EAF2FA"
+        ]
+      },
+      "navy-ember": {
+        "role": "neutral",
+        "displayName": "Navy Ember (heat accent on navy)",
+        "canonical": "#FF8FA3",
+        "tonalRamp": [
+          "#4C000E",
+          "#800017",
+          "#B20020",
+          "#E60029",
+          "#FF294F",
+          "#FF708A",
+          "#FFB2C0",
+          "#FFE5EA"
+        ]
+      },
+      "navy-divider": {
+        "role": "neutral",
+        "displayName": "Navy Divider (rule on navy)",
+        "canonical": "#2A4366",
+        "tonalRamp": [
+          "#162436",
+          "#253B5A",
+          "#34537E",
+          "#436BA3",
+          "#678CC1",
+          "#9AB3D5",
+          "#C9D6E9",
+          "#EDF1F8"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Interior page band titles."
+      },
+      "hero": {
+        "displayName": "Hero",
+        "purpose": "Home hero H1 beside the quote card."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Step titles, service item names, card and panel heads."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Every button and phone-number block (tabular figures on numbers)."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading text, Archivo at normal width."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Form labels, symptom legend, choice buttons."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-lift",
+        "value": "0 30px 60px -24px rgb(16 35 63 / 0.55)",
+        "purpose": "Quote card floating over the hero photo (desktop)."
+      },
+      {
+        "name": "panel-lift",
+        "value": "0 18px 40px -28px rgb(16 35 63 / 0.45)",
+        "purpose": "White service panels on the wash."
+      },
+      {
+        "name": "sheet-drop",
+        "value": "0 18px 30px -12px rgb(16 35 63 / 0.25)",
+        "purpose": "Mobile menu sheet under the header."
+      },
+      {
+        "name": "bar-edge",
+        "value": "0 -1px 0 #D6DFEB, 0 -10px 24px -16px rgb(16 35 63 / 0.35)",
+        "purpose": "Fixed mobile action bar."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All state transitions."
+      },
+      {
+        "name": "state",
+        "value": "0.25s",
+        "purpose": "Button and nav color changes (inputs and choices 0.2s)."
+      },
+      {
+        "name": "nudge",
+        "value": "translateX(4px) over 0.3s",
+        "purpose": "Arrow on link hover."
+      },
+      {
+        "name": "photo-zoom",
+        "value": "scale 1.04 over 0.8s",
+        "purpose": "Service panel photo on hover."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transitions 0.01ms",
+        "purpose": "Honors prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "420px"
+      },
+      {
+        "name": "sm",
+        "value": "560px"
+      },
+      {
+        "name": "md",
+        "value": "760px"
+      },
+      {
+        "name": "lg",
+        "value": "960px"
+      },
+      {
+        "name": "nav",
+        "value": "1100px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Red Button",
+      "kind": "button",
+      "refersTo": "button-red",
+      "description": "Primary action: call, send request.",
+      "html": "<button class=\"ds-btn ds-btn-red\">Send my request <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></button>",
+      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:.95rem 1.5rem;border:0;border-radius:0;font-family:var(--display);font-weight:700;font-size:1rem;line-height:1.15;letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:background-color .25s var(--ease),color .25s var(--ease),transform .25s var(--ease);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-btn svg{width:1.15em;height:1.15em;} .ds-btn-red{background:var(--red);color:var(--white);} .ds-btn-red:hover{background:var(--red-deep);}"
+    },
+    {
+      "name": "Blue Button",
+      "kind": "button",
+      "refersTo": "button-blue",
+      "description": "Cooling-side or supporting request action.",
+      "html": "<button class=\"ds-btn ds-btn-blue\">Request Service</button>",
+      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:.95rem 1.5rem;border:0;border-radius:0;font-family:var(--display);font-weight:700;font-size:1rem;line-height:1.15;letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:background-color .25s var(--ease),color .25s var(--ease),transform .25s var(--ease);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-btn svg{width:1.15em;height:1.15em;} .ds-btn-blue{background:var(--blue);color:var(--white);} .ds-btn-blue:hover{background:var(--blue-deep);}"
+    },
+    {
+      "name": "Navy Button",
+      "kind": "button",
+      "refersTo": "button-navy",
+      "description": "Structural action on light grounds.",
+      "html": "<button class=\"ds-btn ds-btn-navy\">About Gerald</button>",
+      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:.95rem 1.5rem;border:0;border-radius:0;font-family:var(--display);font-weight:700;font-size:1rem;line-height:1.15;letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:background-color .25s var(--ease),color .25s var(--ease),transform .25s var(--ease);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-btn svg{width:1.15em;height:1.15em;} .ds-btn-navy{background:var(--navy);color:var(--white);} .ds-btn-navy:hover{background:var(--navy-2);}"
+    },
+    {
+      "name": "Line Button",
+      "kind": "button",
+      "refersTo": "button-line",
+      "description": "Outline action on light grounds, 2px inset navy stroke.",
+      "html": "<button class=\"ds-btn ds-btn-line\">Property managers</button>",
+      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:.95rem 1.5rem;border:0;border-radius:0;font-family:var(--display);font-weight:700;font-size:1rem;line-height:1.15;letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:background-color .25s var(--ease),color .25s var(--ease),transform .25s var(--ease);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-btn svg{width:1.15em;height:1.15em;} .ds-btn-line{background:transparent;color:var(--navy);box-shadow:inset 0 0 0 2px var(--navy);} .ds-btn-line:hover{background:var(--navy);color:var(--white);}"
+    },
+    {
+      "name": "Ghost Button (on navy)",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Outline action on navy bands.",
+      "html": "<div class=\"ds-navy\"><button class=\"ds-btn ds-btn-ghost\">Request service</button></div>",
+      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:.95rem 1.5rem;border:0;border-radius:0;font-family:var(--display);font-weight:700;font-size:1rem;line-height:1.15;letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:background-color .25s var(--ease),color .25s var(--ease),transform .25s var(--ease);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-btn svg{width:1.15em;height:1.15em;} .ds-navy{background:var(--navy);padding:1.5rem;} .ds-btn-ghost{min-height:60px;padding-inline:1.6rem;font-size:1.05rem;background:transparent;color:var(--white);box-shadow:inset 0 0 0 2px rgb(255 255 255 / .7);} .ds-btn-ghost:hover{background:var(--white);color:var(--navy);}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Square field with 2px rule border; focus shifts border to blue.",
+      "html": "<div class=\"ds-row\"><label for=\"ds-n\">Phone</label><input id=\"ds-n\" class=\"ds-input\" type=\"tel\"></div>",
+      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-row{display:grid;gap:.35rem;font-family:var(--font);color:var(--ink);} .ds-row label{font-weight:700;font-size:.92rem;} .ds-input{font:inherit;font-size:1.0625rem;color:var(--ink);background:var(--white);border:2px solid var(--line);border-radius:0;min-height:52px;padding:.7rem .85rem;transition:border-color .2s var(--ease);} .ds-input:focus{outline:none;border-color:var(--blue);}"
+    },
+    {
+      "name": "Symptom Choice Grid",
+      "kind": "chip",
+      "refersTo": "symptom-choice",
+      "description": "Signature: picked No heat fills red, No AC fills blue, others fill navy.",
+      "html": "<div class=\"ds-grid\"><button class=\"ds-choice ds-heat\" aria-pressed=\"true\">No heat</button><button class=\"ds-choice ds-cool\">No AC</button><button class=\"ds-choice\">Tune-up</button><button class=\"ds-choice\">New system</button><button class=\"ds-choice\">Property unit</button><button class=\"ds-choice\">Other</button></div>",
+      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem;max-width:420px;} .ds-choice{min-height:46px;padding:.35rem .4rem;line-height:1.15;font-family:var(--font);font-weight:700;font-size:.92rem;color:var(--ink);background:var(--white);border:2px solid var(--line);border-radius:0;cursor:pointer;transition:border-color .2s var(--ease),background-color .2s var(--ease),color .2s var(--ease);} .ds-choice:hover{border-color:var(--navy);} .ds-choice:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-choice[aria-pressed='true']{background:var(--navy);border-color:var(--navy);color:var(--white);} .ds-choice.ds-heat[aria-pressed='true']{background:var(--red);border-color:var(--red);} .ds-choice.ds-cool[aria-pressed='true']{background:var(--blue);border-color:var(--blue);}"
+    },
+    {
+      "name": "Header",
+      "kind": "nav",
+      "refersTo": "header-call",
+      "description": "White sticky header: nav with red underline on current, navy phone block.",
+      "html": "<header class=\"ds-hdr\"><span class=\"ds-logo\">[client logo]</span><nav><a href=\"#\" aria-current=\"page\">Heating</a><a href=\"#\">Cooling</a><a href=\"#\">About</a></nav><a class=\"ds-call\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"/></svg> (314) 555-0100</a></header>",
+      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-hdr{display:flex;align-items:center;gap:2rem;height:76px;padding-inline:1.5rem;background:var(--white);box-shadow:0 1px 0 var(--line);font-family:var(--font);color:var(--ink);} .ds-logo{font-size:.8rem;color:var(--ink-soft);} .ds-hdr nav{margin-left:auto;display:flex;gap:1.5rem;} .ds-hdr nav a{color:inherit;text-decoration:none;font-weight:650;font-size:.95rem;padding-block:.4rem;border-bottom:2px solid transparent;transition:border-color .25s var(--ease);} .ds-hdr nav a:hover,.ds-hdr nav a[aria-current='page']{border-color:var(--red);} .ds-call{display:inline-flex;align-items:center;gap:.55rem;min-height:48px;padding:0 1.1rem;background:var(--navy);color:var(--white);text-decoration:none;font-family:var(--display);font-weight:700;font-variant-numeric:tabular-nums;transition:background-color .25s var(--ease);} .ds-call:hover{background:var(--red);} .ds-call:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-call svg{width:1.1rem;height:1.1rem;}"
+    },
+    {
+      "name": "Service Panel",
+      "kind": "card",
+      "refersTo": "icon-badge",
+      "description": "White panel with solid heat head, ruled items and square outline icon badges.",
+      "html": "<article class=\"ds-panel\"><div class=\"ds-head\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4\"/></svg><h3>Heating</h3></div><ul><li><span class=\"ds-ico\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4\"/></svg></span><span><strong>Furnace repair</strong><span>Diagnosed and fixed by the owner.</span></span></li><li><span class=\"ds-ico\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4\"/></svg></span><span><strong>Furnace replacement</strong><span>Sized for your house.</span></span></li></ul></article>",
+      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-panel{background:var(--white);max-width:460px;box-shadow:0 18px 40px -28px rgb(16 35 63 / .45);font-family:var(--font);color:var(--ink);} .ds-head{display:flex;align-items:center;gap:.75rem;padding:1.1rem 1.5rem;background:var(--red);color:var(--white);} .ds-head svg{width:1.9rem;height:1.9rem;} .ds-head h3{margin:0;font-family:var(--display);font-weight:700;font-size:1.8rem;line-height:1.02;} .ds-panel ul{list-style:none;margin:0;padding:.5rem 1.5rem 1rem;} .ds-panel li{display:grid;grid-template-columns:2.6rem 1fr;gap:.9rem;align-items:center;padding:.9rem 0;border-bottom:1px solid var(--line);} .ds-panel li:last-child{border-bottom:0;} .ds-ico{width:2.6rem;height:2.6rem;display:grid;place-items:center;color:var(--red);box-shadow:inset 0 0 0 2px currentColor;} .ds-ico svg{width:1.3rem;height:1.3rem;} .ds-panel strong{display:block;font-family:var(--display);font-weight:700;font-size:1.05rem;line-height:1.25;} .ds-panel li span span{color:var(--ink-soft);font-size:.97rem;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Heat-and-Cool Work Order",
+    "overview": "The site reads like a clean, well-run service ticket: white paper, navy ink, ruled lines, and solid blocks of the two colors that already live in Dent's logo. Red means heat, blue means cool, and that pairing is the brand's own logic, so it carries meaning everywhere it appears (symptom choices, service panels, numbered steps, icon badges) instead of being sprinkled for decoration. Navy is the working color for structure: the header call block, the property-manager lane, the call band, the footer.\n\nForm is hard-edged and blocky. Buttons are solid rectangles with a heavy Rubik label; inputs are square with a 2px rule; lists are separated by thin rules under a thick 3px navy top rule. Depth is minimal and soft, used only to lift a white card off a photo or a pale wash. Photography is realistic, daylight, St. Louis residential, with no people, and every generated image carries a provenance sidecar.\n\nThe logo and its colors are pinned client assets. The system is built around them and never reinterprets them.",
+    "keyCharacteristics": [
+      "Two-color heat/cool semantics (red #D8183C / blue #2470B4) on white, structured by navy ink.",
+      "Rubik 700 for every heading, button and phone number; Archivo for reading text.",
+      "Square corners everywhere; the only curve is the round white disc behind the logo mark.",
+      "Thin rules and solid color blocks instead of cards-with-borders or decorative fills.",
+      "Soft navy-tinted shadows only to lift white panels; no hard offset shadows.",
+      "Realistic generated photography, no people, provenance recorded next to each file."
+    ],
+    "rules": [
+      {
+        "name": "The Heat Is Red, Cool Is Blue Rule",
+        "body": "Red belongs to heating and urgent action; blue belongs to cooling and supporting action. When a component has heat and cool variants, the colors map that way, never swapped and never used as interchangeable accents.",
+        "section": "colors"
+      },
+      {
+        "name": "The No Grey Rule",
+        "body": "Every neutral is tinted from the brand navy (ink-soft, rule-line, wash, the on-navy tints). Do not introduce neutral greys.",
+        "section": "colors"
+      },
+      {
+        "name": "The Pinned Brand Rule",
+        "body": "The logo files in `public/brand` and the red and blue sampled from them are client assets. Never redraw, recolor, restyle or re-letter the logo; use the dark version on light grounds and the light version on navy.",
+        "section": "colors"
+      },
+      {
+        "name": "The Rubik Speaks Up Rule",
+        "body": "Headings, buttons, phone numbers, step numerals and the FAQ plus mark are Rubik 700. Body copy, labels and FAQ questions are Archivo. Do not set reading text in Rubik.",
+        "section": "typography"
+      },
+      {
+        "name": "The Phone Number Rule",
+        "body": "A phone number shown as an action is set in Rubik 700 with tabular figures.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lift, Don't Stamp Rule",
+        "body": "A shadow only lifts a white surface off a photo or wash, and it is always soft and navy-tinted. No hard offset shadows, no glass, no glow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Hard Edge Rule",
+        "body": "Nothing is rounded except the logo disc. No pills, no radius on cards or buttons.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** map heat to red #D8183C and cool to blue #2470B4 wherever a component has heating and cooling variants.",
+      "**Do** set headings, buttons and phone numbers in Rubik 700, and body copy and labels in Archivo.",
+      "**Do** keep every corner square; reserve the 50% curve for the logo mark's disc.",
+      "**Do** separate list items with 1px rule-line dividers under a 3px navy top rule.",
+      "**Do** use the dark logo on white and the light logo on navy, at their native proportions.",
+      "**Do** keep generated photography realistic, daylight, residential, with no people, and write a provenance sidecar next to every shipped raster.",
+      "**Do** keep tap targets at 46px or taller and the focus outline at 3px cool blue."
+    ],
+    "donts": [
+      "**Don't** redraw, recolor, crop into new shapes or restyle the client's logo files.",
+      "**Don't** round buttons, inputs or cards, or use pill shapes.",
+      "**Don't** blend gradients across surfaces; the only split allowed is the hard red | blue stripe, plus the hero photo's edge fade.",
+      "**Don't** use hard offset shadows, glass or glow; shadows stay soft and navy-tinted.",
+      "**Don't** introduce neutral greys; tint from the navy.",
+      "**Don't** use photography with people in it, stock technicians included.",
+      "**Don't** use emoji or text glyphs as icons; use inline outline SVG."
+    ]
+  }
+}
