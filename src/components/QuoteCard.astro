@@ -2,8 +2,8 @@
 import Icon from './Icon.astro';
 import Consent from './Consent.astro';
 import { BRAND, GHL } from '../data/site';
-interface Props { id?: string; source?: string }
-const { id = 'q', source = 'Website Hero Form' } = Astro.props;
+interface Props { id?: string; source?: string; preset?: string }
+const { id = 'q', source = 'Website Hero Form', preset = '' } = Astro.props;
 const choices = ['No heat', 'No AC', 'Tune-up', 'New system', 'Property unit', 'Other'];
 ---
 <form class="rf qc" data-webhook={GHL.webhook} data-source={source} novalidate aria-labelledby={`${id}-title`}>
@@ -14,10 +14,10 @@ const choices = ['No heat', 'No AC', 'Tune-up', 'New system', 'Property unit', '
     <legend>What do you need?</legend>
     <div class="qc-grid">
       {choices.map((c, i) => (
-        <button type="button" class:list={['qc-choice', { heat: i === 0, cool: i === 1 }]} aria-pressed="false" data-v={c}>{c}</button>
+        <button type="button" class:list={['qc-choice', { heat: i === 0, cool: i === 1 }]} aria-pressed={c === preset ? 'true' : 'false'} data-v={c}>{c}</button>
       ))}
     </div>
-    <input type="hidden" name="service" value="" />
+    <input type="hidden" name="service" value={preset} />
   </fieldset>
 
   <div class="qc-fields">

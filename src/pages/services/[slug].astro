@@ -1,7 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
-import RequestForm from '../../components/RequestForm.astro';
+import QuoteCard from '../../components/QuoteCard.astro';
+import CallBand from '../../components/CallBand.astro';
 import { BRAND, SERVICES, type Service } from '../../data/site';
 
 export function getStaticPaths() {
@@ -9,8 +10,67 @@ export function getStaticPaths() {
 }
 const { service } = Astro.props as { service: Service };
 const site = Astro.site!.origin;
-const others = SERVICES.filter((s) => s.slug !== service.slug);
 const isPM = service.slug === 'property-management';
+
+type IconName = 'flame' | 'thermometer' | 'fan' | 'zap' | 'house' | 'wind' | 'snowflake' | 'gauge' | 'droplets' | 'wrench' | 'calendar' | 'vent' | 'check';
+interface Visual {
+  hero: string; heroAlt: string; side: string; sideAlt: string; preset: string; icon: IconName;
+  items: { icon: IconName; t: string; d: string }[];
+}
+// Photos are generated illustrations (no people); provenance sidecars live beside each file in public/photos.
+const VISUALS: Record<string, Visual> = {
+  heating: {
+    hero: '/photos/furnace.webp', heroAlt: 'A modern gas furnace with vent pipes and ductwork in a basement',
+    side: '/photos/thermostat.webp', sideAlt: 'A digital thermostat on a living-room wall',
+    preset: 'No heat', icon: 'flame',
+    items: [
+      { icon: 'flame', t: 'Gas furnace repair', d: 'Control boards, pressure and high-limit switches, blower motors' },
+      { icon: 'zap', t: 'Ignition problems', d: 'Flame sensors cleaned, igniters checked' },
+      { icon: 'wrench', t: 'Electric furnaces', d: 'Sequencers and heat kits' },
+      { icon: 'house', t: 'Furnace replacement', d: '60,000 to 100,000 BTU, with the permit pulled' },
+      { icon: 'fan', t: 'Heat pumps', d: 'Service and installation' },
+      { icon: 'thermometer', t: 'Thermostats', d: 'New installs and wiring conversions' },
+    ],
+  },
+  cooling: {
+    hero: '/photos/ac.webp', heroAlt: 'An outdoor air conditioning condenser beside a red-brick house',
+    side: '/photos/thermostat.webp', sideAlt: 'A digital thermostat on a living-room wall',
+    preset: 'No AC', icon: 'snowflake',
+    items: [
+      { icon: 'snowflake', t: 'AC repair', d: 'Capacitors, contactors, condenser fan motors, transformers' },
+      { icon: 'droplets', t: 'Leak checks', d: 'Refrigerant leak diagnostics and system inspections' },
+      { icon: 'gauge', t: 'Refrigerant service', d: 'R-410A and R-454B systems' },
+      { icon: 'vent', t: 'New AC systems', d: 'Condensers (2 to 4 ton), line sets and disconnects' },
+      { icon: 'wind', t: 'Air handlers', d: 'Blowers, A-coils and filter racks' },
+      { icon: 'calendar', t: 'Spring tune-ups', d: 'Before the first hot week, not during it' },
+    ],
+  },
+  maintenance: {
+    hero: '/photos/tuneup.webp', heroAlt: 'Service gauges connected to an outdoor air conditioner',
+    side: '/photos/furnace.webp', sideAlt: 'A modern gas furnace in a basement',
+    preset: 'Tune-up', icon: 'calendar',
+    items: [
+      { icon: 'snowflake', t: 'Spring AC tune-up', d: 'Cleaning, contactor check and amp-draw readings' },
+      { icon: 'flame', t: 'Fall furnace tune-up', d: 'Burner check and flame sensor cleaning' },
+      { icon: 'zap', t: 'Electric furnace check', d: 'Sequencers and heat kits tested' },
+      { icon: 'wind', t: 'Filters and airflow', d: 'Filters checked, airflow problems caught early' },
+      { icon: 'calendar', t: 'A yearly reminder', d: 'A reminder every spring so it never slips' },
+    ],
+  },
+  'property-management': {
+    hero: '/photos/apartments.webp', heroAlt: 'A brick apartment building with outdoor air conditioning units',
+    side: '/photos/ac.webp', sideAlt: 'An outdoor air conditioning condenser beside a brick building',
+    preset: 'Property unit', icon: 'house',
+    items: [
+      { icon: 'house', t: 'Apartments and rentals', d: 'Heating and cooling repair, unit by unit' },
+      { icon: 'wrench', t: 'Fixed on the spot', d: 'When the part is already on the truck' },
+      { icon: 'gauge', t: 'Parts ordered fast', d: 'Supply-house pricing, return visit scheduled with you' },
+      { icon: 'calendar', t: 'Seasonal maintenance', d: 'Tune-ups across a whole property' },
+    ],
+  },
+};
+const v = VISUALS[service.slug];
+const others = SERVICES.filter((s) => s.slug !== service.slug);
 const schema = [
   {
     '@type': 'Service',
@@ -34,47 +94,63 @@ const schema = [
 ];
 ---
 <Base title={service.title} description={service.description} schema={schema}>
-  <section class={`band band-${service.tone}`}>
-    <div class="wrap band-in">
-      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <span>{service.nav}</span></nav>
-      <h1>{service.h1}</h1>
-      <p class="band-lead">{service.lead}</p>
-      <div class="band-act">
-        <a class="btn band-call" href={BRAND.phoneHref}><Icon name="phone" /> Call {BRAND.phone}</a>
-        <a class="link-arrow band-link" href={isPM ? '/pm-request' : '/request-service'}>
-          {isPM ? 'Send a property request' : 'Request service online'} <Icon name="arrow" />
-        </a>
+  <section class={`sh tone-${service.tone}`} aria-labelledby="sh-title">
+    <picture class="sh-photo">
+      <img src={v.hero} alt={v.heroAlt} width="1100" height="733" fetchpriority="high" />
+    </picture>
+    <div class="sh-copy">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> {service.nav}</nav>
+      <h1 id="sh-title">{service.h1}</h1>
+      <p class="sh-lead">{service.lead}</p>
+      <div class="sh-actions">
+        <a class="btn btn-red btn-lg" href={BRAND.phoneHref}><Icon name="phone" /> Call {BRAND.phone}</a>
+        {isPM && <a class="btn btn-line btn-lg" href="/pm-request">Full property request</a>}
       </div>
+    </div>
+    <div class="sh-form"><QuoteCard id={service.slug} source={`Website ${service.nav} Page`} preset={v.preset} /></div>
+  </section>
+
+  <section class={`handles section tone-${service.tone}`}>
+    <div class="wrap">
+      <h2>What Gerald handles</h2>
+      <ul class="hl-grid">
+        {v.items.map((it) => (
+          <li>
+            <span class="hl-ico"><Icon name={it.icon} /></span>
+            <span><strong>{it.t}</strong>{it.d}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap two">
+  <section class="signs section">
+    <div class="wrap signs-grid">
+      <figure class="signs-photo">
+        <img src={v.side} alt={v.sideAlt} width="1100" height="733" loading="lazy" />
+      </figure>
       <div>
-        <h2>What Gerald handles</h2>
-        <ul class="ticks">
-          {service.covers.map((c) => <li><Icon name="check" /><span>{c}</span></li>)}
-        </ul>
-      </div>
-      <div class="signs">
-        <h2>{service.signs.heading}</h2>
-        <ul>
-          {service.signs.items.map((i) => <li>{i}</li>)}
+        <h2>{service.signs.heading === 'Call when' ? 'Call Gerald when' : service.signs.heading}</h2>
+        <ul class="signs-list">
+          {service.signs.items.map((i) => <li><Icon name="arrow" /><span>{i}</span></li>)}
         </ul>
         <div class="price">
-          <h3>How pricing works</h3>
-          <p>
-            {isPM
-              ? 'Repairs are diagnosed first. When the part is on the truck, the fix happens on the spot; when it isn’t, Gerald gets supply-house pricing, orders it, and schedules the return with your office.'
-              : 'Part prices change with the supplier, so there’s no guessing over the phone. Gerald diagnoses the system, checks the current price of the part, and calls you with the number before any work begins.'}
-          </p>
+          <span class="price-ico"><Icon name="gauge" /></span>
+          <div>
+            <h3>How pricing works</h3>
+            <p>
+              {isPM
+                ? 'Each repair is diagnosed first. When the part is on the truck, it’s fixed on the spot; when it isn’t, Gerald gets supply-house pricing, orders it, and schedules the return with your office.'
+                : 'Part prices change with the supplier, so there’s no guessing over the phone. Gerald diagnoses the system, checks today’s price for the part, and calls you with the number before any work begins.'}
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section faqs">
-    <div class="wrap two">
+  <section class="faq section">
+    <div class="wrap faq-grid">
       <h2>Questions people ask</h2>
       <div class="faq-list">
         {service.faqs.map((f) => (
@@ -87,139 +163,263 @@ const schema = [
     </div>
   </section>
 
-  <section class="section ask">
-    <div class="wrap two">
-      <div>
-        <h2>Ready when you are.</h2>
-        <p class="ask-p">Call, or send the basics and Gerald will get back to you.</p>
-        <a class="ask-phone" href={BRAND.phoneHref}><Icon name="phone" /> {BRAND.phone}</a>
-      </div>
-      <div class="ask-form"><RequestForm id={service.slug} source={`Website ${service.nav} Page`} /></div>
-    </div>
-  </section>
+  <CallBand />
 
-  <nav class="more" aria-label="Other services">
-    {others.map((o) => (
-      <a class={`more-${o.tone}`} href={`/services/${o.slug}`}><span>{o.nav}</span> <Icon name="arrow" /></a>
-    ))}
+  <nav class="more section" aria-label="Other services">
+    <div class="wrap">
+      <h2>Other services</h2>
+      <div class="more-grid">
+        {others.map((o) => (
+          <a class="more-tile" href={`/services/${o.slug}`}>
+            <img src={VISUALS[o.slug].hero} alt="" width="1100" height="733" loading="lazy" />
+            <span class={`more-label tone-${o.tone}`}>{o.nav} <Icon name="arrow" /></span>
+          </a>
+        ))}
+      </div>
+    </div>
   </nav>
 </Base>
 
 <style>
-  .band {
-    color: var(--white);
+  /* tone colours for accents */
+  .tone-heat { --tone: var(--red); }
+  .tone-cool { --tone: var(--blue); }
+  .tone-split, .tone-navy { --tone: var(--navy); }
+
+  /* ---------- Hero: copy left, photo right, quote card over it (same pattern as home) ---------- */
+  .sh {
+    position: relative;
+    background: var(--white);
+    overflow: hidden;
   }
-  .band-heat {
-    background: var(--red);
+  .sh-photo {
+    display: block;
+    aspect-ratio: 16 / 10;
   }
-  .band-cool {
-    background: var(--blue);
+  .sh-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
-  .band-navy {
-    background: var(--navy);
-  }
-  .band-split {
-    background: var(--navy);
-    border-bottom: 12px solid;
-    border-image: linear-gradient(90deg, var(--red) 0 50%, var(--blue) 50% 100%) 1;
-  }
-  .band-in {
-    padding-block: clamp(3rem, 7vw, 6rem) clamp(3.5rem, 8vw, 6.5rem);
+  .sh-copy {
+    position: relative;
+    padding: 1.75rem var(--gutter) 0.5rem;
   }
   .crumbs {
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    margin-bottom: 1rem;
   }
   .crumbs a {
-    color: inherit;
+    color: var(--ink);
   }
-  .band h1 {
-    font-size: clamp(2.4rem, 5.4vw, 5rem);
-    max-width: 15ch;
-    margin-bottom: 1.5rem;
+  .sh h1 {
+    font-size: clamp(2rem, 3.6vw, 3.4rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
   }
-  .band-lead {
-    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
-    max-width: 40rem;
-    margin-bottom: 2.25rem;
-    color: var(--white);
+  .sh h1::after {
+    content: '';
+    display: block;
+    width: 72px;
+    height: 6px;
+    margin-top: 1.1rem;
+    background: var(--tone);
   }
-  .band-act {
+  .sh-lead {
+    margin-top: 1.25rem;
+    font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 34rem;
+  }
+  .sh-actions {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem 1.75rem;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
   }
-  .band-call {
-    background: var(--white);
-    color: var(--navy);
-    font-variant-numeric: tabular-nums;
+  .btn-lg {
+    min-height: 60px;
+    padding-inline: 1.6rem;
+    font-size: 1.05rem;
   }
-  .band-call:hover {
-    background: var(--navy);
-    color: var(--white);
+  .sh-form {
+    padding: 1.5rem var(--gutter) 2.25rem;
   }
-  .band-navy .band-call:hover,
-  .band-split .band-call:hover {
-    background: var(--red);
+  .sh-form :global(.qc) {
+    border: 2px solid var(--line);
   }
-  .band-link {
-    color: var(--white);
+  @media (min-width: 960px) {
+    .sh {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) clamp(380px, 31vw, 460px);
+      gap: clamp(2rem, 4vw, 4.5rem);
+      align-items: center;
+      padding: clamp(2.5rem, 3.6vw, 3.75rem) var(--gutter);
+      min-height: calc(100svh - var(--header-h));
+    }
+    .sh-photo {
+      position: absolute;
+      inset: 0 0 0 auto;
+      width: 66%;
+      aspect-ratio: auto;
+      -webkit-mask-image: linear-gradient(to right, transparent 0, rgb(0 0 0 / 0.35) 18%, #000 42%);
+      mask-image: linear-gradient(to right, transparent 0, rgb(0 0 0 / 0.35) 18%, #000 42%);
+    }
+    .sh-copy {
+      padding: 0;
+      max-width: 600px;
+      z-index: 1;
+    }
+    .sh-form {
+      padding: 0;
+      z-index: 1;
+    }
+    .sh-form :global(.qc) {
+      border: 0;
+      box-shadow: 0 30px 60px -24px rgb(16 35 63 / 0.55);
+    }
   }
-  .two {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(2.5rem, 6vw, 5.5rem);
-    align-items: start;
+  @media (min-width: 960px) and (max-width: 1179px) {
+    .sh-photo {
+      width: 56%;
+    }
   }
+  @media (min-width: 1600px) {
+    .sh {
+      padding-inline: calc((100vw - 1500px) / 2);
+    }
+  }
+
   h2 {
-    font-size: clamp(1.75rem, 3.2vw, 2.6rem);
-    margin-bottom: 1.5rem;
+    font-size: clamp(1.9rem, 3.4vw, 2.75rem);
+    margin-bottom: clamp(1.5rem, 2.5vw, 2.25rem);
   }
-  .ticks {
+
+  /* ---------- What Gerald handles: icon item grid ---------- */
+  .handles {
+    background: var(--wash);
+  }
+  .hl-grid {
     list-style: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px;
+    background: var(--line);
+    box-shadow: 0 18px 40px -28px rgb(16 35 63 / 0.45);
+  }
+  .hl-grid li {
+    flex: 1 1 calc(33.333% - 1px);
+    min-width: min(100%, 300px);
+    background: var(--white);
+    padding: 1.6rem 1.5rem;
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  .hl-ico {
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    color: var(--tone, var(--navy));
+    box-shadow: inset 0 0 0 2px currentColor;
+  }
+  .hl-ico :global(svg) {
+    width: 1.45rem;
+    height: 1.45rem;
+  }
+  .hl-grid strong {
+    display: block;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.25;
+    margin-bottom: 0.3rem;
+  }
+  .hl-grid li span:last-child {
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
+
+  /* ---------- Call when: photo + list + pricing ---------- */
+  .signs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+  }
+  .signs-photo {
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+  .signs-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .signs-list {
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
     border-top: 3px solid var(--navy);
   }
-  .ticks li {
+  .signs-list li {
     display: grid;
     grid-template-columns: 1.5rem 1fr;
     gap: 0.75rem;
+    align-items: start;
     padding: 0.95rem 0;
     border-bottom: 1px solid var(--line);
-  }
-  .ticks :global(svg) {
-    width: 1.3rem;
-    height: 1.3rem;
-    margin-top: 0.15rem;
-    color: var(--blue);
-  }
-  .signs ul {
-    margin: 0 0 2.5rem;
-    padding-left: 1.2rem;
-    color: var(--ink-soft);
     font-size: 1.08rem;
   }
-  .signs li {
-    margin-bottom: 0.55rem;
-  }
-  .signs li::marker {
+  .signs-list :global(svg) {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.2rem;
     color: var(--red);
   }
   .price {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
     background: var(--wash);
-    padding: 1.75rem;
+  }
+  .price-ico {
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    background: var(--navy);
+    color: var(--white);
+  }
+  .price-ico :global(svg) {
+    width: 1.45rem;
+    height: 1.45rem;
   }
   .price h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.6rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
   }
   .price p {
     color: var(--ink-soft);
   }
-  .faqs {
+
+  /* ---------- FAQ ---------- */
+  .faq {
     padding-top: 0;
+  }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: clamp(2rem, 5vw, 5rem);
   }
   .faq-list {
     border-top: 3px solid var(--navy);
@@ -257,84 +457,70 @@ const schema = [
     padding-bottom: 1.3rem;
     color: var(--ink-soft);
   }
-  .ask {
-    background: var(--navy);
-    color: var(--white);
-  }
-  .ask-p {
-    color: #c9d6e8;
-    font-size: 1.125rem;
-  }
-  .ask-phone {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.7rem;
-    margin-top: 1.75rem;
-    color: var(--white);
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: clamp(1.6rem, 3vw, 2.3rem);
-    text-decoration: none;
-    font-variant-numeric: tabular-nums;
-  }
-  .ask-phone :global(svg) {
-    width: 0.85em;
-    height: 0.85em;
-    color: #ff8fa3;
-  }
-  .ask-form {
-    background: var(--white);
-    color: var(--ink);
-    padding: clamp(1.5rem, 3.5vw, 2.5rem);
-  }
-  .more {
+
+  /* ---------- Other services: photo tiles ---------- */
+  .more-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
   }
-  .more a {
+  .more-tile {
+    display: block;
+    text-decoration: none;
+    background: var(--white);
+    box-shadow: 0 18px 40px -28px rgb(16 35 63 / 0.45);
+    overflow: hidden;
+  }
+  .more-tile img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    transition: scale 0.8s var(--ease);
+  }
+  .more-tile:hover img {
+    scale: 1.04;
+  }
+  .more-label {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    padding: 2rem var(--gutter);
-    color: var(--white);
-    text-decoration: none;
+    padding: 1.1rem 1.25rem;
     font-family: var(--display);
     font-weight: 700;
-    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    font-size: 1.2rem;
+    color: var(--white);
+    background: var(--tone);
   }
-  .more a :global(svg) {
-    width: 1.3rem;
-    height: 1.3rem;
+  .more-label :global(svg) {
+    width: 1.2rem;
+    height: 1.2rem;
     transition: transform 0.3s var(--ease);
   }
-  .more a:hover :global(svg) {
-    transform: translateX(6px);
+  .more-tile:hover .more-label :global(svg) {
+    transform: translateX(5px);
   }
-  .more-heat {
-    background: var(--red);
-  }
-  .more-cool {
-    background: var(--blue);
-  }
-  .more-navy {
-    background: var(--navy);
-  }
-  .more a + a {
-    box-shadow: inset 1px 0 0 rgb(255 255 255 / 0.28);
-  }
-  .more-split {
-    background: var(--navy-2);
+
+  @media (max-width: 1000px) {
+    .hl-grid li {
+      flex-basis: calc(50% - 1px);
+    }
   }
   @media (max-width: 900px) {
-    .two {
+    .signs-grid,
+    .faq-grid {
       grid-template-columns: 1fr;
     }
-    .more {
+  }
+  @media (max-width: 760px) {
+    .more-grid {
       grid-template-columns: 1fr;
     }
-    .more a + a {
-      box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.28);
+    .hl-grid li {
+      flex-basis: 100%;
+    }
+    .sh-actions .btn {
+      width: 100%;
     }
   }
 </style>

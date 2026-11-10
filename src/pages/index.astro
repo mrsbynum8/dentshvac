@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import QuoteCard from '../components/QuoteCard.astro';
+import CallBand from '../components/CallBand.astro';
 import { BRAND, GOOGLE, SERVICES, FAQS } from '../data/site';
 
 type IconName = 'flame' | 'thermometer' | 'fan' | 'zap' | 'house' | 'wind' | 'snowflake' | 'gauge' | 'droplets' | 'vent';
@@ -160,19 +161,7 @@ const faqSchema = {
     </div>
   </section>
 
-  <section class="callband">
-    <div class="wrap callband-in">
-      <img class="callband-mark" src="/brand/mark.webp" alt="" width="160" height="160" loading="lazy" />
-      <div class="callband-copy">
-        <h2>No heat or no AC right now?</h2>
-        <p>Call Gerald directly. If he's on a job, the line takes your details and he calls you back.</p>
-      </div>
-      <div class="callband-act">
-        <a class="btn btn-red btn-lg" href={BRAND.phoneHref}><Icon name="phone" /> Call {BRAND.phone}</a>
-        <a class="btn btn-ghost btn-lg" href="/request-service">Request service</a>
-      </div>
-    </div>
-  </section>
+  <CallBand />
 
   <section class="faq section">
     <div class="wrap faq-grid">
@@ -601,47 +590,6 @@ const faqSchema = {
     margin-top: 0.75rem;
   }
 
-  /* ---------- Call band ---------- */
-  .callband {
-    background: var(--navy);
-    color: var(--white);
-  }
-  .callband-in {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 1.5rem 2.25rem;
-    padding-block: clamp(2.75rem, 5vw, 4rem);
-  }
-  .callband-mark {
-    width: clamp(72px, 7vw, 96px);
-    padding: 12px;
-    background: var(--white);
-    border-radius: 50%;
-  }
-  .callband h2 {
-    font-size: clamp(1.7rem, 3vw, 2.5rem);
-    margin-bottom: 0.4rem;
-  }
-  .callband p {
-    color: #c9d6e8;
-    font-size: 1.08rem;
-  }
-  .callband-act {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-  .btn-ghost {
-    background: transparent;
-    color: var(--white);
-    box-shadow: inset 0 0 0 2px rgb(255 255 255 / 0.7);
-  }
-  .btn-ghost:hover {
-    background: var(--white);
-    color: var(--navy);
-  }
-
   /* ---------- FAQ ---------- */
   .faq-grid {
     display: grid;
@@ -690,14 +638,6 @@ const faqSchema = {
   }
 
   /* ---------- Small screens ---------- */
-  @media (max-width: 1100px) {
-    .callband-in {
-      grid-template-columns: auto 1fr;
-    }
-    .callband-act {
-      grid-column: 1 / -1;
-    }
-  }
   @media (max-width: 960px) {
     .owner-grid,
     .faq-grid {
@@ -710,14 +650,6 @@ const faqSchema = {
       gap: 1rem;
     }
     .hero-actions .btn {
-      width: 100%;
-    }
-    .callband-in {
-      grid-template-columns: 1fr;
-      justify-items: start;
-    }
-    .callband-act,
-    .callband-act .btn {
       width: 100%;
     }
     .svc-wide {
