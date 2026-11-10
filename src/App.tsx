@@ -134,11 +134,10 @@ const faqs = [
   }
 ]
 
-const testimonials = [
-  { name: 'Rick Simmons', role: 'Homeowner', content: 'Exceptional service! They fixed my AC in the middle of a heatwave and the technician was incredibly professional. Highly recommend for any cooling issues.' },
-  { name: 'Dennis Simmons', role: 'Business Owner', content: 'Truly reliable. We had a new furnace installed last month and the difference in our energy bills is already noticeable. Great team to work with.' },
-  { name: 'Taylor Simmons', role: 'Property Manager', content: 'Professional, punctual, and fair pricing. They didn\'t try to upsell me on anything I didn\'t need. My go-to HVAC company from now on.' }
-]
+// Google Business Profile (place_id from DataForSEO, 2026-11-10)
+const GOOGLE_PLACE_ID = 'ChIJxRxea72mxqARM9vFKag4bvg'
+const GOOGLE_REVIEWS_URL = `https://www.google.com/maps/place/?q=place_id:${GOOGLE_PLACE_ID}`
+const GOOGLE_WRITE_REVIEW_URL = `https://search.google.com/local/writereview?placeid=${GOOGLE_PLACE_ID}`
 
 const HeroForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -1101,27 +1100,22 @@ const HomePage = () => {
             centered
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {testimonials.map((t, i) => (
-              <div key={i} className="bg-white p-12 rounded-[50px] shadow-2xl shadow-slate-100/30 border border-slate-50 relative group overflow-hidden">
-                <div className="absolute top-10 right-10 text-secondary opacity-5 group-hover:opacity-20 transition-opacity pointer-events-none">
-                  <Quote size={80} />
-                </div>
-                <div className="flex gap-1 mb-8">
-                  {[...Array(5)].map((_, star) => <Star key={star} size={16} fill="#FFD700" color="#FFD700" />)}
-                </div>
-                <p className="text-text/70 text-lg italic leading-relaxed mb-10 relative z-10">"{t.content}"</p>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 bg-slate-100 rounded-full flex items-center justify-center text-primary font-bold text-xl uppercase">
-                    {t.name[0]}
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-text text-lg">{t.name}</h5>
-                    <p className="text-sm text-text/40 font-bold uppercase tracking-widest">{t.role}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+          {/* Real reviews live on Google. Placeholder testimonials removed 2026-11-10. */}
+          <div className="max-w-2xl mx-auto bg-white p-12 rounded-[50px] shadow-2xl shadow-slate-100/30 border border-slate-50 text-center">
+            <div className="flex justify-center gap-1 mb-6">
+              {[...Array(5)].map((_, star) => <Star key={star} size={18} fill="#FFD700" color="#FFD700" />)}
+            </div>
+            <p className="text-text/70 text-lg leading-relaxed mb-8">
+              See what St. Louis homeowners say about {BRAND.name} on Google.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="btn-secondary px-8 py-4 inline-flex items-center justify-center gap-2">
+                <Quote size={18} /> Read our Google reviews
+              </a>
+              <a href={GOOGLE_WRITE_REVIEW_URL} target="_blank" rel="noopener noreferrer" className="px-8 py-4 inline-flex items-center justify-center rounded-full border border-slate-200 font-bold text-text hover:border-secondary transition-colors">
+                Leave a review
+              </a>
+            </div>
           </div>
         </div>
       </section>
