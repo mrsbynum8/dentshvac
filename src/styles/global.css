@@ -1,4 +1,5 @@
 @import '@fontsource-variable/archivo/wdth.css';
+@import '@fontsource-variable/rubik/wght.css';
 
 :root {
   /* Brand, sampled from Dent's logo */
@@ -18,7 +19,8 @@
   --on-blue-soft: #e1eefb;
 
   --font: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
-  --wide: 125%;
+  --display: 'Rubik Variable', 'Rubik', system-ui, sans-serif;
+  --wide: 100%;
 
   --gutter: clamp(1.25rem, 4vw, 3.5rem);
   --section: clamp(4rem, 9vw, 7.5rem);
@@ -74,8 +76,8 @@ a {
 h1,
 h2,
 h3 {
-  font-stretch: var(--wide);
-  font-weight: 800;
+  font-family: var(--display);
+  font-weight: 700;
   line-height: 1.02;
   letter-spacing: -0.01em;
   margin: 0;
@@ -131,8 +133,8 @@ p {
   padding: 0.95rem 1.5rem;
   border: 0;
   font: inherit;
-  font-stretch: var(--wide);
-  font-weight: 800;
+  font-family: var(--display);
+  font-weight: 700;
   font-size: 1rem;
   line-height: 1.15;
   letter-spacing: 0.01em;

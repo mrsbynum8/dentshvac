@@ -34,12 +34,12 @@ for (const form of document.querySelectorAll<HTMLFormElement>('form.rf')) {
         if (!res.ok) throw new Error(String(res.status));
         form.classList.add('is-sent');
         form.innerHTML =
-          '<div class="rf-done"><h3>Got it. Thank you.</h3><p>Your request went straight to Gerald. He’ll reach out using the number or email you gave. If it can’t wait, call <a href="tel:+13144207803">(314) 420-7803</a>.</p></div>';
+          '<div class="rf-done"><h3>Got it. Thank you.</h3><p>Your request went straight to Gerald. He’ll reach out using the number or email you gave. If it can’t wait, call <a href="tel:+13144207803">314-420-7803</a>.</p></div>';
       } catch {
         btn.disabled = false;
         btn.innerHTML = label;
         form.classList.add('is-error');
-        msg.innerHTML = 'That didn’t send. Please call <a href="tel:+13144207803">(314) 420-7803</a> instead.';
+        msg.innerHTML = 'That didn’t send. Please call <a href="tel:+13144207803">314-420-7803</a> instead.';
       }
     });
   }

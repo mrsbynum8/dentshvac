@@ -21,7 +21,8 @@ fake-proof trust badges; the first screen is a working request, the brand's red/
 the page below it.
 
 OWN-WORLD: His logo and colors untouched: red #D8183C (heat), blue #2470B4 (cool), navy ink #10233F on white.
-Archivo with its width axis: extended 800 caps as kin to the DENT'S wordmark, normal width for reading. Hard
+Type (USER OVERRIDE 2026-11-10): Rubik 700 for headings, buttons and phone numbers, picked by her from a 4-face
+specimen after Archivo extended read "super wide" and plain Archivo had "no personality"; Archivo for body. Hard
 edges, rules and blocks; no pills, no glass, no gradients except the hard red|blue split bands.
 
 STORY: See "from the owner himself", tap call or pick a symptom in the card; then trust strip, property

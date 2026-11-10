@@ -4,8 +4,31 @@ import Icon from '../components/Icon.astro';
 import QuoteCard from '../components/QuoteCard.astro';
 import { BRAND, GOOGLE, SERVICES, FAQS } from '../data/site';
 
-const heating = SERVICES.find((s) => s.slug === 'heating')!;
-const cooling = SERVICES.find((s) => s.slug === 'cooling')!;
+type IconName = 'flame' | 'thermometer' | 'fan' | 'zap' | 'house' | 'wind' | 'snowflake' | 'gauge' | 'droplets' | 'vent';
+const panels: { tone: string; title: string; href: string; icon: IconName; img: string; alt: string; items: { icon: IconName; t: string; d: string }[] }[] = [
+  {
+    tone: 'heat', title: 'Heating', href: '/services/heating', icon: 'flame',
+    img: '/photos/furnace.webp', alt: 'A modern gas furnace with vent pipes and ductwork in a basement',
+    items: [
+      { icon: 'flame', t: 'Furnace repair', d: 'Control boards, pressure switches, blower motors' },
+      { icon: 'zap', t: 'Ignition problems', d: 'Flame sensors cleaned, igniters checked' },
+      { icon: 'house', t: 'Furnace replacement', d: '60,000 to 100,000 BTU, permit pulled' },
+      { icon: 'fan', t: 'Heat pumps', d: 'Service and installation' },
+      { icon: 'thermometer', t: 'Thermostats', d: 'New installs and wiring conversions' },
+    ],
+  },
+  {
+    tone: 'cool', title: 'Cooling', href: '/services/cooling', icon: 'snowflake',
+    img: '/photos/ac.webp', alt: 'An outdoor air conditioning condenser beside a red-brick house',
+    items: [
+      { icon: 'snowflake', t: 'AC repair', d: 'Capacitors, contactors, condenser fan motors' },
+      { icon: 'droplets', t: 'Leak checks', d: 'Refrigerant leak diagnostics and inspections' },
+      { icon: 'gauge', t: 'Refrigerant service', d: 'R-410A and R-454B systems' },
+      { icon: 'vent', t: 'New AC systems', d: 'Condensers (2 to 4 ton), coils and line sets' },
+      { icon: 'wind', t: 'Air handlers', d: 'Blowers, A-coils and filter racks' },
+    ],
+  },
+];
 const faqSchema = {
   '@type': 'FAQPage',
   mainEntity: FAQS.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
@@ -13,7 +36,7 @@ const faqSchema = {
 ---
 <Base
   title="Dent's Heating And Cooling | Furnace & AC Repair in St. Louis"
-  description="No heat? No AC? Call Gerald Pickett, the owner of Dent's Heating And Cooling, for furnace and AC repair, installs and tune-ups in St. Louis and North County. (314) 420-7803."
+  description="No heat? No AC? Call Gerald Pickett, the owner of Dent's Heating And Cooling, for furnace and AC repair, installs and tune-ups in St. Louis and North County. 314-420-7803."
   schema={[faqSchema]}
 >
   
@@ -90,24 +113,33 @@ const faqSchema = {
     </div>
   </section>
 
-  <section class="svc" aria-labelledby="svc-h">
-    <h2 id="svc-h" class="sr-only">Services</h2>
-    <div class="svc-col svc-heat">
-      <div class="svc-in">
-        <h3><a href="/services/heating">Heating</a></h3>
-        <ul>{heating.covers.slice(0, 5).map((c) => <li>{c}</li>)}</ul>
-        <a class="link-arrow" href="/services/heating">All heating services <Icon name="arrow" /></a>
+  <section class="svc section" aria-labelledby="svc-h">
+    <div class="wrap">
+      <h2 id="svc-h" class="svc-title">What Gerald works on</h2>
+      <div class="svc-grid">
+        {panels.map((pn) => (
+          <article class={`svc-panel svc-${pn.tone}`}>
+            <div class="svc-photo">
+              <img src={pn.img} alt={pn.alt} width="1536" height="1024" loading="lazy" />
+            </div>
+            <div class="svc-head">
+              <Icon name={pn.icon} />
+              <h3><a href={pn.href}>{pn.title}</a></h3>
+            </div>
+            <ul class="svc-items">
+              {pn.items.map((it) => (
+                <li>
+                  <span class="svc-ico"><Icon name={it.icon} /></span>
+                  <span><strong>{it.t}</strong>{it.d}</span>
+                </li>
+              ))}
+            </ul>
+            <a class="svc-more" href={pn.href}>All {pn.title.toLowerCase()} services <Icon name="arrow" /></a>
+          </article>
+        ))}
       </div>
-    </div>
-    <div class="svc-col svc-cool">
-      <div class="svc-in">
-        <h3><a href="/services/cooling">Cooling</a></h3>
-        <ul>{cooling.covers.slice(0, 5).map((c) => <li>{c}</li>)}</ul>
-        <a class="link-arrow" href="/services/cooling">All cooling services <Icon name="arrow" /></a>
-      </div>
-    </div>
-    <div class="svc-wide">
-      <div class="wrap svc-wide-in">
+      <div class="svc-wide">
+        <span class="svc-wide-ico"><Icon name="calendar" /></span>
         <div>
           <h3><a href="/services/maintenance">Tune-ups before each season</a></h3>
           <p>A spring AC check and a fall furnace check catch the cheap problems before they become the expensive ones. You'll get a reminder every spring.</p>
@@ -119,9 +151,6 @@ const faqSchema = {
 
   <section class="reviews section">
     <div class="wrap reviews-in">
-      <div class="stars" aria-hidden="true">
-        <Icon name="star" /><Icon name="star" /><Icon name="star" /><Icon name="star" /><Icon name="star" />
-      </div>
       <h2>Hear it from his customers</h2>
       <p>Real reviews live on Google, where nobody can edit them but the people who wrote them.</p>
       <div class="reviews-act">
@@ -133,8 +162,15 @@ const faqSchema = {
 
   <section class="callband">
     <div class="wrap callband-in">
-      <h2>No heat or no AC right now?</h2>
-      <a class="btn btn-white btn-lg" href={BRAND.phoneHref}><Icon name="phone" /> Call {BRAND.phone}</a>
+      <img class="callband-mark" src="/brand/mark.webp" alt="" width="160" height="160" loading="lazy" />
+      <div class="callband-copy">
+        <h2>No heat or no AC right now?</h2>
+        <p>Call Gerald directly. If he's on a job, the line takes your details and he calls you back.</p>
+      </div>
+      <div class="callband-act">
+        <a class="btn btn-red btn-lg" href={BRAND.phoneHref}><Icon name="phone" /> Call {BRAND.phone}</a>
+        <a class="btn btn-ghost btn-lg" href="/request-service">Request service</a>
+      </div>
     </div>
   </section>
 
@@ -279,8 +315,8 @@ const faqSchema = {
     color: var(--red);
   }
   .t-h {
-    font-stretch: var(--wide);
-    font-weight: 800;
+    font-family: var(--display);
+    font-weight: 700;
     font-size: 1.02rem;
   }
   .t-s {
@@ -306,8 +342,8 @@ const faqSchema = {
     padding: 0.9rem var(--gutter);
   }
   .pm-bar strong {
-    font-stretch: var(--wide);
-    font-weight: 800;
+    font-family: var(--display);
+    font-weight: 700;
   }
   .pm-bar-in > span:not(.pm-go) {
     color: #c9d6e8;
@@ -317,7 +353,7 @@ const faqSchema = {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    font-weight: 800;
+    font-weight: 700;
     text-decoration: underline;
     text-underline-offset: 0.2em;
   }
@@ -367,8 +403,8 @@ const faqSchema = {
   .visit li::before {
     content: counter(visit);
     grid-row: span 2;
-    font-stretch: var(--wide);
-    font-weight: 800;
+    font-family: var(--display);
+    font-weight: 700;
     font-size: 2rem;
     line-height: 1;
     color: var(--red);
@@ -385,74 +421,161 @@ const faqSchema = {
     color: var(--ink-soft);
   }
 
-  /* ---------- Services split ---------- */
+  /* ---------- Services: two photo panels ---------- */
   .svc {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  .svc-col {
-    color: var(--white);
-  }
-  .svc-heat {
-    background: var(--red);
-  }
-  .svc-cool {
-    background: var(--blue);
-  }
-  .svc-in {
-    padding: var(--section) clamp(1.5rem, 4.5vw, 4.5rem);
-    max-width: 640px;
-  }
-  .svc-heat .svc-in {
-    margin-left: auto;
-  }
-  .svc h3 {
-    font-size: clamp(2.25rem, 4.2vw, 3.75rem);
-    margin-bottom: 1.75rem;
-  }
-  .svc h3 a {
-    text-decoration: none;
-  }
-  .svc ul {
-    list-style: none;
-    margin: 0 0 2rem;
-    padding: 0;
-    border-top: 1px solid rgb(255 255 255 / 0.35);
-  }
-  .svc li {
-    padding: 0.85rem 0;
-    border-bottom: 1px solid rgb(255 255 255 / 0.35);
-    font-size: 1.02rem;
-  }
-  .svc-heat li {
-    color: var(--white);
-  }
-  .svc-cool li {
-    color: var(--white);
-  }
-  .svc-col .link-arrow {
-    color: var(--white);
-  }
-  .svc-wide {
-    grid-column: 1 / -1;
     background: var(--wash);
   }
-  .svc-wide-in {
+  .svc-title {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+  }
+  .svc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+  }
+  .svc-panel {
+    background: var(--white);
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    box-shadow: 0 18px 40px -28px rgb(16 35 63 / 0.45);
+  }
+  .svc-photo {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+  .svc-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: scale 0.8s var(--ease);
+  }
+  .svc-panel:hover .svc-photo img {
+    scale: 1.04;
+  }
+  .svc-head {
+    display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem 3rem;
-    padding-block: clamp(2.5rem, 5vw, 3.75rem);
+    gap: 0.75rem;
+    padding: 1.1rem clamp(1.25rem, 2.5vw, 2rem);
+    color: var(--white);
+  }
+  .svc-heat .svc-head {
+    background: var(--red);
+  }
+  .svc-cool .svc-head {
+    background: var(--blue);
+  }
+  .svc-head :global(svg) {
+    width: 1.9rem;
+    height: 1.9rem;
+  }
+  .svc-head h3 {
+    font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  }
+  .svc-head a {
+    text-decoration: none;
+  }
+  .svc-items {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem clamp(1.25rem, 2.5vw, 2rem) 0;
+    display: grid;
+  }
+  .svc-items li {
+    display: grid;
+    grid-template-columns: 2.6rem 1fr;
+    gap: 0.9rem;
+    align-items: center;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .svc-items li:last-child {
+    border-bottom: 0;
+  }
+  .svc-ico {
+    width: 2.6rem;
+    height: 2.6rem;
+    display: grid;
+    place-items: center;
+    box-shadow: inset 0 0 0 2px currentColor;
+  }
+  .svc-heat .svc-ico {
+    color: var(--red);
+  }
+  .svc-cool .svc-ico {
+    color: var(--blue);
+  }
+  .svc-ico :global(svg) {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+  .svc-items strong {
+    display: block;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    line-height: 1.25;
+  }
+  .svc-items li span:last-child {
+    color: var(--ink-soft);
+    font-size: 0.97rem;
+    line-height: 1.45;
+  }
+  .svc-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin: auto clamp(1.25rem, 2.5vw, 2rem) 1.6rem;
+    padding-top: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .svc-heat .svc-more :global(svg) {
+    color: var(--red);
+  }
+  .svc-cool .svc-more :global(svg) {
+    color: var(--blue);
+  }
+  .svc-more :global(svg) {
+    width: 1.05em;
+    height: 1.05em;
+    transition: transform 0.3s var(--ease);
+  }
+  .svc-more:hover :global(svg) {
+    transform: translateX(4px);
+  }
+  .svc-wide {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.25rem 1.75rem;
+    margin-top: clamp(1.25rem, 2.5vw, 2rem);
+    padding: clamp(1.4rem, 2.5vw, 2rem);
+    background: var(--white);
+    box-shadow: 0 18px 40px -28px rgb(16 35 63 / 0.45);
+  }
+  .svc-wide-ico {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: grid;
+    place-items: center;
+    background: var(--navy);
+    color: var(--white);
+  }
+  .svc-wide-ico :global(svg) {
+    width: 1.7rem;
+    height: 1.7rem;
   }
   .svc-wide h3 {
-    font-size: clamp(1.5rem, 2.6vw, 2.25rem);
-    margin-bottom: 0.6rem;
-    color: var(--ink);
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    margin-bottom: 0.35rem;
+  }
+  .svc-wide h3 a {
+    text-decoration: none;
   }
   .svc-wide p {
     color: var(--ink-soft);
-    max-width: 44rem;
   }
 
   /* ---------- Reviews ---------- */
@@ -461,16 +584,6 @@ const faqSchema = {
     display: grid;
     justify-items: center;
     gap: 1rem;
-  }
-  .stars {
-    display: flex;
-    gap: 0.3rem;
-    color: var(--red);
-  }
-  .stars :global(svg) {
-    width: 1.6rem;
-    height: 1.6rem;
-    fill: currentColor;
   }
   .reviews h2 {
     font-size: clamp(2rem, 4vw, 3.25rem);
@@ -490,28 +603,43 @@ const faqSchema = {
 
   /* ---------- Call band ---------- */
   .callband {
-    background: linear-gradient(90deg, var(--red) 0 50%, var(--blue) 50% 100%);
+    background: var(--navy);
     color: var(--white);
   }
   .callband-in {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    justify-content: space-between;
-    gap: 1.25rem 2rem;
-    padding-block: clamp(2.5rem, 5vw, 3.75rem);
+    gap: 1.5rem 2.25rem;
+    padding-block: clamp(2.75rem, 5vw, 4rem);
+  }
+  .callband-mark {
+    width: clamp(72px, 7vw, 96px);
+    padding: 12px;
+    background: var(--white);
+    border-radius: 50%;
   }
   .callband h2 {
-    font-size: clamp(1.7rem, 3.4vw, 2.75rem);
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    margin-bottom: 0.4rem;
   }
-  .btn-white {
+  .callband p {
+    color: #c9d6e8;
+    font-size: 1.08rem;
+  }
+  .callband-act {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--white);
+    box-shadow: inset 0 0 0 2px rgb(255 255 255 / 0.7);
+  }
+  .btn-ghost:hover {
     background: var(--white);
     color: var(--navy);
-    font-variant-numeric: tabular-nums;
-  }
-  .btn-white:hover {
-    background: var(--navy);
-    color: var(--white);
   }
 
   /* ---------- FAQ ---------- */
@@ -538,14 +666,15 @@ const faqSchema = {
     padding: 1.25rem 0;
     font-weight: 750;
     font-size: 1.1rem;
+    text-wrap: pretty;
   }
   summary::-webkit-details-marker {
     display: none;
   }
   summary::after {
     content: '+';
-    font-stretch: var(--wide);
-    font-weight: 800;
+    font-family: var(--display);
+    font-weight: 700;
     font-size: 1.5rem;
     line-height: 1;
     color: var(--red);
@@ -561,6 +690,14 @@ const faqSchema = {
   }
 
   /* ---------- Small screens ---------- */
+  @media (max-width: 1100px) {
+    .callband-in {
+      grid-template-columns: auto 1fr;
+    }
+    .callband-act {
+      grid-column: 1 / -1;
+    }
+  }
   @media (max-width: 960px) {
     .owner-grid,
     .faq-grid {
@@ -575,20 +712,22 @@ const faqSchema = {
     .hero-actions .btn {
       width: 100%;
     }
-    .callband {
-      background: var(--red);
+    .callband-in {
+      grid-template-columns: 1fr;
+      justify-items: start;
     }
-    .callband .btn {
+    .callband-act,
+    .callband-act .btn {
       width: 100%;
+    }
+    .svc-wide {
+      grid-template-columns: 1fr;
     }
     .pm-go {
       margin-left: 0;
     }
-    .svc {
+    .svc-grid {
       grid-template-columns: 1fr;
-    }
-    .svc-in {
-      max-width: none;
     }
   }
 </style>

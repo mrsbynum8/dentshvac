@@ -1,13 +1,13 @@
 ---
 import { GHL } from '../data/site';
-interface Props { form: { id: string; name: string; height: number } }
+interface Props { form: { id: string; name: string; height: number; desktop: number; mobile: number } }
 const { form } = Astro.props;
 ---
-<div class="ghl" style={`min-height:${form.height + 40}px`}>
-  <p class="ghl-loading">Loading the request form… If it doesn't appear, call (314) 420-7803.</p>
+<div class="ghl" style={`--h:${form.desktop}px;--hm:${form.mobile}px`}>
+  <p class="ghl-loading">Loading the request form… If it doesn't appear, call 314-420-7803.</p>
   <iframe
     src={`https://brand.dentsheatingandcooling.com/widget/form/${form.id}`}
-    style="width:100%;height:100%;border:none"
+    style="width:100%;border:none"
     id={`inline-${form.id}`}
     data-layout="{'id':'INLINE'}"
     data-trigger-type="alwaysShow"
@@ -17,11 +17,12 @@ const { form } = Astro.props;
     data-deactivation-type="neverDeactivate"
     data-deactivation-value=""
     data-form-name={form.name}
-    data-height={String(form.height)}
+    data-height={String(Math.max(form.desktop, form.mobile))}
     data-layout-iframe-id={`inline-${form.id}`}
     data-form-id={form.id}
     title={form.name}
     loading="lazy"
+    onload="this.previousElementSibling.hidden=true"
   ></iframe>
 </div>
 <script is:inline src={GHL.formEmbedScript} defer></script>
@@ -29,13 +30,18 @@ const { form } = Astro.props;
 <style>
   .ghl {
     position: relative;
-    background: var(--white);
+    background: transparent;
   }
   .ghl iframe {
     position: relative;
     z-index: 1;
     display: block;
-    min-height: inherit;
+    height: var(--h) !important;
+  }
+  @media (max-width: 640px) {
+    .ghl iframe {
+      height: var(--hm) !important;
+    }
   }
   .ghl-loading {
     position: absolute;

@@ -119,7 +119,9 @@ const schema = [
     background: var(--navy);
   }
   .band-split {
-    background: linear-gradient(90deg, var(--red) 0 50%, var(--blue) 50% 100%);
+    background: var(--navy);
+    border-bottom: 12px solid;
+    border-image: linear-gradient(90deg, var(--red) 0 50%, var(--blue) 50% 100%) 1;
   }
   .band-in {
     padding-block: clamp(3rem, 7vw, 6rem) clamp(3.5rem, 8vw, 6.5rem);
@@ -157,7 +159,8 @@ const schema = [
     background: var(--navy);
     color: var(--white);
   }
-  .band-navy .band-call:hover {
+  .band-navy .band-call:hover,
+  .band-split .band-call:hover {
     background: var(--red);
   }
   .band-link {
@@ -233,14 +236,15 @@ const schema = [
     padding: 1.2rem 0;
     font-weight: 750;
     font-size: 1.08rem;
+    text-wrap: pretty;
   }
   summary::-webkit-details-marker {
     display: none;
   }
   summary::after {
     content: '+';
-    font-stretch: var(--wide);
-    font-weight: 800;
+    font-family: var(--display);
+    font-weight: 700;
     font-size: 1.5rem;
     line-height: 1;
     color: var(--red);
@@ -267,8 +271,8 @@ const schema = [
     gap: 0.7rem;
     margin-top: 1.75rem;
     color: var(--white);
-    font-stretch: var(--wide);
-    font-weight: 800;
+    font-family: var(--display);
+    font-weight: 700;
     font-size: clamp(1.6rem, 3vw, 2.3rem);
     text-decoration: none;
     font-variant-numeric: tabular-nums;
@@ -295,8 +299,8 @@ const schema = [
     padding: 2rem var(--gutter);
     color: var(--white);
     text-decoration: none;
-    font-stretch: var(--wide);
-    font-weight: 800;
+    font-family: var(--display);
+    font-weight: 700;
     font-size: clamp(1.1rem, 1.8vw, 1.5rem);
   }
   .more a :global(svg) {
@@ -315,10 +319,12 @@ const schema = [
   }
   .more-navy {
     background: var(--navy);
-    box-shadow: inset 0 1px 0 #2a4366;
+  }
+  .more a + a {
+    box-shadow: inset 1px 0 0 rgb(255 255 255 / 0.28);
   }
   .more-split {
-    background: linear-gradient(90deg, var(--red) 0 50%, var(--blue) 50% 100%);
+    background: var(--navy-2);
   }
   @media (max-width: 900px) {
     .two {
@@ -326,6 +332,9 @@ const schema = [
     }
     .more {
       grid-template-columns: 1fr;
+    }
+    .more a + a {
+      box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.28);
     }
   }
 </style>

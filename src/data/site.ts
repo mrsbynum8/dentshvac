@@ -7,7 +7,7 @@ export const BRAND = {
   legalName: "Dent's Heating And Cooling Co., LLC",
   dbaName: "Dent's Heating And Cooling Co., LLC DBA Dent’s Heating And Cooling",
   owner: 'Gerald Pickett',
-  phone: '(314) 420-7803',
+  phone: '314-420-7803',
   phoneHref: 'tel:+13144207803',
   email: 'info@dentsheatingandcooling.com',
   // CONFIRM: GHL says "Forest Hill Dr", onboarding doc + old site say "Forest Hills Dr".
@@ -34,9 +34,10 @@ export const GHL = {
   chatResources: 'https://beta.leadconnectorhq.com/chat-widget/loader.js',
   chatWidgetId: '69dee1c2d69ee82bf468e00f',
   forms: {
-    residential: { id: 's4VkICseV4kNJfxqrM6a', name: 'Dents HC — Residential Service Request', height: 1263 },
-    property: { id: '2iAos47rxlfqZ2VuHYaf', name: 'Dents HC — Property Management Request', height: 1207 },
-    gerald: { id: 'ffStSxOi3VT4ut7sVjEo', name: 'Dents HC — Completed Work Form', height: 1057 },
+    // heights measured from the live GHL forms 2026-11-10 (GHL's own data-height values were too short and clipped the forms)
+    residential: { id: 's4VkICseV4kNJfxqrM6a', name: 'Dents HC — Residential Service Request', height: 1263, desktop: 1160, mobile: 1590 },
+    property: { id: '2iAos47rxlfqZ2VuHYaf', name: 'Dents HC — Property Management Request', height: 1207, desktop: 1670, mobile: 1710 },
+    gerald: { id: 'ffStSxOi3VT4ut7sVjEo', name: 'Dents HC — Completed Work Form', height: 1057, desktop: 1440, mobile: 1440 },
   },
 };
 
@@ -63,7 +64,7 @@ export const SERVICES: Service[] = [
     nav: 'Heating',
     title: "Furnace & Heating Repair in St. Louis | Dent's Heating And Cooling",
     description:
-      'Furnace repair, furnace replacement, heat pumps and tune-ups in St. Louis and North County. The owner diagnoses and does the work. Call (314) 420-7803.',
+      'Furnace repair, furnace replacement, heat pumps and tune-ups in St. Louis and North County. The owner diagnoses and does the work. Call 314-420-7803.',
     h1: 'Furnace and heating repair in St. Louis',
     lead:
       "When the house won't warm up, you get Gerald: the owner, on the phone and at your door. He finds what failed, tells you the price before any work starts, and gets the heat back on.",
@@ -92,8 +93,8 @@ export const SERVICES: Service[] = [
         a: 'Not for repairs. Part prices change with the supplier, so Gerald diagnoses the system first, checks the current cost of the part, and calls you with the price before doing the work.',
       },
       {
-        q: 'Do you handle after-hours calls?',
-        a: 'After-hours service calls are available. Call (314) 420-7803. If Gerald is on a job, the line takes your details so your call never goes to voicemail.',
+        q: 'What if Gerald can’t pick up?',
+        a: 'Call 314-420-7803. If Gerald can’t pick up, the line takes your details and he calls you back.',
       },
       {
         q: 'Should I repair or replace my furnace?',
@@ -107,7 +108,7 @@ export const SERVICES: Service[] = [
     nav: 'Cooling',
     title: "AC Repair & Installation in St. Louis | Dent's Heating And Cooling",
     description:
-      'Air conditioning repair, AC installation, refrigerant leak checks and tune-ups in St. Louis and North County. Owner-operated. Call (314) 420-7803.',
+      'Air conditioning repair, AC installation, refrigerant leak checks and tune-ups in St. Louis and North County. Owner-operated. Call 314-420-7803.',
     h1: 'AC repair and installation in St. Louis',
     lead:
       'St. Louis summers are hard on air conditioners. When yours quits, Gerald finds the failure, from a burnt-out capacitor to a refrigerant leak, quotes it at today’s parts price, and fixes it.',
@@ -151,7 +152,7 @@ export const SERVICES: Service[] = [
     nav: 'Maintenance',
     title: "AC & Furnace Tune-Ups in St. Louis | Dent's Heating And Cooling",
     description:
-      'Spring AC maintenance and fall furnace tune-ups in St. Louis and North County, with yearly reminders so you never forget. Call (314) 420-7803.',
+      'Spring AC maintenance and fall furnace tune-ups in St. Louis and North County, with yearly reminders so you never forget. Call 314-420-7803.',
     h1: 'AC and furnace tune-ups in St. Louis',
     lead:
       'Most breakdowns start as small wear: a weak capacitor, a dirty flame sensor, a clogged filter. A tune-up before each season catches them while they are still cheap.',
@@ -188,7 +189,7 @@ export const SERVICES: Service[] = [
     nav: 'Property Managers',
     title: "HVAC for Property Managers & Multifamily in St. Louis | Dent's",
     description:
-      'HVAC repair for apartment complexes, multifamily buildings and rental properties in St. Louis, from the owner who does the work. Call (314) 420-7803.',
+      'HVAC repair for apartment complexes, multifamily buildings and rental properties in St. Louis, from the owner who does the work. Call 314-420-7803.',
     h1: 'HVAC service for property managers and multifamily',
     lead:
       "Units go down and tenants call you. Send the property and unit, Gerald diagnoses it, fixes it on the spot when the part is on the truck, and schedules the return with you when it isn't.",
@@ -210,7 +211,7 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: 'How do we send work?',
-        a: 'Use the property request form, or call or text (314) 420-7803 with the property and the issue.',
+        a: 'Use the property request form, or call or text 314-420-7803 with the property and the issue.',
       },
       {
         q: 'What payment terms do you offer?',
