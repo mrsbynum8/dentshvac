@@ -14,7 +14,8 @@ interface Props {
 }
 const { title, description, noindex = false, schema = [], bare = false } = Astro.props;
 const site = Astro.site!.origin;
-const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+// build.format 'file' makes the homepage's pathname "/index"; canonicalize it to "/"
+const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '').replace(/\/$/, '') || '/';
 const canonical = site + (path === '/' ? '/' : path);
 const ogImage = `${site}/og.png`;
 
