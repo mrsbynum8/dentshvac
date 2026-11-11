@@ -1,15 +1,25 @@
 ---
 import Base from '../layouts/Base.astro';
-import PageBand from '../components/PageBand.astro';
+import PhotoHero from '../components/PhotoHero.astro';
+import QuoteCard from '../components/QuoteCard.astro';
 import Icon from '../components/Icon.astro';
-import RequestForm from '../components/RequestForm.astro';
 import { BRAND } from '../data/site';
 ---
 <Base
   title="Contact Dent's Heating And Cooling | 314-420-7803 | St. Louis"
   description="Call or text Gerald at 314-420-7803, email info@dentsheatingandcooling.com, or send a service request. Heating and cooling for St. Louis and North County."
 >
-  <PageBand title="Call, text, or send a request." lead="The fastest way to Gerald is the phone. If he's on a job, the line takes your details so you're never stuck in voicemail." tone="cool" />
+  <PhotoHero
+    title="Call, text, or send a request."
+    lead="The fastest way to Gerald is the phone. If he's on a job, the line takes your details so you're never stuck in voicemail."
+    img="/photos/hero-dusk-900.webp"
+    alt="A red-brick St. Louis home at dusk"
+    crumb="Contact"
+    accent="cool"
+  >
+    <a class="btn btn-red btn-lg" href={BRAND.phoneHref}><Icon name="phone" /> Call {BRAND.phone}</a>
+    <QuoteCard slot="side" id="contact" source="Website Contact Page" />
+  </PhotoHero>
 
   <section class="section">
     <div class="wrap contact">
@@ -32,18 +42,20 @@ import { BRAND } from '../data/site';
           <a class="btn btn-navy" href="/pm-request">Property management request <Icon name="arrow" /></a>
         </div>
       </div>
-      <div class="ask-form">
-        <h2>Quick message</h2>
-        <RequestForm id="contact" source="Website Contact Page" />
-      </div>
     </div>
   </section>
 </Base>
 
 <style>
+  .btn-lg {
+    min-height: 60px;
+    padding-inline: 1.6rem;
+    font-size: 1.05rem;
+  }
   .contact {
     display: grid;
-    grid-template-columns: 1fr 1.1fr;
+    grid-template-columns: 1fr;
+    max-width: 760px;
     gap: clamp(2.5rem, 6vw, 5rem);
     align-items: start;
   }

@@ -91,7 +91,7 @@ const faqSchema = {
 
   <section class="reviews" aria-label="Reviews">
     <div class="wrap reviews-in">
-      <a class="reviews-read" href={GOOGLE.reviewsUrl} target="_blank" rel="noopener">Read Gerald's reviews on Google <Icon name="arrow" /></a>
+      <a class="reviews-read" href={GOOGLE.reviewsUrl} target="_blank" rel="noopener">Read Gerald's reviews <span class="nowrap">on Google <Icon name="arrow" /></span></a>
       <span class="reviews-sep" aria-hidden="true"></span>
       <a class="reviews-write" href={GOOGLE.writeReviewUrl} target="_blank" rel="noopener">Worked with Gerald? Leave a review</a>
     </div>
@@ -530,6 +530,12 @@ const faqSchema = {
   .reviews-write {
     color: var(--ink-soft);
   }
+  .nowrap {
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
 
   /* ---------- Tune-ups ---------- */
   .tune {
@@ -651,6 +657,10 @@ const faqSchema = {
     }
     .reviews-sep {
       display: none;
+    }
+    .reviews-in {
+      flex-direction: column;
+      align-items: flex-start;
     }
     .pm-go {
       margin-left: 0;

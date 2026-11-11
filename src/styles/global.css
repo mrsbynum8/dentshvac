@@ -25,7 +25,7 @@
   --gutter: clamp(1.25rem, 4vw, 3.5rem);
   --section: clamp(4rem, 9vw, 7.5rem);
   --max: 1240px;
-  --header-h: 76px;
+  --header-h: 84px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -297,9 +297,9 @@ p {
   }
   .rf-consent label {
     font-weight: 400;
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     line-height: 1.5;
-    color: var(--ink-soft);
+    color: var(--ink);
   }
   .rf-hp {
     position: absolute;

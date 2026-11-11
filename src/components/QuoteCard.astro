@@ -74,7 +74,7 @@ const choices: { v: string; icon: 'flame' | 'snowflake' | 'wrench' | 'vent' | 'b
     gap: 0.9rem;
   }
   .qc-title {
-    font-size: clamp(1.45rem, 2vw, 1.8rem);
+    font-size: clamp(1.6rem, 2.5vw, 2.3rem);
     line-height: 1.1;
   }
   .qc-note {
@@ -97,7 +97,7 @@ const choices: { v: string; icon: 'flame' | 'snowflake' | 'wrench' | 'vent' | 'b
     gap: 0.45rem;
   }
   .qc-choice {
-    min-height: 46px;
+    min-height: 50px;
     padding: 0.35rem 0.4rem;
     line-height: 1.15;
     font: inherit;
@@ -116,9 +116,10 @@ const choices: { v: string; icon: 'flame' | 'snowflake' | 'wrench' | 'vent' | 'b
     gap: 0.4rem;
   }
   .qc-choice :global(svg) {
-    width: 1.05rem;
-    height: 1.05rem;
+    width: 1.35rem;
+    height: 1.35rem;
     flex: none;
+    stroke-width: 2.4;
     color: var(--navy);
   }
   .qc-choice.heat :global(svg) {
@@ -155,12 +156,13 @@ const choices: { v: string; icon: 'flame' | 'snowflake' | 'wrench' | 'vent' | 'b
     grid-column: 1 / -1;
   }
   .qc :global(.rf-consent label) {
-    font-size: 0.72rem;
+    font-size: 0.875rem;
     line-height: 1.45;
+    color: var(--ink);
   }
   @media (min-width: 960px) and (max-width: 1279px) {
-    .qc-choice {
-      font-size: 0.84rem;
+    .qc-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
   @media (max-width: 420px) {

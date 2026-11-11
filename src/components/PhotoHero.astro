@@ -1,0 +1,129 @@
+---
+// Shared photo hero: photo under a navy tint, copy left, optional side panel (quote card etc.) right.
+interface Props { title: string; lead?: string; img: string; alt: string; crumb?: string; accent?: 'heat' | 'cool' | 'both' }
+const { title, lead, img, alt, crumb, accent = 'both' } = Astro.props;
+---
+<section class:list={['ph', `ph-${accent}`, { 'ph-has-side': Astro.slots.has('side') }]} aria-labelledby="ph-title">
+  <picture class="ph-photo"><img src={img} alt={alt} width="1100" height="733" fetchpriority="high" /></picture>
+  <div class="ph-copy">
+    {crumb && <nav class="ph-crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> {crumb}</nav>}
+    <h1 id="ph-title">{title}</h1>
+    {lead && <p class="ph-lead">{lead}</p>}
+    <slot />
+  </div>
+  {Astro.slots.has('side') && <div class="ph-side"><slot name="side" /></div>}
+</section>
+
+<style>
+  .ph {
+    position: relative;
+    color: var(--white);
+    background: var(--navy);
+    overflow: hidden;
+  }
+  .ph-photo,
+  .ph-photo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .ph-photo img {
+    object-fit: cover;
+    object-position: 60% center;
+  }
+  .ph-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgb(10 22 44 / 0.92) 0%, rgb(10 22 44 / 0.8) 38%, rgb(10 22 44 / 0.32) 66%, rgb(10 22 44 / 0.18) 100%);
+  }
+  .ph-copy,
+  .ph-side {
+    position: relative;
+    z-index: 1;
+  }
+  .ph-copy {
+    padding: clamp(2.5rem, 7vw, 4.25rem) var(--gutter) 2rem;
+    max-width: calc(640px + 2 * var(--gutter));
+  }
+  .ph-crumbs {
+    font-size: 0.92rem;
+    color: #c9d6e8;
+    margin-bottom: 1rem;
+  }
+  .ph-crumbs a {
+    color: var(--white);
+  }
+  h1 {
+    font-size: clamp(2.1rem, 4vw, 3.8rem);
+    line-height: 1.03;
+    letter-spacing: -0.02em;
+    max-width: 16ch;
+    text-shadow: 0 2px 18px rgb(0 0 0 / 0.35);
+  }
+  h1::after {
+    content: '';
+    display: block;
+    width: 72px;
+    height: 6px;
+    margin-top: 1.1rem;
+    background: linear-gradient(90deg, var(--red) 0 50%, var(--blue) 50% 100%);
+  }
+  .ph-heat h1::after {
+    background: var(--red);
+  }
+  .ph-cool h1::after {
+    background: var(--blue);
+  }
+  .ph-lead {
+    margin-top: 1.25rem;
+    font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+    line-height: 1.5;
+    max-width: 34rem;
+  }
+  .ph-copy :global(.btn) {
+    margin-top: 1.75rem;
+  }
+  .ph-side {
+    padding: 0 var(--gutter) 2.5rem;
+  }
+  .ph-side :global(.qc) {
+    color: var(--ink);
+    box-shadow: 0 30px 60px -24px rgb(0 0 0 / 0.6);
+  }
+  @media (min-width: 960px) {
+    .ph {
+      min-height: 460px;
+      display: flex;
+      align-items: center;
+    }
+    .ph-copy {
+      padding-left: max(var(--gutter), calc((100vw - 1500px) / 2));
+    }
+    .ph-has-side {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) clamp(400px, 37vw, 560px);
+      gap: clamp(2rem, 4vw, 4rem);
+      padding: clamp(2rem, 3vw, 2.75rem) max(var(--gutter), calc((100vw - 1500px) / 2));
+      min-height: min(640px, calc(100svh - var(--header-h) - 40px));
+    }
+    .ph-has-side .ph-copy,
+    .ph-has-side .ph-side {
+      padding: 0;
+    }
+  }
+  @media (min-width: 1180px) {
+    .ph-side :global(.qc-fields) {
+      grid-template-columns: 1.1fr 1.1fr 0.8fr;
+    }
+    .ph-side :global(.qc-wide) {
+      grid-column: auto;
+    }
+  }
+  @media (max-width: 760px) {
+    .ph-photo::after {
+      background: linear-gradient(180deg, rgb(10 22 44 / 0.35) 0%, rgb(10 22 44 / 0.75) 40%, rgb(10 22 44 / 0.94) 70%);
+    }
+  }
+</style>
