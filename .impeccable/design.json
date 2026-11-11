@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-10T23:35:39+00:00",
+  "generatedAt": "2026-11-11T00:42:31+00:00",
   "title": "Design System: Dent's Heating And Cooling",
   "extensions": {
     "colorMeta": {
@@ -92,6 +92,21 @@
           "#92B2DE",
           "#C4D6ED",
           "#EBF1F9"
+        ]
+      },
+      "navy-scrim": {
+        "role": "tertiary",
+        "displayName": "Navy Scrim (photo tint)",
+        "canonical": "#0A162C",
+        "tonalRamp": [
+          "#0A162C",
+          "#13294F",
+          "#1C3C73",
+          "#255097",
+          "#3E6ABA",
+          "#7C9AD0",
+          "#B9CAE6",
+          "#E8EEF7"
         ]
       },
       "ink-soft": {
@@ -216,21 +231,41 @@
       }
     },
     "typographyMeta": {
-      "display": {
-        "displayName": "Display",
-        "purpose": "Interior page band titles."
-      },
       "hero": {
         "displayName": "Hero",
-        "purpose": "Home hero H1 beside the quote card."
+        "purpose": "Home H1 on the dusk photo hero."
+      },
+      "hero-page": {
+        "displayName": "Hero Page",
+        "purpose": "H1 on interior photo heroes (About, Contact, services), followed by the accent rule."
+      },
+      "display": {
+        "displayName": "Display",
+        "purpose": "Titles on solid page bands (request forms, locations)."
       },
       "headline": {
         "displayName": "Headline",
         "purpose": "Section titles."
       },
+      "panel-bar": {
+        "displayName": "Panel Bar",
+        "purpose": "Heating / Cooling titles in the solid service-panel bars."
+      },
+      "card-title": {
+        "displayName": "Card Title",
+        "purpose": "Quote-card heading."
+      },
+      "trust-label": {
+        "displayName": "Trust Label",
+        "purpose": "Two-line trust-bar labels, max 12ch."
+      },
       "title": {
         "displayName": "Title",
-        "purpose": "Step titles, service item names, card and panel heads."
+        "purpose": "Step titles, item names, price heads, tile labels."
+      },
+      "nav": {
+        "displayName": "Nav",
+        "purpose": "Header links, Rubik 600."
       },
       "button": {
         "displayName": "Button",
@@ -242,19 +277,23 @@
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Form labels, symptom legend, choice buttons."
+        "purpose": "Form labels, choice legend, choice buttons."
+      },
+      "consent": {
+        "displayName": "Consent",
+        "purpose": "Consent copy in navy ink."
       }
     },
     "shadows": [
       {
         "name": "card-lift",
-        "value": "0 30px 60px -24px rgb(16 35 63 / 0.55)",
-        "purpose": "Quote card floating over the hero photo (desktop)."
+        "value": "0 30px 60px -24px rgb(0 0 0 / 0.6)",
+        "purpose": "Quote card over a dark photo hero."
       },
       {
         "name": "panel-lift",
         "value": "0 18px 40px -28px rgb(16 35 63 / 0.45)",
-        "purpose": "White service panels on the wash."
+        "purpose": "White surfaces on light grounds (service item grid, service tiles)."
       },
       {
         "name": "sheet-drop",
@@ -265,6 +304,21 @@
         "name": "bar-edge",
         "value": "0 -1px 0 #D6DFEB, 0 -10px 24px -16px rgb(16 35 63 / 0.35)",
         "purpose": "Fixed mobile action bar."
+      },
+      {
+        "name": "headline-halo",
+        "value": "text-shadow: 0 2px 18px rgb(0 0 0 / 0.35)",
+        "purpose": "Photo-hero H1 legibility over bright window glow."
+      },
+      {
+        "name": "photo-tint",
+        "value": "linear-gradient(90deg, rgb(10 22 44 / 0.92) 0%, rgb(10 22 44 / 0.78) 34%, rgb(10 22 44 / 0.25) 62%, rgb(10 22 44 / 0.1) 100%)",
+        "purpose": "Photo-hero scrim, desktop (home stops; interior heroes end at 0.15 to 0.18)."
+      },
+      {
+        "name": "photo-tint-mobile",
+        "value": "linear-gradient(180deg, rgb(10 22 44 / 0.3) 0%, rgb(10 22 44 / 0.7) 32%, rgb(10 22 44 / 0.94) 60%)",
+        "purpose": "Photo-hero scrim under 760px."
       }
     ],
     "motion": [
@@ -281,12 +335,12 @@
       {
         "name": "nudge",
         "value": "translateX(4px) over 0.3s",
-        "purpose": "Arrow on link hover."
+        "purpose": "Arrow on link hover (5px on the reviews link)."
       },
       {
         "name": "photo-zoom",
         "value": "scale 1.04 over 0.8s",
-        "purpose": "Service panel photo on hover."
+        "purpose": "Service tile photo on hover."
       },
       {
         "name": "reduced-motion",
@@ -298,6 +352,10 @@
       {
         "name": "xs",
         "value": "420px"
+      },
+      {
+        "name": "form-stack",
+        "value": "520px"
       },
       {
         "name": "sm",
@@ -314,6 +372,18 @@
       {
         "name": "nav",
         "value": "1100px"
+      },
+      {
+        "name": "fields-row",
+        "value": "1180px"
+      },
+      {
+        "name": "choices-3col",
+        "value": "1280px"
+      },
+      {
+        "name": "hero-cap",
+        "value": "1600px"
       }
     ]
   },
@@ -324,23 +394,7 @@
       "refersTo": "button-red",
       "description": "Primary action: call, send request.",
       "html": "<button class=\"ds-btn ds-btn-red\">Send my request <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></button>",
-      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:.95rem 1.5rem;border:0;border-radius:0;font-family:var(--display);font-weight:700;font-size:1rem;line-height:1.15;letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:background-color .25s var(--ease),color .25s var(--ease),transform .25s var(--ease);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-btn svg{width:1.15em;height:1.15em;} .ds-btn-red{background:var(--red);color:var(--white);} .ds-btn-red:hover{background:var(--red-deep);}"
-    },
-    {
-      "name": "Blue Button",
-      "kind": "button",
-      "refersTo": "button-blue",
-      "description": "Cooling-side or supporting request action.",
-      "html": "<button class=\"ds-btn ds-btn-blue\">Request Service</button>",
-      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:.95rem 1.5rem;border:0;border-radius:0;font-family:var(--display);font-weight:700;font-size:1rem;line-height:1.15;letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:background-color .25s var(--ease),color .25s var(--ease),transform .25s var(--ease);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-btn svg{width:1.15em;height:1.15em;} .ds-btn-blue{background:var(--blue);color:var(--white);} .ds-btn-blue:hover{background:var(--blue-deep);}"
-    },
-    {
-      "name": "Navy Button",
-      "kind": "button",
-      "refersTo": "button-navy",
-      "description": "Structural action on light grounds.",
-      "html": "<button class=\"ds-btn ds-btn-navy\">About Gerald</button>",
-      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:.95rem 1.5rem;border:0;border-radius:0;font-family:var(--display);font-weight:700;font-size:1rem;line-height:1.15;letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:background-color .25s var(--ease),color .25s var(--ease),transform .25s var(--ease);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-btn svg{width:1.15em;height:1.15em;} .ds-btn-navy{background:var(--navy);color:var(--white);} .ds-btn-navy:hover{background:var(--navy-2);}"
+      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:.95rem 1.5rem;border:0;border-radius:0;font-family:var(--display);font-weight:700;font-size:1rem;line-height:1.15;letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:background-color .25s var(--ease),color .25s var(--ease),transform .25s var(--ease);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-btn svg{width:1.15em;height:1.15em;flex:none;} .ds-btn-red{background:var(--red);color:var(--white);} .ds-btn-red:hover{background:var(--red-deep);} .ds-btn-ghost{min-height:60px;padding-inline:1.6rem;font-size:1.05rem;background:transparent;color:var(--white);box-shadow:inset 0 0 0 2px rgb(255 255 255 / .7);} .ds-btn-ghost:hover{background:var(--white);color:var(--navy);} "
     },
     {
       "name": "Line Button",
@@ -351,10 +405,10 @@
       "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:.95rem 1.5rem;border:0;border-radius:0;font-family:var(--display);font-weight:700;font-size:1rem;line-height:1.15;letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:background-color .25s var(--ease),color .25s var(--ease),transform .25s var(--ease);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-btn svg{width:1.15em;height:1.15em;} .ds-btn-line{background:transparent;color:var(--navy);box-shadow:inset 0 0 0 2px var(--navy);} .ds-btn-line:hover{background:var(--navy);color:var(--white);}"
     },
     {
-      "name": "Ghost Button (on navy)",
+      "name": "Ghost Button (on dark)",
       "kind": "button",
       "refersTo": "button-ghost",
-      "description": "Outline action on navy bands.",
+      "description": "Outline action on navy bands and photo heroes.",
       "html": "<div class=\"ds-navy\"><button class=\"ds-btn ds-btn-ghost\">Request service</button></div>",
       "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:.95rem 1.5rem;border:0;border-radius:0;font-family:var(--display);font-weight:700;font-size:1rem;line-height:1.15;letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:background-color .25s var(--ease),color .25s var(--ease),transform .25s var(--ease);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-btn svg{width:1.15em;height:1.15em;} .ds-navy{background:var(--navy);padding:1.5rem;} .ds-btn-ghost{min-height:60px;padding-inline:1.6rem;font-size:1.05rem;background:transparent;color:var(--white);box-shadow:inset 0 0 0 2px rgb(255 255 255 / .7);} .ds-btn-ghost:hover{background:var(--white);color:var(--navy);}"
     },
@@ -370,37 +424,234 @@
       "name": "Symptom Choice Grid",
       "kind": "chip",
       "refersTo": "symptom-choice",
-      "description": "Signature: picked No heat fills red, No AC fills blue, others fill navy.",
-      "html": "<div class=\"ds-grid\"><button class=\"ds-choice ds-heat\" aria-pressed=\"true\">No heat</button><button class=\"ds-choice ds-cool\">No AC</button><button class=\"ds-choice\">Tune-up</button><button class=\"ds-choice\">New system</button><button class=\"ds-choice\">Property unit</button><button class=\"ds-choice\">Other</button></div>",
-      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem;max-width:420px;} .ds-choice{min-height:46px;padding:.35rem .4rem;line-height:1.15;font-family:var(--font);font-weight:700;font-size:.92rem;color:var(--ink);background:var(--white);border:2px solid var(--line);border-radius:0;cursor:pointer;transition:border-color .2s var(--ease),background-color .2s var(--ease),color .2s var(--ease);} .ds-choice:hover{border-color:var(--navy);} .ds-choice:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-choice[aria-pressed='true']{background:var(--navy);border-color:var(--navy);color:var(--white);} .ds-choice.ds-heat[aria-pressed='true']{background:var(--red);border-color:var(--red);} .ds-choice.ds-cool[aria-pressed='true']{background:var(--blue);border-color:var(--blue);}"
+      "description": "Signature: icon choices; flame red, snowflake blue, others navy; picked No heat fills red, No AC blue, others navy, icon turns white.",
+      "html": "<div class=\"ds-grid\"><button class=\"ds-choice ds-heat\" aria-pressed=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4\"/></svg><span>No heat</span></button><button class=\"ds-choice ds-cool\" aria-pressed=\"false\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m10 20-1.25-2.5L6 18\"/><path d=\"M10 4 8.75 6.5 6 6\"/><path d=\"m14 20 1.25-2.5L18 18\"/><path d=\"m14 4 1.25 2.5L18 6\"/><path d=\"m17 21-3-6h-4\"/><path d=\"m17 3-3 6 1.5 3\"/><path d=\"M2 12h6.5L10 9\"/><path d=\"m20 10-1.5 2 1.5 2\"/><path d=\"M22 12h-6.5L14 15\"/><path d=\"m4 10 1.5 2L4 14\"/><path d=\"m7 21 3-6-1.5-3\"/><path d=\"m7 3 3 6h4\"/></svg><span>No AC</span></button><button class=\"ds-choice\" aria-pressed=\"false\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z\"/></svg><span>Tune-up</span></button></div>",
+      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem;max-width:460px;} .ds-choice{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;min-height:50px;padding:.35rem .4rem;line-height:1.15;font-family:var(--font);font-weight:700;font-size:.92rem;color:var(--ink);background:var(--white);border:2px solid var(--line);border-radius:0;cursor:pointer;transition:border-color .2s var(--ease),background-color .2s var(--ease),color .2s var(--ease);} .ds-choice svg{width:1.35rem;height:1.35rem;flex:none;color:var(--navy);} .ds-choice.ds-heat svg{color:var(--red);} .ds-choice.ds-cool svg{color:var(--blue);} .ds-choice:hover{border-color:var(--navy);} .ds-choice:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-choice[aria-pressed='true']{background:var(--navy);border-color:var(--navy);color:var(--white);} .ds-choice.ds-heat[aria-pressed='true']{background:var(--red);border-color:var(--red);} .ds-choice.ds-cool[aria-pressed='true']{background:var(--blue);border-color:var(--blue);} .ds-choice[aria-pressed='true'] svg{color:var(--white);}"
     },
     {
       "name": "Header",
       "kind": "nav",
       "refersTo": "header-call",
-      "description": "White sticky header: nav with red underline on current, navy phone block.",
-      "html": "<header class=\"ds-hdr\"><span class=\"ds-logo\">[client logo]</span><nav><a href=\"#\" aria-current=\"page\">Heating</a><a href=\"#\">Cooling</a><a href=\"#\">About</a></nav><a class=\"ds-call\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"/></svg> (314) 555-0100</a></header>",
-      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-hdr{display:flex;align-items:center;gap:2rem;height:76px;padding-inline:1.5rem;background:var(--white);box-shadow:0 1px 0 var(--line);font-family:var(--font);color:var(--ink);} .ds-logo{font-size:.8rem;color:var(--ink-soft);} .ds-hdr nav{margin-left:auto;display:flex;gap:1.5rem;} .ds-hdr nav a{color:inherit;text-decoration:none;font-weight:650;font-size:.95rem;padding-block:.4rem;border-bottom:2px solid transparent;transition:border-color .25s var(--ease);} .ds-hdr nav a:hover,.ds-hdr nav a[aria-current='page']{border-color:var(--red);} .ds-call{display:inline-flex;align-items:center;gap:.55rem;min-height:48px;padding:0 1.1rem;background:var(--navy);color:var(--white);text-decoration:none;font-family:var(--display);font-weight:700;font-variant-numeric:tabular-nums;transition:background-color .25s var(--ease);} .ds-call:hover{background:var(--red);} .ds-call:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-call svg{width:1.1rem;height:1.1rem;}"
+      "description": "White sticky 84px header: logo with a 1px rule after it, Rubik 600 nav with red underline on current, navy phone block.",
+      "html": "<header class=\"ds-hdr\"><span class=\"ds-logo\">[client logo]</span><nav><a href=\"#\" aria-current=\"page\">Heating</a><a href=\"#\">Cooling</a><a href=\"#\">About</a></nav><a class=\"ds-call\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"/></svg> 314-420-7803</a></header>",
+      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-hdr{display:flex;align-items:center;gap:2rem;height:84px;padding-inline:1.5rem;background:var(--white);box-shadow:0 1px 0 var(--line);font-family:var(--font);color:var(--ink);} .ds-logo{font-size:.8rem;color:var(--ink-soft);padding-right:1.5rem;border-right:1px solid var(--line);align-self:stretch;display:flex;align-items:center;margin-block:1.1rem;} .ds-hdr nav{margin-right:auto;display:flex;gap:1.6rem;} .ds-hdr nav a{color:inherit;text-decoration:none;font-family:var(--display);font-weight:600;font-size:1.02rem;padding-block:.4rem;border-bottom:2px solid transparent;transition:border-color .25s var(--ease);} .ds-hdr nav a:hover,.ds-hdr nav a[aria-current='page']{border-color:var(--red);} .ds-call{display:inline-flex;align-items:center;gap:.55rem;min-height:48px;padding:0 1.1rem;background:var(--navy);color:var(--white);text-decoration:none;font-family:var(--display);font-weight:700;font-variant-numeric:tabular-nums;transition:background-color .25s var(--ease);} .ds-call:hover{background:var(--red);} .ds-call:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-call svg{width:1.1rem;height:1.1rem;}"
     },
     {
-      "name": "Service Panel",
-      "kind": "card",
+      "name": "Photo Hero",
+      "kind": "custom",
+      "refersTo": "button-hero-call",
+      "description": "Signature: photo under a left-weighted navy scrim, white Rubik H1 with accent rule, white lead, red Call.",
+      "html": "<section class=\"ds-ph\"><div class=\"ds-ph-photo\" aria-hidden=\"true\"></div><div class=\"ds-ph-copy\"><h1>Furnace and heat repair in St. Louis</h1><p>Gerald Pickett answers, diagnoses your system, and does the work.</p><a class=\"ds-btn ds-btn-red ds-ph-call\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"/></svg> Call 314-420-7803</a></div></section>",
+      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:.95rem 1.5rem;border:0;border-radius:0;font-family:var(--display);font-weight:700;font-size:1rem;line-height:1.15;letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:background-color .25s var(--ease),color .25s var(--ease),transform .25s var(--ease);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-btn svg{width:1.15em;height:1.15em;flex:none;} .ds-btn-red{background:var(--red);color:var(--white);} .ds-btn-red:hover{background:var(--red-deep);} .ds-btn-ghost{min-height:60px;padding-inline:1.6rem;font-size:1.05rem;background:transparent;color:var(--white);box-shadow:inset 0 0 0 2px rgb(255 255 255 / .7);} .ds-btn-ghost:hover{background:var(--white);color:var(--navy);} .ds-ph{position:relative;overflow:hidden;background:var(--navy);color:var(--white);min-height:420px;display:flex;align-items:center;} .ds-ph-photo{position:absolute;inset:0;background:linear-gradient(135deg,#6b4a3a,#2b3f5c 60%,#13294f);} .ds-ph-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgb(10 22 44 / .92) 0%,rgb(10 22 44 / .78) 34%,rgb(10 22 44 / .25) 62%,rgb(10 22 44 / .1) 100%);} .ds-ph-copy{position:relative;z-index:1;padding:2.5rem 2rem;max-width:640px;} .ds-ph h1{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(2.1rem,4vw,3.8rem);line-height:1.03;letter-spacing:-.02em;max-width:16ch;text-shadow:0 2px 18px rgb(0 0 0 / .35);} .ds-ph h1::after{content:'';display:block;width:72px;height:6px;margin-top:1.1rem;background:var(--red);} .ds-ph p{margin:1.25rem 0 0;font-family:var(--font);font-size:1.2rem;line-height:1.5;max-width:34rem;} .ds-ph-call{margin-top:1.75rem;min-height:64px;padding-inline:1.75rem;font-size:1.25rem;}"
+    },
+    {
+      "name": "Trust Bar",
+      "kind": "custom",
       "refersTo": "icon-badge",
-      "description": "White panel with solid heat head, ruled items and square outline icon badges.",
-      "html": "<article class=\"ds-panel\"><div class=\"ds-head\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4\"/></svg><h3>Heating</h3></div><ul><li><span class=\"ds-ico\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4\"/></svg></span><span><strong>Furnace repair</strong><span>Diagnosed and fixed by the owner.</span></span></li><li><span class=\"ds-ico\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4\"/></svg></span><span><strong>Furnace replacement</strong><span>Sized for your house.</span></span></li></ul></article>",
-      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-panel{background:var(--white);max-width:460px;box-shadow:0 18px 40px -28px rgb(16 35 63 / .45);font-family:var(--font);color:var(--ink);} .ds-head{display:flex;align-items:center;gap:.75rem;padding:1.1rem 1.5rem;background:var(--red);color:var(--white);} .ds-head svg{width:1.9rem;height:1.9rem;} .ds-head h3{margin:0;font-family:var(--display);font-weight:700;font-size:1.8rem;line-height:1.02;} .ds-panel ul{list-style:none;margin:0;padding:.5rem 1.5rem 1rem;} .ds-panel li{display:grid;grid-template-columns:2.6rem 1fr;gap:.9rem;align-items:center;padding:.9rem 0;border-bottom:1px solid var(--line);} .ds-panel li:last-child{border-bottom:0;} .ds-ico{width:2.6rem;height:2.6rem;display:grid;place-items:center;color:var(--red);box-shadow:inset 0 0 0 2px currentColor;} .ds-ico svg{width:1.3rem;height:1.3rem;} .ds-panel strong{display:block;font-family:var(--display);font-weight:700;font-size:1.05rem;line-height:1.25;} .ds-panel li span span{color:var(--ink-soft);font-size:.97rem;}"
+      "description": "Three large blue line icons with two-line Rubik 700 labels, 1px vertical rules between.",
+      "html": "<ul class=\"ds-trust\"><li><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z\"/></svg><span>The owner does the work</span></li><li><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z\"/><circle cx=\"7.5\" cy=\"7.5\" r=\".5\" fill=\"currentColor\"/></svg><span>Price before any work</span></li><li><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M10 12h4\"/><path d=\"M10 8h4\"/><path d=\"M14 21v-3a2 2 0 0 0-4 0v3\"/><path d=\"M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2\"/><path d=\"M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16\"/></svg><span>Homes and multifamily</span></li></ul>",
+      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-trust{list-style:none;margin:0;padding:1.5rem 0;display:grid;grid-template-columns:repeat(3,1fr);background:var(--white);border-bottom:1px solid var(--line);color:var(--ink);} .ds-trust li{display:flex;align-items:center;gap:1rem;padding-inline:1.5rem;} .ds-trust li:first-child{padding-left:0;} .ds-trust li+li{border-left:1px solid var(--line);} .ds-trust svg{width:3rem;height:3rem;flex:none;color:var(--blue);} .ds-trust span{font-family:var(--display);font-weight:700;font-size:1.35rem;line-height:1.15;max-width:12ch;}"
+    },
+    {
+      "name": "Service Panel (Heating)",
+      "kind": "card",
+      "refersTo": "service-bar-heat",
+      "description": "1px-bordered panel: solid red bar with Rubik title, photo plate left 46%, icon list right, arrow link.",
+      "html": "<article class=\"ds-svc\"><h2 class=\"ds-svc-bar\">Heating</h2><div class=\"ds-svc-body\"><div class=\"ds-svc-photo\" aria-hidden=\"true\"></div><div class=\"ds-svc-side\"><ul><li><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4\"/></svg><span>Furnace and heat repair</span></li><li><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M12 2v3M12 19v3M2 12h3M19 12h3\"/></svg><span>Furnace tune-ups and cleaning</span></li><li><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z\"/></svg><span>Thermostats and wiring</span></li></ul><a class=\"ds-svc-more\" href=\"#\">All heating services <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a></div></div></article>",
+      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-svc{border:1px solid var(--line);background:var(--white);max-width:640px;font-family:var(--font);color:var(--ink);} .ds-svc-bar{margin:0;padding:.85rem 1.5rem;background:var(--red);color:var(--white);font-family:var(--display);font-weight:700;font-size:2.4rem;line-height:1.05;} .ds-svc-body{display:grid;grid-template-columns:46% 1fr;} .ds-svc-photo{min-height:240px;background:linear-gradient(160deg,#c9d6e8,#3d5270);} .ds-svc-side{display:flex;flex-direction:column;justify-content:center;gap:1.25rem;padding:1.5rem;} .ds-svc ul{list-style:none;margin:0;padding:0;display:grid;gap:.95rem;} .ds-svc li{display:grid;grid-template-columns:1.75rem 1fr;gap:.75rem;align-items:center;font-size:1.08rem;line-height:1.3;} .ds-svc li svg{width:1.6rem;height:1.6rem;color:var(--navy);} .ds-svc li:first-child svg{color:var(--red);} .ds-svc-more{display:inline-flex;align-items:center;gap:.45rem;font-weight:700;color:var(--ink);} .ds-svc-more svg{width:1.05em;height:1.05em;color:var(--red);transition:transform .3s var(--ease);} .ds-svc-more:hover svg{transform:translateX(4px);} .ds-svc-more:focus-visible{outline:3px solid var(--blue);outline-offset:3px;}"
+    },
+    {
+      "name": "Call Band",
+      "kind": "custom",
+      "refersTo": "call-band",
+      "description": "Navy band: logo mark on a white disc, white headline, red Call and ghost Request service.",
+      "html": "<section class=\"ds-cb\"><span class=\"ds-cb-mark\" aria-hidden=\"true\">[mark]</span><div><h2>No heat or no AC right now?</h2><p>Call Gerald directly. If he's on a job, the line takes your details and he calls you back.</p></div><div class=\"ds-cb-act\"><a class=\"ds-btn ds-btn-red ds-lg\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"/></svg> Call 314-420-7803</a><a class=\"ds-btn ds-btn-ghost\" href=\"#\">Request service</a></div></section>",
+      "css": ":root{--red:#d8183c;--red-deep:#b0102f;--blue:#2470b4;--blue-deep:#1b5893;--navy:#10233f;--navy-2:#1a3355;--ink:#10233f;--ink-soft:#3d5270;--line:#d6dfeb;--wash:#f2f6fb;--white:#fff;--display:'Rubik Variable','Rubik',system-ui,sans-serif;--font:'Archivo Variable','Archivo',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:56px;padding:.95rem 1.5rem;border:0;border-radius:0;font-family:var(--display);font-weight:700;font-size:1rem;line-height:1.15;letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:background-color .25s var(--ease),color .25s var(--ease),transform .25s var(--ease);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px;} .ds-btn svg{width:1.15em;height:1.15em;flex:none;} .ds-btn-red{background:var(--red);color:var(--white);} .ds-btn-red:hover{background:var(--red-deep);} .ds-btn-ghost{min-height:60px;padding-inline:1.6rem;font-size:1.05rem;background:transparent;color:var(--white);box-shadow:inset 0 0 0 2px rgb(255 255 255 / .7);} .ds-btn-ghost:hover{background:var(--white);color:var(--navy);} .ds-cb{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1.5rem 2.25rem;padding:3rem 2rem;background:var(--navy);color:var(--white);font-family:var(--font);} .ds-cb-mark{width:84px;height:84px;display:grid;place-items:center;background:var(--white);color:var(--ink-soft);border-radius:50%;font-size:.75rem;} .ds-cb h2{margin:0 0 .4rem;font-family:var(--display);font-weight:700;font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.02;} .ds-cb p{margin:0;color:#c9d6e8;font-size:1.08rem;} .ds-cb-act{display:flex;flex-wrap:wrap;gap:.75rem;} .ds-lg{min-height:60px;padding-inline:1.6rem;font-size:1.05rem;}"
     }
   ],
   "narrative": {
     "northStar": "The Heat-and-Cool Work Order",
-    "overview": "The site reads like a clean, well-run service ticket: white paper, navy ink, ruled lines, and solid blocks of the two colors that already live in Dent's logo. Red means heat, blue means cool, and that pairing is the brand's own logic, so it carries meaning everywhere it appears (symptom choices, service panels, numbered steps, icon badges) instead of being sprinkled for decoration. Navy is the working color for structure: the header call block, the property-manager lane, the call band, the footer.\n\nForm is hard-edged and blocky. Buttons are solid rectangles with a heavy Rubik label; inputs are square with a 2px rule; lists are separated by thin rules under a thick 3px navy top rule. Depth is minimal and soft, used only to lift a white card off a photo or a pale wash. Photography is realistic, daylight, St. Louis residential, with no people, and every generated image carries a provenance sidecar.\n\nThe logo and its colors are pinned client assets. The system is built around them and never reinterprets them.",
+    "overview": "The site reads like a clean, well-run service ticket: white paper, navy ink, ruled lines, and solid blocks of the two colors that already live in Dent's logo. Red means heat, blue means cool, and that pairing is the brand's own logic, so it carries meaning everywhere it appears (symptom choices, service panel bars, numbered steps, H1 accent rules, icon tints) instead of being sprinkled for decoration. Navy is the working color for structure: the header call block, the photo-hero tint, the property-manager lane, the call band, the footer.\n\nEvery top-level page opens on the same move: a full-bleed realistic photograph of a St. Louis home or system, darkened by a navy tint that is heaviest on the left, with a white Rubik headline, a short white line, a red Call button and, where the page takes requests, a white quote card on the right. Below the hero the page returns to white paper: a ruled trust bar, bordered heating and cooling panels with solid color bars, thin rules, and flat blocks. Form is hard-edged; depth is soft and used only to lift a white card off a photo or wash.\n\nThe logo and its colors are pinned client assets. The system is built around them and never reinterprets them.",
     "keyCharacteristics": [
-      "Two-color heat/cool semantics (red #D8183C / blue #2470B4) on white, structured by navy ink.",
-      "Rubik 700 for every heading, button and phone number; Archivo for reading text.",
+      "Two-color heat/cool semantics (heat red / cool blue) on white, structured by navy ink.",
+      "Dark photo heroes: full-bleed photo under a left-weighted navy tint, white type, red Call, white quote card.",
+      "Rubik 700 for headings, buttons, trust labels and phone numbers; Rubik 600 for nav; Archivo for reading text.",
       "Square corners everywhere; the only curve is the round white disc behind the logo mark.",
-      "Thin rules and solid color blocks instead of cards-with-borders or decorative fills.",
-      "Soft navy-tinted shadows only to lift white panels; no hard offset shadows.",
-      "Realistic generated photography, no people, provenance recorded next to each file."
+      "1px rule-line borders and dividers, solid color bars, no decorative fills.",
+      "Realistic generated photography, no people, provenance recorded next to each file.",
+      "",
+      " Colors",
+      "",
+      "two-accent brand palette (heat red, cool blue) on white, with navy ink doing the structural work and every neutral tinted toward the navy rather than grey.",
+      "",
+      "# Primary",
+      "**Heat Red** (heat-red): the primary call to action (Call, Send my request), the Heating panel bar, the heating H1 accent rule, the \"No heat\" choice icon and picked fill, odd step numbers, the reviews arrow, active nav underline, header call hover. Hover deepens to **Heat Red Deep** (heat-red-deep), which also carries form error text.",
+      "",
+      "# Secondary",
+      "**Cool Blue** (cool-blue): the Cooling panel bar, the cooling H1 accent rule, the \"No AC\" choice icon and picked fill, the trust-bar icons, even step numbers, the Request Service action in the mobile bar, focus outlines, text selection, checkbox accent, input focus border. Hover deepens to **Cool Blue Deep** (cool-blue-deep).",
+      "",
+      "# Tertiary",
+      "**Navy Ink** (navy-ink): body text and the structural block color (header call button, property-manager lane, call band, footer, navy page bands, thick 3px top rules on lists, the photo-hero ground behind the image). **Navy Raised** (navy-raised) is its hover state.",
+      "**Navy Scrim** (navy-scrim): the photo-hero tint, a deeper navy used only as a translucent overlay on photographs, never as a solid surface.",
+      "",
+      "# Neutral",
+      "**Ink Soft** (ink-soft): secondary text, leads on white, descriptions, the quote-card note.",
+      "**Rule Line** (rule-line): 1px panel borders, list dividers, the trust-bar vertical rules and bottom edge, the header bottom edge and the rule after the logo, 2px input and choice-button borders.",
+      "**Wash** (wash): pale blue-white section ground (tune-up section, service \"what Gerald handles\" grid, price boxes, prose call-out box).",
+      "**White** (white): page ground, card ground, all type on photo heroes and on solid color blocks.",
+      "**On-navy tints**: **Navy Mist** (navy-mist) for secondary text on navy and on photo heroes (breadcrumbs, call-band line, footer text); **Navy Sky** (navy-sky) for the footer email link; **Navy Ember** (navy-ember) for the property-lane icon and phone hover on navy (a light heat red that stays legible on the dark ground); **Navy Divider** (navy-divider) for rules on navy.",
+      "",
+      "# Named Rules",
+      "The Heat Is Red, Cool Is Blue Rule.** Red belongs to heating and urgent action; blue belongs to cooling and supporting action. When a component has heat and cool variants, the colors map that way, never swapped and never used as interchangeable accents.",
+      "",
+      "The No Grey Rule.** Every neutral is tinted from the brand navy (ink-soft, rule-line, wash, navy-scrim, the on-navy tints). Do not introduce neutral greys.",
+      "",
+      "The Pinned Brand Rule.** The logo files in `public/brand` and the red and blue sampled from them are client assets. Never redraw, recolor, restyle or re-letter the logo; use the dark version on light grounds and the light version on navy.",
+      "",
+      " Typography",
+      "",
+      "Display Font:** Rubik Variable (fallback Rubik, system-ui)",
+      "Body Font:** Archivo Variable at normal width (fallback Archivo, system-ui)",
+      "",
+      "Character:** Rubik's rounded-shouldered heavy weight gives headings, buttons and nav a friendly, sturdy voice; Archivo keeps reading text plain and even. The client chose Rubik from a specimen after the extended Archivo display read too wide.",
+      "",
+      "# Hierarchy",
+      "**Hero** (700, clamp(2.3rem, 4.6vw, 4.5rem), 1.02, -0.02em): the home H1 on the dusk photo, white, max about 16ch. The white subline under it runs clamp(1.1rem, 1.5vw, 1.4rem) at 1.4, max 28rem.",
+      "**Hero Page** (700, clamp(2.1rem, 4vw, 3.8rem), 1.03, -0.02em): the H1 on interior photo heroes (About, Contact, service pages), max 16ch, with its accent rule beneath. Leads run clamp(1.05rem, 1.35vw, 1.25rem) at 1.5.",
+      "**Display** (700, clamp(2.3rem, 5vw, 4.5rem), 1.02): titles on the solid page bands (request forms, locations), max 16ch.",
+      "**Headline** (700, clamp(2rem, 4vw, 3.25rem), 1.02): section titles on home. Service-page section titles step down to clamp(1.9rem, 3.4vw, 2.75rem); the call band and tune-up titles to about clamp(1.7rem, 3vw, 2.5rem).",
+      "**Panel Bar** (700, clamp(1.9rem, 3.2vw, 2.9rem), 1.05): \"Heating\" and \"Cooling\" in the solid service panel bars.",
+      "**Card Title** (700, clamp(1.6rem, 2.5vw, 2.3rem), 1.1): the quote-card heading.",
+      "**Trust Label** (700, clamp(1.1rem, 1.7vw, 1.5rem), 1.15): the two-line trust-bar labels, max 12ch so each wraps to two lines.",
+      "**Title** (700, 1.1 to 1.2rem, 1.25): step titles, service item names, price-box heads, service tile labels.",
+      "**Nav** (Rubik 600, clamp(0.95rem, 1.15vw, 1.08rem)): header links, Title Case.",
+      "**Button** (700, 1rem, 1.15, 0.01em): every button and the phone number blocks; large buttons step up to 1.05rem, the hero Call to clamp(1.1rem, 1.5vw, 1.4rem). Phone numbers use tabular figures.",
+      "**Body** (Archivo 400, 1.0625rem, 1.6): reading text; long text capped near 44 to 46rem.",
+      "**Label** (Archivo 700, 0.92rem): form labels, the choice legend, choice buttons. FAQ questions use Archivo at 750, about 1.1rem.",
+      "**Consent** (Archivo 400, 0.875rem, 1.45 to 1.5): consent copy, in navy ink, not soft ink, so it stays readable.",
+      "",
+      "# Named Rules",
+      "The Rubik Speaks Up Rule.** Headings, nav, buttons, phone numbers, trust labels and step numerals are Rubik. Body copy, labels, consent and FAQ questions are Archivo. Do not set reading text in Rubik.",
+      "",
+      "The Phone Number Rule.** A phone number shown as an action is set in Rubik 700 with tabular figures.",
+      "",
+      " Layout",
+      "",
+      "ntent sits in a centered column (max 1240px) with a fluid gutter (clamp(1.25rem, 4vw, 3.5rem)); full-bleed bars (header, property-manager lane, service-panel row) widen to 1440px, and photo heroes hold their content to 1500px on very wide screens. Sections breathe on a fluid vertical rhythm (clamp(4rem, 9vw, 7.5rem)); the hero-adjacent bands (trust bar, service panels, tune-up, call band) run tighter, around clamp(2.5rem, 5vw, 4rem). The sticky header is 84px and anchors scroll with that offset.",
+      "",
+      "Photo hero.** At 960px and up the hero is a two-column grid: copy left, the quote card right (clamp(400px, 37vw, 560px)), vertically centered, about 640px tall at most and never taller than the viewport under the header. Heroes without a side panel are a single left copy column (max about 640px) at least 460px tall. Below 960px the quote card stacks under the copy on the same dark ground.",
+      "",
+      "Below the hero.** A three-up trust bar (white, 1px rule-line bottom edge, 1px vertical rules between items); two equal Heating | Cooling panels; a one-line reviews row split by a 1px vertical rule; asymmetric copy-beside-list grids (about 1.05fr to 1fr, and 1fr to 1.6fr for FAQ); a wash tune-up row (photo 0.9fr, copy 1.1fr).",
+      "",
+      "Responsive.** Navigation collapses to a menu sheet at 1100px. Between 960 and 1279px the quote card's choice grid drops to two columns; at 1180px and up Name, Phone and ZIP sit on one row (1.1fr, 1.1fr, 0.8fr). Two-column grids and the service panels stack at 960px. At 760px the hero tint turns vertical, the hero Call and band buttons go full width, the trust bar and each panel's photo/list body go single column, and a fixed bottom bar (red Call, blue Request Service, 50px) appears with its right side kept clear for the chat bubble. Tap targets are at least 46px, most 48 to 64px.",
+      "",
+      " Elevation & Depth",
+      "",
+      "stly flat. Depth comes from the dark photo hero, from color blocks (navy bands, red and blue panel bars) and from white surfaces set on wash. Shadows are soft and long, used only to lift a white surface off a photo or wash, never as decoration or as a hard offset.",
+      "",
+      "# Shadow Vocabulary",
+      "**Card lift** (`box-shadow: 0 30px 60px -24px rgb(0 0 0 / 0.6)`): the quote card over a dark photo hero. Over the darkened photo a navy tint disappears, so this one shadow is a deeper neutral dark.",
+      "**Panel lift** (`box-shadow: 0 18px 40px -28px rgb(16 35 63 / 0.45)`): white surfaces on light grounds (the service-page item grid, the other-service tiles).",
+      "**Sheet drop** (`box-shadow: 0 18px 30px -12px rgb(16 35 63 / 0.25)`): the mobile menu sheet under the header.",
+      "**Bar edge** (`box-shadow: 0 -1px 0 #D6DFEB, 0 -10px 24px -16px rgb(16 35 63 / 0.35)`): the fixed mobile action bar.",
+      "**Headline halo** (`text-shadow: 0 2px 18px rgb(0 0 0 / 0.35)`): photo-hero H1s only, a legibility aid over bright window glow, not a visible effect.",
+      "",
+      "# Photo Tint",
+      "e photo hero is the one place a gradient lives. A navy-scrim overlay runs left to right from 0.92 opacity at the left edge, holding near 0.8 through the first third, falling to about 0.25 to 0.3 past the middle and 0.1 to 0.18 at the right edge, so white type sits on near-solid navy while the house reads on the right. Under 760px it turns vertical (about 0.3 at the top to 0.94 by 60%) so stacked copy and card sit on the dark end.",
+      "",
+      "# Named Rules",
+      "The Lift, Don't Stamp Rule.** A shadow only lifts a white surface off a photo or wash, and it is always soft and long. Navy-tinted on light grounds; the deeper dark is reserved for the card over a photo. No hard offset shadows, no glass, no glow.",
+      "",
+      "The Tint, Don't Decorate Rule.** Gradients exist only as the navy scrim that makes type legible on a photograph. No gradient fills on buttons, cards, bands or text.",
+      "",
+      " Shapes",
+      "",
+      "uare corners throughout (0px): buttons, inputs, choice buttons, cards, panels, icon badges, menu toggle, bands. The only curve is the round white disc (50%) behind the logo mark in the call band. Outlines are drawn as 2px inset strokes (line and ghost buttons, icon badges, menu toggle) or 2px borders (inputs, choices). Containers on white use a 1px rule-line border (service panels) rather than a shadow. Lists use a 3px navy top rule with 1px rule-line dividers.",
+      "",
+      "H1 accent rule.** Every photo-hero H1 is followed by a 72 by 6px solid bar: heat red on heating pages, cool blue on cooling pages, and a hard half-red, half-blue split on every other photo hero (maintenance, property management, About, Contact; the home H1 carries no rule). The split is a hard 50% stop, never a blend. This small bar is the only red | blue split in the system.",
+      "",
+      "# Named Rules",
+      "The Hard Edge Rule.** Nothing is rounded except the logo disc. No pills, no radius on cards or buttons.",
+      "",
+      "The Small Split Rule.** The red | blue split appears only as the 72px H1 accent rule. Never extend it into full-width bands, stripes or section dividers.",
+      "",
+      " Components",
+      "",
+      "# Buttons",
+      "lid, heavy blocks that read as tools.",
+      "**Shape:** square (0px), minimum 56px tall (60px for the large call-band and hero-actions size, 64px for the home hero Call), icon gap 0.6rem.",
+      "**Red:** the primary action (call, send). Hover deepens.",
+      "**Blue:** the cooling-side or secondary request action.",
+      "**Navy:** structural actions on light grounds. Hover to navy raised.",
+      "**Line:** transparent with a 2px inset navy stroke; fills navy with white text on hover.",
+      "**Ghost:** the line button for dark grounds (call band, photo heroes), a 2px inset stroke at 70% white; fills white with navy text on hover.",
+      "**States:** background and color ease over 0.25s on cubic-bezier(0.16, 1, 0.3, 1); pressed nudges down 1px; focus is a 3px cool-blue outline offset 3px; disabled send drops to 65% opacity.",
+      "**Arrow links:** bold text with a trailing arrow that slides 4px right on hover; on the service panels the arrow takes the panel's color (\"All heating services\", \"All cooling services\").",
+      "",
+      "# Inputs / Fields",
+      "**Style:** white, 2px rule-line border, square, 52px minimum height, Archivo at body size, bold 0.92rem labels above with optional notes in ink-soft regular.",
+      "**Focus:** border shifts to cool blue (no glow).",
+      "**Error:** status message in bold heat-red-deep text.",
+      "**Consent:** two checkboxes with blue accent, copy at 0.875rem in navy ink.",
+      "",
+      "# Photo Hero (signature)",
+      "e shared opening of every top-level page (home, About, Contact, each service page): a full-bleed realistic photograph on a navy ground, the navy-scrim tint (see Elevation & Depth), optional breadcrumb in navy mist, white Rubik H1 with its accent rule (home omits the rule), a white lead, a red Call button (with a ghost secondary where a page needs one), and the quote card on the right when the page takes requests. Home uses the dusk photo with the Gateway Arch; interior pages use their own subject photo with the image anchored at 60% so the house sits right of the copy.",
+      "",
+      "# Quote Card",
+      "e request form on photo heroes: white, square, padded clamp(1.4rem, 2.4vw, 2rem), card lift, Rubik card title, an ink-soft note, the symptom choice grid, Name / Phone / ZIP (two columns with ZIP full width; one row of three at 1180px and up), consents, full-width red Send with an arrow.",
+      "",
+      "# Symptom Choice Grid (signature)",
+      "3-column grid (2 columns from 960 to 1279px and under 420px) of square choice buttons, 50px tall: white with a 2px rule-line border, bold Archivo label beside a Lucide icon (1.35rem, stroke 2.4). The icon is heat red for \"No heat\" (flame), cool blue for \"No AC\" (snowflake), navy for the rest. Hover moves the border to navy. When picked, \"No heat\" fills solid heat red, \"No AC\" fills solid cool blue, every other choice fills navy, and label and icon turn white. The brand's heat/cool logic in one interaction.",
+      "",
+      "# Trust Bar",
+      "white strip directly under the home hero: three items, each a large cool-blue Lucide line icon (2.4 to 3rem, stroke 1.6) beside a two-line Rubik 700 trust label, separated by 1px rule-line vertical rules, with a 1px rule-line bottom edge. Stacks to a plain list without rules under 760px.",
+      "",
+      "# Service Panels (Heating | Cooling)",
+      "o equal panels with a 1px rule-line border and no shadow. Each opens with a solid bar (heat red or cool blue) carrying the Rubik panel-bar title as a link, then a body split into a photo plate on the left (46%, cover-cropped, at least 240px tall) and an icon list on the right: Lucide icons at 1.6rem, stroke 1.75, with the first icon in the panel's color and the rest in navy, items at clamp(1rem, 1.25vw, 1.12rem), and the \"All … services\" arrow link last. Under 760px the photo moves on top at 16:9.",
+      "",
+      "# Call Band",
+      "full-width navy band: the logo mark on a round white disc (clamp(72px, 7vw, 96px), 12px padding), a white Rubik headline (clamp(1.7rem, 3vw, 2.5rem)) with a navy-mist line, and two large buttons (red Call, ghost Request service). Three columns on desktop, the actions drop below at 1100px, everything stacks full width at 760px.",
+      "",
+      "# Cards / Containers",
+      "**Service-page item grid:** white cells separated by 1px rule-line gaps, panel lift, each with a 3rem square icon badge (2px inset stroke in the page's tone color) and Rubik title.",
+      "**Other-service tiles:** white, panel lift, 16:10 photo with a slow 1.04 zoom on hover, then a solid label bar in the service's tone (red, blue or navy).",
+      "**Price / note box:** wash ground, 1.5 to 1.75rem padding, no border, no shadow; a solid navy 3rem icon square marks it.",
+      "",
+      "# Icon System",
+      "line Lucide outline SVG, never an icon font or emoji. Default stroke 2.25 at text size; stroke thins as icons grow (2.4 on the small choice icons, 1.75 on 1.6rem panel icons, 1.6 on the large trust icons) so the line weight reads the same.",
+      "",
+      "# Navigation",
+      "**Header:** white, sticky, 84px, a 1px rule-line bottom edge. Dark logo left at clamp(170px, 19vw, 290px) followed by a 1px rule-line vertical rule, Rubik 600 nav links with a 2px heat-red underline on hover and on the current page, then a navy phone block in Rubik 700 that turns red on hover.",
+      "**Mobile:** below 1100px the logo rule drops and a square outline Menu toggle opens a full-width white sheet of Rubik 1.15rem links on rules plus a full-width red Call; under 560px the phone block shows only its icon.",
+      "**Mobile action bar:** fixed bottom red Call and blue Request Service blocks, 50px tall.",
+      "**Property-manager lane:** a full-width navy link bar (1440px max), navy-ember building icon, bold Rubik lead-in, navy-mist line, arrow link right.",
+      "**Footer:** navy, light logo, Rubik phone number at 1.6rem, small uppercase column headings, navy-mist links, navy-divider base rule.",
+      "",
+      "# Page Bands and Lists",
+      "**Page band:** full-width solid block (navy, heat red or cool blue by subject) with a white Display title and lead, used on the request forms and location pages.",
+      "**Ruled lists:** numbered visit steps (Rubik numerals alternating red and blue), tick lists, and FAQ disclosures; all sit under a 3px navy top rule with 1px dividers.",
+      "",
+      " Do's and Don'ts",
+      "",
+      "# Do:",
+      "**Do** map heat to heat red and cool to cool blue wherever a component has heating and cooling variants.",
+      "**Do** open top-level pages with the photo hero: realistic photo, navy-scrim tint heaviest on the left, white Rubik H1, red Call.",
+      "**Do** set headings, buttons, nav and phone numbers in Rubik, and body copy, labels and consent in Archivo.",
+      "**Do** keep every corner square; reserve the 50% curve for the logo mark's disc.",
+      "**Do** border white panels with a 1px rule line and separate list items with 1px dividers under a 3px navy top rule.",
+      "**Do** use the dark logo on white and the light logo on navy, at their native proportions.",
+      "**Do** keep generated photography realistic, residential St. Louis, with no people, and write a provenance sidecar next to every shipped raster.",
+      "**Do** keep tap targets at 46px or taller and the focus outline at 3px cool blue.",
+      "",
+      "# Don't:",
+      "**Don't** redraw, recolor, crop into new shapes or restyle the client's logo files.",
+      "**Don't** round buttons, inputs or cards, or use pill shapes.",
+      "**Don't** use full-width red | blue split bands or stripes; the split lives only in the 72px H1 accent rule.",
+      "**Don't** use gradients except the navy scrim over a photograph.",
+      "**Don't** use hard offset shadows, glass or glow.",
+      "**Don't** introduce neutral greys; tint from the navy.",
+      "**Don't** use photography with people in it, stock technicians included.",
+      "**Don't** use emoji or text glyphs as icons; use inline outline SVG."
     ],
     "rules": [
       {
@@ -410,7 +661,7 @@
       },
       {
         "name": "The No Grey Rule",
-        "body": "Every neutral is tinted from the brand navy (ink-soft, rule-line, wash, the on-navy tints). Do not introduce neutral greys.",
+        "body": "Every neutral is tinted from the brand navy (ink-soft, rule-line, wash, navy-scrim, the on-navy tints). Do not introduce neutral greys.",
         "section": "colors"
       },
       {
@@ -420,7 +671,7 @@
       },
       {
         "name": "The Rubik Speaks Up Rule",
-        "body": "Headings, buttons, phone numbers, step numerals and the FAQ plus mark are Rubik 700. Body copy, labels and FAQ questions are Archivo. Do not set reading text in Rubik.",
+        "body": "Headings, nav, buttons, phone numbers, trust labels and step numerals are Rubik. Body copy, labels, consent and FAQ questions are Archivo. Do not set reading text in Rubik.",
         "section": "typography"
       },
       {
@@ -430,29 +681,41 @@
       },
       {
         "name": "The Lift, Don't Stamp Rule",
-        "body": "A shadow only lifts a white surface off a photo or wash, and it is always soft and navy-tinted. No hard offset shadows, no glass, no glow.",
+        "body": "A shadow only lifts a white surface off a photo or wash, and it is always soft and long. Navy-tinted on light grounds; the deeper dark is reserved for the card over a photo. No hard offset shadows, no glass, no glow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Tint, Don't Decorate Rule",
+        "body": "Gradients exist only as the navy scrim that makes type legible on a photograph. No gradient fills on buttons, cards, bands or text.",
         "section": "elevation"
       },
       {
         "name": "The Hard Edge Rule",
         "body": "Nothing is rounded except the logo disc. No pills, no radius on cards or buttons.",
         "section": "shapes"
+      },
+      {
+        "name": "The Small Split Rule",
+        "body": "The red | blue split appears only as the 72px H1 accent rule. Never extend it into full-width bands, stripes or section dividers.",
+        "section": "shapes"
       }
     ],
     "dos": [
-      "**Do** map heat to red #D8183C and cool to blue #2470B4 wherever a component has heating and cooling variants.",
-      "**Do** set headings, buttons and phone numbers in Rubik 700, and body copy and labels in Archivo.",
+      "**Do** map heat to heat red and cool to cool blue wherever a component has heating and cooling variants.",
+      "**Do** open top-level pages with the photo hero: realistic photo, navy-scrim tint heaviest on the left, white Rubik H1, red Call.",
+      "**Do** set headings, buttons, nav and phone numbers in Rubik, and body copy, labels and consent in Archivo.",
       "**Do** keep every corner square; reserve the 50% curve for the logo mark's disc.",
-      "**Do** separate list items with 1px rule-line dividers under a 3px navy top rule.",
+      "**Do** border white panels with a 1px rule line and separate list items with 1px dividers under a 3px navy top rule.",
       "**Do** use the dark logo on white and the light logo on navy, at their native proportions.",
-      "**Do** keep generated photography realistic, daylight, residential, with no people, and write a provenance sidecar next to every shipped raster.",
+      "**Do** keep generated photography realistic, residential St. Louis, with no people, and write a provenance sidecar next to every shipped raster.",
       "**Do** keep tap targets at 46px or taller and the focus outline at 3px cool blue."
     ],
     "donts": [
       "**Don't** redraw, recolor, crop into new shapes or restyle the client's logo files.",
       "**Don't** round buttons, inputs or cards, or use pill shapes.",
-      "**Don't** blend gradients across surfaces; the only split allowed is the hard red | blue stripe, plus the hero photo's edge fade.",
-      "**Don't** use hard offset shadows, glass or glow; shadows stay soft and navy-tinted.",
+      "**Don't** use full-width red | blue split bands or stripes; the split lives only in the 72px H1 accent rule.",
+      "**Don't** use gradients except the navy scrim over a photograph.",
+      "**Don't** use hard offset shadows, glass or glow.",
       "**Don't** introduce neutral greys; tint from the navy.",
       "**Don't** use photography with people in it, stock technicians included.",
       "**Don't** use emoji or text glyphs as icons; use inline outline SVG."
