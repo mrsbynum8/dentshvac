@@ -504,9 +504,7 @@ const faqSchema = {
     padding-block: clamp(1rem, 2vw, 1.5rem) clamp(3rem, 6vw, 4.5rem);
   }
   .reviews-read {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
+    display: inline;
     font-family: var(--display);
     font-weight: 700;
     font-size: clamp(1.3rem, 2.2vw, 1.85rem);
@@ -516,6 +514,8 @@ const faqSchema = {
   .reviews-read :global(svg) {
     width: 0.85em;
     height: 0.85em;
+    margin-left: 0.4rem;
+    vertical-align: -0.08em;
     color: var(--red);
     transition: transform 0.3s var(--ease);
   }
@@ -532,9 +532,6 @@ const faqSchema = {
   }
   .nowrap {
     white-space: nowrap;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
   }
 
   /* ---------- Tune-ups ---------- */
