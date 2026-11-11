@@ -1,69 +1,24 @@
 ---
 import Base from '../layouts/Base.astro';
-import PhotoHero from '../components/PhotoHero.astro';
-import Icon from '../components/Icon.astro';
-import GhlForm from '../components/GhlForm.astro';
-import { BRAND, GHL } from '../data/site';
+import FormPage from '../components/FormPage.astro';
+import { GHL } from '../data/site';
 ---
 <Base
   title="Property Management HVAC Request | Dent's Heating And Cooling"
   description="Property managers: send an HVAC service request for a unit or building in St. Louis. Gerald diagnoses and fixes it himself."
 >
-  <PhotoHero
-    title="Property management service request"
-    lead="Send the property, the unit and the issue. Gerald diagnoses it, fixes it on the spot when the part is on the truck, and schedules the return with your office when it isn't."
+  <FormPage
+    title="Property service request"
+    lead="Send the property, the unit and the issue. Gerald diagnoses it and schedules the work with your office."
     img="/photos/apartments.webp"
     alt="A brick apartment building with a row of outdoor air conditioning units"
     crumb="Property request"
-  >
-    <ul class="pm-points">
-      <li><Icon name="building" /><span>Apartments, multifamily and rentals</span></li>
-      <li><Icon name="wrench" /><span>The owner on every call</span></li>
-      <li><Icon name="calendar" /><span>Seasonal maintenance across a property</span></li>
-    </ul>
-    <a class="btn btn-red btn-lg" href={BRAND.phoneHref}><Icon name="phone" /> Call or text {BRAND.phone}</a>
-  </PhotoHero>
-  <section class="section form-wrap">
-    <div class="wrap narrow">
-      <h2>Property and unit details</h2>
-      <GhlForm form={GHL.forms.property} />
-    </div>
-  </section>
+    form={GHL.forms.property}
+    points={[
+      { icon: 'building', t: 'Apartments, multifamily and rentals' },
+      { icon: 'wrench', t: 'The owner on every call' },
+      { icon: 'calendar', t: 'Seasonal maintenance across a property' },
+    ]}
+    call="Call or text"
+  />
 </Base>
-<style>
-  .form-wrap {
-    background: var(--wash);
-  }
-  .narrow {
-    max-width: 860px;
-  }
-  h2 {
-    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
-    margin-bottom: 1.25rem;
-  }
-  .btn-lg {
-    min-height: 60px;
-    padding-inline: 1.6rem;
-    font-size: 1.05rem;
-  }
-  .pm-points {
-    list-style: none;
-    margin: 1.5rem 0 0;
-    padding: 0;
-    display: grid;
-    gap: 0.7rem;
-  }
-  .pm-points li {
-    display: grid;
-    grid-template-columns: 1.6rem 1fr;
-    gap: 0.7rem;
-    align-items: center;
-    font-family: var(--display);
-    font-weight: 600;
-  }
-  .pm-points :global(svg) {
-    width: 1.4rem;
-    height: 1.4rem;
-    color: #a9c8ec;
-  }
-</style>
