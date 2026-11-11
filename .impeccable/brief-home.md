@@ -15,6 +15,8 @@ and a quote form, kinda like we just did for RG Paint". Heat|Cool now lives in t
 Unresolved: service cities, hours, street spelling (Hill/Hills), warranty and license. Copy stays
 neutral on all of these until Gerald confirms.
 
+APPROVED COMP (2026-11-10, comp round, her pick): .impeccable/mocks/comp-3.png, "Heat and cool panels": navy-tinted dusk brick-home hero with Arch skyline, white headline + red Call left, quote card with icon choice buttons right, then red Heating / blue Cooling header panels with photo + icon list, then Google reviews line. Do not literalize: invented copy (same-day, 5.0 stars, Google logo); the build uses only true copy.
+
 ## Direction contract
 THESIS: The fastest honest path from "my heat/AC is out" to Gerald. Refuses the stock-technician hero and
 fake-proof trust badges; the first screen is a working request, the brand's red/blue heat/cool logic carries

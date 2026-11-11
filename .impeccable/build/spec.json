@@ -1,0 +1,1303 @@
+{
+  "tool": "comp-spec",
+  "version": 1,
+  "createdAt": "2026-11-11T00:25:16.034Z",
+  "comp": ".impeccable/mocks/comp-3.png",
+  "warnings": [
+    "region logo: the artwork runs off the box on the left and right and top and bottom (its ink reaches the edge over 35% of that side). Widen the region so the box holds the whole shape with a margin; a plate placed with object-fit: cover on this box would be cut there.",
+    "region hero-photo: the artwork runs off the box on the top and bottom (its ink reaches the edge over 35% of that side). Widen the region so the box holds the whole shape with a margin; a plate placed with object-fit: cover on this box would be cut there.",
+    "region card: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)",
+    "region heat-photo: the artwork runs off the box on the left and top (its ink reaches the edge over 35% of that side). Widen the region so the box holds the whole shape with a margin; a plate placed with object-fit: cover on this box would be cut there.",
+    "region cool-photo: the artwork runs off the box on the right (its ink reaches the edge over 35% of that side). Widen the region so the box holds the whole shape with a margin; a plate placed with object-fit: cover on this box would be cut there."
+  ],
+  "uncoveredInkCells": [],
+  "compSize": {
+    "width": 1536,
+    "height": 1024
+  },
+  "aspect": 1.5,
+  "orientation": "landscape",
+  "palette": [
+    {
+      "hex": "#f8f8f8",
+      "coverage": 0.6157
+    },
+    {
+      "hex": "#0c1a33",
+      "coverage": 0.1729
+    },
+    {
+      "hex": "#c81731",
+      "coverage": 0.0807
+    },
+    {
+      "hex": "#0f1415",
+      "coverage": 0.0793
+    },
+    {
+      "hex": "#374359",
+      "coverage": 0.0514
+    }
+  ],
+  "bands": [
+    {
+      "y": 0.0118,
+      "strength": 0.5143
+    },
+    {
+      "y": 0.0471,
+      "strength": 0.5765
+    },
+    {
+      "y": 0.0824,
+      "strength": 1
+    },
+    {
+      "y": 0.1059,
+      "strength": 1
+    },
+    {
+      "y": 0.1294,
+      "strength": 0.4262
+    },
+    {
+      "y": 0.1529,
+      "strength": 0.4968
+    },
+    {
+      "y": 0.1882,
+      "strength": 0.3854
+    },
+    {
+      "y": 0.2235,
+      "strength": 0.4549
+    },
+    {
+      "y": 0.2471,
+      "strength": 0.5055
+    },
+    {
+      "y": 0.2824,
+      "strength": 0.4868
+    },
+    {
+      "y": 0.3059,
+      "strength": 0.4169
+    },
+    {
+      "y": 0.3412,
+      "strength": 0.2554
+    },
+    {
+      "y": 0.3647,
+      "strength": 0.2198
+    },
+    {
+      "y": 0.4,
+      "strength": 0.2181
+    },
+    {
+      "y": 0.4235,
+      "strength": 0.2796
+    },
+    {
+      "y": 0.4588,
+      "strength": 0.3483
+    },
+    {
+      "y": 0.4824,
+      "strength": 0.7529
+    },
+    {
+      "y": 0.5294,
+      "strength": 0.8746
+    },
+    {
+      "y": 0.5529,
+      "strength": 0.7525
+    },
+    {
+      "y": 0.5765,
+      "strength": 1
+    },
+    {
+      "y": 0.6,
+      "strength": 1
+    },
+    {
+      "y": 0.6235,
+      "strength": 0.2223
+    },
+    {
+      "y": 0.6706,
+      "strength": 1
+    },
+    {
+      "y": 0.6941,
+      "strength": 0.3925
+    },
+    {
+      "y": 0.7176,
+      "strength": 0.3022
+    },
+    {
+      "y": 0.7412,
+      "strength": 0.4967
+    },
+    {
+      "y": 0.7765,
+      "strength": 0.3039
+    },
+    {
+      "y": 0.8,
+      "strength": 0.2728
+    },
+    {
+      "y": 0.8235,
+      "strength": 0.3904
+    },
+    {
+      "y": 0.9176,
+      "strength": 0.5217
+    },
+    {
+      "y": 0.9412,
+      "strength": 0.5307
+    },
+    {
+      "y": 0.9647,
+      "strength": 0.4504
+    }
+  ],
+  "regions": [
+    {
+      "id": "logo",
+      "kind": "image",
+      "note": "client's own Dent's logo, red/blue arrow mark + DENT'S wordmark (real file, not redrawn)",
+      "grid": null,
+      "box": {
+        "x": 0.026,
+        "y": 0.0078,
+        "w": 0.2116,
+        "h": 0.0605
+      },
+      "px": {
+        "x": 40,
+        "y": 8,
+        "w": 325,
+        "h": 62
+      },
+      "aspect": 5.2419,
+      "palette": [
+        {
+          "hex": "#f7f8f8",
+          "coverage": 0.6936
+        },
+        {
+          "hex": "#1168b0",
+          "coverage": 0.1871
+        },
+        {
+          "hex": "#5996cb",
+          "coverage": 0.0514
+        },
+        {
+          "hex": "#99c1db",
+          "coverage": 0.0339
+        },
+        {
+          "hex": "#cb1a33",
+          "coverage": 0.0339
+        }
+      ],
+      "detail": {
+        "energy": 55.6262
+      },
+      "medium": "raster",
+      "clipped": [
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "plate": "assets/plates/logo.png",
+      "text": null
+    },
+    {
+      "id": "nav",
+      "kind": "chrome",
+      "note": "navigation links Heating Cooling Maintenance Property Managers About Contact",
+      "grid": null,
+      "box": {
+        "x": 0.2799,
+        "y": 0.0215,
+        "w": 0.5404,
+        "h": 0.0352
+      },
+      "px": {
+        "x": 430,
+        "y": 22,
+        "w": 830,
+        "h": 36
+      },
+      "aspect": 23.0556,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.8267
+        },
+        {
+          "hex": "#091534",
+          "coverage": 0.0888
+        },
+        {
+          "hex": "#b6bec7",
+          "coverage": 0.0489
+        },
+        {
+          "hex": "#84909f",
+          "coverage": 0.0181
+        },
+        {
+          "hex": "#57687c",
+          "coverage": 0.0175
+        }
+      ],
+      "detail": {
+        "energy": 67.3595
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "nav-phone",
+      "kind": "control",
+      "note": "navy phone button 314-420-7803",
+      "grid": null,
+      "box": {
+        "x": 0.8379,
+        "y": 0.0156,
+        "w": 0.1478,
+        "h": 0.0449
+      },
+      "px": {
+        "x": 1287,
+        "y": 16,
+        "w": 227,
+        "h": 46
+      },
+      "aspect": 4.9348,
+      "palette": [
+        {
+          "hex": "#081737",
+          "coverage": 0.6756
+        },
+        {
+          "hex": "#0a1f2f",
+          "coverage": 0.163
+        },
+        {
+          "hex": "#f4f5f6",
+          "coverage": 0.1363
+        },
+        {
+          "hex": "#576377",
+          "coverage": 0.0142
+        },
+        {
+          "hex": "#32425a",
+          "coverage": 0.0109
+        }
+      ],
+      "detail": {
+        "energy": 39.1148
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "hero-photo",
+      "kind": "plate",
+      "note": "dusk photo of a red-brick St. Louis home with lit windows and the Gateway Arch skyline at left, darkened by a deep navy tint on the left half",
+      "grid": null,
+      "box": {
+        "x": 0,
+        "y": 0.0781,
+        "w": 1,
+        "h": 0.498
+      },
+      "px": {
+        "x": 0,
+        "y": 80,
+        "w": 1536,
+        "h": 510
+      },
+      "aspect": 3.0118,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.4073
+        },
+        {
+          "hex": "#0b1b33",
+          "coverage": 0.293
+        },
+        {
+          "hex": "#101515",
+          "coverage": 0.1151
+        },
+        {
+          "hex": "#39455b",
+          "coverage": 0.102
+        },
+        {
+          "hex": "#c91830",
+          "coverage": 0.0826
+        }
+      ],
+      "detail": {
+        "energy": 66.7617
+      },
+      "medium": "raster",
+      "clipped": [
+        "top",
+        "bottom"
+      ],
+      "plate": "assets/plates/hero-photo.png",
+      "text": null
+    },
+    {
+      "id": "hero-headline",
+      "kind": "text",
+      "note": "white headline Heating and AC repair in St. Louis, from the owner himself.",
+      "grid": null,
+      "box": {
+        "x": 0.0286,
+        "y": 0.1621,
+        "w": 0.4505,
+        "h": 0.1816
+      },
+      "px": {
+        "x": 44,
+        "y": 166,
+        "w": 692,
+        "h": 186
+      },
+      "aspect": 3.7204,
+      "palette": [
+        {
+          "hex": "#f7f8f8",
+          "coverage": 0.336
+        },
+        {
+          "hex": "#091730",
+          "coverage": 0.2848
+        },
+        {
+          "hex": "#25364d",
+          "coverage": 0.2531
+        },
+        {
+          "hex": "#2f1b1f",
+          "coverage": 0.0711
+        },
+        {
+          "hex": "#4b5977",
+          "coverage": 0.055
+        }
+      ],
+      "detail": {
+        "energy": 89.1881
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "hero-sub",
+      "kind": "text",
+      "note": "white subline Gerald Pickett answers, diagnoses your system, and does the work.",
+      "grid": null,
+      "box": {
+        "x": 0.0306,
+        "y": 0.3535,
+        "w": 0.3034,
+        "h": 0.0664
+      },
+      "px": {
+        "x": 47,
+        "y": 362,
+        "w": 466,
+        "h": 68
+      },
+      "aspect": 6.8529,
+      "palette": [
+        {
+          "hex": "#0a1a31",
+          "coverage": 0.434
+        },
+        {
+          "hex": "#484d62",
+          "coverage": 0.2864
+        },
+        {
+          "hex": "#f4f4f5",
+          "coverage": 0.1672
+        },
+        {
+          "hex": "#6c6c73",
+          "coverage": 0.0699
+        },
+        {
+          "hex": "#a7a8b6",
+          "coverage": 0.0425
+        }
+      ],
+      "detail": {
+        "energy": 102.0889
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "hero-call",
+      "kind": "control",
+      "note": "red Call 314-420-7803 button with phone icon",
+      "grid": null,
+      "box": {
+        "x": 0.0326,
+        "y": 0.4443,
+        "w": 0.2839,
+        "h": 0.0723
+      },
+      "px": {
+        "x": 50,
+        "y": 455,
+        "w": 436,
+        "h": 74
+      },
+      "aspect": 5.8919,
+      "palette": [
+        {
+          "hex": "#c9182e",
+          "coverage": 0.8381
+        },
+        {
+          "hex": "#f8f6f7",
+          "coverage": 0.1255
+        },
+        {
+          "hex": "#ce3d53",
+          "coverage": 0.0213
+        },
+        {
+          "hex": "#e895a2",
+          "coverage": 0.0087
+        },
+        {
+          "hex": "#dd6d80",
+          "coverage": 0.0064
+        }
+      ],
+      "detail": {
+        "energy": 37.935
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "card",
+      "kind": "chrome",
+      "note": "white quote form card",
+      "grid": null,
+      "container": true,
+      "box": {
+        "x": 0.6152,
+        "y": 0.1055,
+        "w": 0.3724,
+        "h": 0.4443
+      },
+      "px": {
+        "x": 945,
+        "y": 108,
+        "w": 572,
+        "h": 455
+      },
+      "aspect": 1.2571,
+      "palette": [
+        {
+          "hex": "#f7f7f8",
+          "coverage": 0.8026
+        },
+        {
+          "hex": "#c81832",
+          "coverage": 0.0962
+        },
+        {
+          "hex": "#0b162f",
+          "coverage": 0.0522
+        },
+        {
+          "hex": "#788292",
+          "coverage": 0.0304
+        },
+        {
+          "hex": "#3a475c",
+          "coverage": 0.0186
+        }
+      ],
+      "detail": {
+        "energy": 50.3441
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "card-title",
+      "kind": "text",
+      "note": "Get help from Gerald",
+      "grid": null,
+      "box": {
+        "x": 0.6289,
+        "y": 0.1172,
+        "w": 0.2695,
+        "h": 0.0449
+      },
+      "px": {
+        "x": 966,
+        "y": 120,
+        "w": 414,
+        "h": 46
+      },
+      "aspect": 9,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.6381
+        },
+        {
+          "hex": "#091b35",
+          "coverage": 0.2597
+        },
+        {
+          "hex": "#798393",
+          "coverage": 0.0434
+        },
+        {
+          "hex": "#2f4356",
+          "coverage": 0.0315
+        },
+        {
+          "hex": "#bec1cb",
+          "coverage": 0.0274
+        }
+      ],
+      "detail": {
+        "energy": 86.0453
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "card-choices",
+      "kind": "control",
+      "note": "six bordered choice buttons with icons: No heat, No AC, Tune-up, New system, Property unit, Other",
+      "grid": null,
+      "box": {
+        "x": 0.6289,
+        "y": 0.1768,
+        "w": 0.3451,
+        "h": 0.1133
+      },
+      "px": {
+        "x": 966,
+        "y": 181,
+        "w": 530,
+        "h": 116
+      },
+      "aspect": 4.569,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.8449
+        },
+        {
+          "hex": "#3e4f68",
+          "coverage": 0.0615
+        },
+        {
+          "hex": "#9ea3b0",
+          "coverage": 0.0401
+        },
+        {
+          "hex": "#0d1637",
+          "coverage": 0.0338
+        },
+        {
+          "hex": "#0b1323",
+          "coverage": 0.0197
+        }
+      ],
+      "detail": {
+        "energy": 59.372
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "card-fields",
+      "kind": "control",
+      "note": "Name, Phone, ZIP inputs with labels",
+      "grid": null,
+      "box": {
+        "x": 0.6289,
+        "y": 0.3105,
+        "w": 0.3451,
+        "h": 0.0586
+      },
+      "px": {
+        "x": 966,
+        "y": 318,
+        "w": 530,
+        "h": 60
+      },
+      "aspect": 8.8333,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.8672
+        },
+        {
+          "hex": "#7d8998",
+          "coverage": 0.1021
+        },
+        {
+          "hex": "#525f6f",
+          "coverage": 0.0128
+        },
+        {
+          "hex": "#09122e",
+          "coverage": 0.0122
+        },
+        {
+          "hex": "#afbac2",
+          "coverage": 0.0057
+        }
+      ],
+      "detail": {
+        "energy": 31.9961
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "card-consent",
+      "kind": "text",
+      "note": "two text-message consent checkboxes",
+      "grid": null,
+      "box": {
+        "x": 0.6289,
+        "y": 0.3789,
+        "w": 0.3451,
+        "h": 0.084
+      },
+      "px": {
+        "x": 966,
+        "y": 388,
+        "w": 530,
+        "h": 86
+      },
+      "aspect": 6.1628,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.8211
+        },
+        {
+          "hex": "#0f1429",
+          "coverage": 0.0737
+        },
+        {
+          "hex": "#b8bdc6",
+          "coverage": 0.0354
+        },
+        {
+          "hex": "#444d5e",
+          "coverage": 0.0352
+        },
+        {
+          "hex": "#7c8291",
+          "coverage": 0.0346
+        }
+      ],
+      "detail": {
+        "energy": 78.1774
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "card-send",
+      "kind": "control",
+      "note": "red Send my request button",
+      "grid": null,
+      "box": {
+        "x": 0.6289,
+        "y": 0.4785,
+        "w": 0.3451,
+        "h": 0.0508
+      },
+      "px": {
+        "x": 966,
+        "y": 490,
+        "w": 530,
+        "h": 52
+      },
+      "aspect": 10.1923,
+      "palette": [
+        {
+          "hex": "#c81832",
+          "coverage": 0.8482
+        },
+        {
+          "hex": "#f8d6d8",
+          "coverage": 0.0664
+        },
+        {
+          "hex": "#f8f7f7",
+          "coverage": 0.0658
+        },
+        {
+          "hex": "#de6273",
+          "coverage": 0.0104
+        },
+        {
+          "hex": "#eca0af",
+          "coverage": 0.0092
+        }
+      ],
+      "detail": {
+        "energy": 32.5328
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "heat-bar",
+      "kind": "chrome",
+      "note": "red header bar",
+      "grid": null,
+      "box": {
+        "x": 0.0163,
+        "y": 0.5996,
+        "w": 0.4727,
+        "h": 0.0684
+      },
+      "px": {
+        "x": 25,
+        "y": 614,
+        "w": 726,
+        "h": 70
+      },
+      "aspect": 10.3714,
+      "palette": [
+        {
+          "hex": "#c81833",
+          "coverage": 0.8356
+        },
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.0703
+        },
+        {
+          "hex": "#e77887",
+          "coverage": 0.0464
+        },
+        {
+          "hex": "#e8abb6",
+          "coverage": 0.0438
+        },
+        {
+          "hex": "#f8d3d8",
+          "coverage": 0.004
+        }
+      ],
+      "detail": {
+        "energy": 26.7286
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": true
+      }
+    },
+    {
+      "id": "heat-title",
+      "kind": "text",
+      "note": "white Heating title",
+      "grid": null,
+      "box": {
+        "x": 0.0339,
+        "y": 0.6055,
+        "w": 0.1335,
+        "h": 0.0547
+      },
+      "px": {
+        "x": 52,
+        "y": 620,
+        "w": 205,
+        "h": 56
+      },
+      "aspect": 3.6607,
+      "palette": [
+        {
+          "hex": "#c91735",
+          "coverage": 0.6287
+        },
+        {
+          "hex": "#f8f7f8",
+          "coverage": 0.3136
+        },
+        {
+          "hex": "#db6e7f",
+          "coverage": 0.0246
+        },
+        {
+          "hex": "#f6d1d6",
+          "coverage": 0.0231
+        },
+        {
+          "hex": "#e9a2aa",
+          "coverage": 0.01
+        }
+      ],
+      "detail": {
+        "energy": 32.6765
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "heat-photo",
+      "kind": "plate",
+      "note": "basement gas furnace with ductwork and pipes",
+      "grid": null,
+      "box": {
+        "x": 0.0163,
+        "y": 0.6738,
+        "w": 0.2174,
+        "h": 0.2324
+      },
+      "px": {
+        "x": 25,
+        "y": 690,
+        "w": 334,
+        "h": 238
+      },
+      "aspect": 1.4034,
+      "palette": [
+        {
+          "hex": "#716a64",
+          "coverage": 0.4469
+        },
+        {
+          "hex": "#57381c",
+          "coverage": 0.169
+        },
+        {
+          "hex": "#825528",
+          "coverage": 0.1355
+        },
+        {
+          "hex": "#948a80",
+          "coverage": 0.1298
+        },
+        {
+          "hex": "#2d1910",
+          "coverage": 0.1188
+        }
+      ],
+      "detail": {
+        "energy": 28.9201
+      },
+      "medium": "raster",
+      "clipped": [
+        "left",
+        "top"
+      ],
+      "plate": "assets/plates/heat-photo.png",
+      "text": null
+    },
+    {
+      "id": "heat-list",
+      "kind": "text",
+      "note": "four heating items each with a red or navy line icon",
+      "grid": null,
+      "box": {
+        "x": 0.2474,
+        "y": 0.6836,
+        "w": 0.2318,
+        "h": 0.1816
+      },
+      "px": {
+        "x": 380,
+        "y": 700,
+        "w": 356,
+        "h": 186
+      },
+      "aspect": 1.914,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.8726
+        },
+        {
+          "hex": "#0c112a",
+          "coverage": 0.0618
+        },
+        {
+          "hex": "#979dab",
+          "coverage": 0.0288
+        },
+        {
+          "hex": "#606879",
+          "coverage": 0.0216
+        },
+        {
+          "hex": "#354055",
+          "coverage": 0.0153
+        }
+      ],
+      "detail": {
+        "energy": 56.1705
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "cool-bar",
+      "kind": "chrome",
+      "note": "blue header bar",
+      "grid": null,
+      "box": {
+        "x": 0.5111,
+        "y": 0.5996,
+        "w": 0.4727,
+        "h": 0.0684
+      },
+      "px": {
+        "x": 785,
+        "y": 614,
+        "w": 726,
+        "h": 70
+      },
+      "aspect": 10.3714,
+      "palette": [
+        {
+          "hex": "#1868b0",
+          "coverage": 0.8386
+        },
+        {
+          "hex": "#f7f8f8",
+          "coverage": 0.0661
+        },
+        {
+          "hex": "#78aad6",
+          "coverage": 0.0468
+        },
+        {
+          "hex": "#b0cee7",
+          "coverage": 0.0464
+        },
+        {
+          "hex": "#3484b8",
+          "coverage": 0.0021
+        }
+      ],
+      "detail": {
+        "energy": 22.5263
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": true
+      }
+    },
+    {
+      "id": "cool-title",
+      "kind": "text",
+      "note": "white Cooling title",
+      "grid": null,
+      "box": {
+        "x": 0.5247,
+        "y": 0.6055,
+        "w": 0.1263,
+        "h": 0.0547
+      },
+      "px": {
+        "x": 806,
+        "y": 620,
+        "w": 194,
+        "h": 56
+      },
+      "aspect": 3.4643,
+      "palette": [
+        {
+          "hex": "#1869b2",
+          "coverage": 0.6251
+        },
+        {
+          "hex": "#f7f8f8",
+          "coverage": 0.302
+        },
+        {
+          "hex": "#88b5d6",
+          "coverage": 0.0291
+        },
+        {
+          "hex": "#ccddee",
+          "coverage": 0.0267
+        },
+        {
+          "hex": "#408abd",
+          "coverage": 0.017
+        }
+      ],
+      "detail": {
+        "energy": 26.3811
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "cool-photo",
+      "kind": "plate",
+      "note": "outdoor AC condenser beside a brick wall with a disconnect box",
+      "grid": null,
+      "box": {
+        "x": 0.5111,
+        "y": 0.6738,
+        "w": 0.2168,
+        "h": 0.2324
+      },
+      "px": {
+        "x": 785,
+        "y": 690,
+        "w": 333,
+        "h": 238
+      },
+      "aspect": 1.3992,
+      "palette": [
+        {
+          "hex": "#494f54",
+          "coverage": 0.3433
+        },
+        {
+          "hex": "#904b38",
+          "coverage": 0.2144
+        },
+        {
+          "hex": "#b7aea7",
+          "coverage": 0.1705
+        },
+        {
+          "hex": "#131313",
+          "coverage": 0.1658
+        },
+        {
+          "hex": "#957f74",
+          "coverage": 0.106
+        }
+      ],
+      "detail": {
+        "energy": 43.1723
+      },
+      "medium": "raster",
+      "clipped": [
+        "right"
+      ],
+      "plate": "assets/plates/cool-photo.png",
+      "text": null
+    },
+    {
+      "id": "cool-list",
+      "kind": "text",
+      "note": "four cooling items each with a blue or navy line icon",
+      "grid": null,
+      "box": {
+        "x": 0.7422,
+        "y": 0.6836,
+        "w": 0.2357,
+        "h": 0.1875
+      },
+      "px": {
+        "x": 1140,
+        "y": 700,
+        "w": 362,
+        "h": 192
+      },
+      "aspect": 1.8854,
+      "palette": [
+        {
+          "hex": "#f7f8f8",
+          "coverage": 0.8619
+        },
+        {
+          "hex": "#0b112a",
+          "coverage": 0.0673
+        },
+        {
+          "hex": "#aeb3be",
+          "coverage": 0.029
+        },
+        {
+          "hex": "#435061",
+          "coverage": 0.023
+        },
+        {
+          "hex": "#7a8493",
+          "coverage": 0.0188
+        }
+      ],
+      "detail": {
+        "energy": 62.0262
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "reviews",
+      "kind": "text",
+      "note": "Read Google reviews line (comp's Google logo and 5.0 stars are invented; build uses a plain true link)",
+      "grid": null,
+      "box": {
+        "x": 0.2344,
+        "y": 0.9229,
+        "w": 0.5378,
+        "h": 0.0586
+      },
+      "px": {
+        "x": 360,
+        "y": 945,
+        "w": 826,
+        "h": 60
+      },
+      "aspect": 13.7667,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.8589
+        },
+        {
+          "hex": "#091631",
+          "coverage": 0.0768
+        },
+        {
+          "hex": "#f8b90b",
+          "coverage": 0.0363
+        },
+        {
+          "hex": "#182f41",
+          "coverage": 0.0189
+        },
+        {
+          "hex": "#7f8797",
+          "coverage": 0.0092
+        }
+      ],
+      "detail": {
+        "energy": 54.2453
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    }
+  ],
+  "compSha256": "ed47e448005081450378ec2bff9e137f45134887e3c8f7c456071d7ea0422824",
+  "regionsSource": {
+    "path": ".impeccable/build/regions.json",
+    "sha256": "0a81ab2f2f321f52c2fe3709647ef0422cd506cad943a9b4e5bdaf941a71e3de"
+  }
+}

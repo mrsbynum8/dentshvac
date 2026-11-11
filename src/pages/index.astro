@@ -5,28 +5,26 @@ import QuoteCard from '../components/QuoteCard.astro';
 import CallBand from '../components/CallBand.astro';
 import { BRAND, GOOGLE, SERVICES, FAQS } from '../data/site';
 
-type IconName = 'flame' | 'thermometer' | 'fan' | 'zap' | 'house' | 'wind' | 'snowflake' | 'gauge' | 'droplets' | 'vent';
-const panels: { tone: string; title: string; href: string; icon: IconName; img: string; alt: string; items: { icon: IconName; t: string; d: string }[] }[] = [
+type IconName = 'flame' | 'snowflake' | 'settings' | 'layers' | 'thermometer' | 'droplets';
+const panels: { tone: string; title: string; href: string; img: string; alt: string; items: { icon: IconName; t: string }[] }[] = [
   {
-    tone: 'heat', title: 'Heating', href: '/services/heating', icon: 'flame',
+    tone: 'heat', title: 'Heating', href: '/services/heating',
     img: '/photos/furnace.webp', alt: 'A modern gas furnace with vent pipes and ductwork in a basement',
     items: [
-      { icon: 'flame', t: 'Furnace repair', d: 'Control boards, pressure switches, blower motors' },
-      { icon: 'zap', t: 'Ignition problems', d: 'Flame sensors cleaned, igniters checked' },
-      { icon: 'house', t: 'Furnace replacement', d: '60,000 to 100,000 BTU, permit pulled' },
-      { icon: 'fan', t: 'Heat pumps', d: 'Service and installation' },
-      { icon: 'thermometer', t: 'Thermostats', d: 'New installs and wiring conversions' },
+      { icon: 'flame', t: 'Furnace and heat repair' },
+      { icon: 'settings', t: 'Furnace tune-ups and cleaning' },
+      { icon: 'layers', t: 'Furnace and heat pump installs' },
+      { icon: 'thermometer', t: 'Thermostats and wiring' },
     ],
   },
   {
-    tone: 'cool', title: 'Cooling', href: '/services/cooling', icon: 'snowflake',
+    tone: 'cool', title: 'Cooling', href: '/services/cooling',
     img: '/photos/ac.webp', alt: 'An outdoor air conditioning condenser beside a red-brick house',
     items: [
-      { icon: 'snowflake', t: 'AC repair', d: 'Capacitors, contactors, condenser fan motors' },
-      { icon: 'droplets', t: 'Leak checks', d: 'Refrigerant leak diagnostics and inspections' },
-      { icon: 'gauge', t: 'Refrigerant service', d: 'R-410A and R-454B systems' },
-      { icon: 'vent', t: 'New AC systems', d: 'Condensers (2 to 4 ton), coils and line sets' },
-      { icon: 'wind', t: 'Air handlers', d: 'Blowers, A-coils and filter racks' },
+      { icon: 'snowflake', t: 'AC repair' },
+      { icon: 'settings', t: 'AC tune-ups and cleaning' },
+      { icon: 'layers', t: 'New AC and heat pump systems' },
+      { icon: 'droplets', t: 'Leak checks and refrigerant' },
     ],
   },
 ];
@@ -43,22 +41,19 @@ const faqSchema = {
   
   <section class="hero" aria-labelledby="hero-title">
     <picture class="hero-photo">
-      <source media="(max-width: 767px)" srcset="/photos/hero-home-900.webp" />
+      <source media="(max-width: 767px)" srcset="/photos/hero-dusk-900.webp" />
       <img
-        src="/photos/hero-home.webp"
-        alt="A red-brick St. Louis bungalow with an outdoor air conditioning unit beside the porch"
-        width="1536"
-        height="1024"
+        src="/photos/hero-dusk.webp"
+        alt="A red-brick St. Louis home at dusk with glowing windows, the Gateway Arch in the distance"
+        width="2000"
+        height="667"
         fetchpriority="high"
       />
     </picture>
     <div class="hero-copy">
-      <h1 id="hero-title">Heating and AC repair in St.&nbsp;Louis, <span class="hero-hl">from the owner himself.</span></h1>
-      <p class="hero-sub">No heat or no AC? Gerald Pickett answers, diagnoses your system, and does the work, for homes and property managers across St. Louis and North County.</p>
-      <div class="hero-actions">
-        <a class="btn btn-red btn-lg" href={BRAND.phoneHref}><Icon name="phone" /> Call {BRAND.phone}</a>
-        <a class="btn btn-line btn-lg" href="/services/property-management">Property managers</a>
-      </div>
+      <h1 id="hero-title">Heating and AC repair in St.&nbsp;Louis, from the owner himself.</h1>
+      <p class="hero-sub">Gerald Pickett answers, diagnoses your system, and does the work.</p>
+      <a class="btn btn-red hero-call" href={BRAND.phoneHref}><Icon name="phone" /> Call {BRAND.phone}</a>
     </div>
     <div class="hero-form" id="request">
       <QuoteCard id="hero" />
@@ -67,19 +62,40 @@ const faqSchema = {
 
   <section class="trust" aria-label="Why people call Dent's">
     <ul class="wrap trust-list">
-      <li><Icon name="check" /><div><p class="t-h">The owner does the work</p><p class="t-s">No sales team, no hand-offs.</p></div></li>
-      <li><Icon name="check" /><div><p class="t-h">Price before any work</p><p class="t-s">Checked at today's supplier cost.</p></div></li>
-      <li><Icon name="check" /><div><p class="t-h">Homes and multifamily</p><p class="t-s">Residential, apartments and rentals.</p></div></li>
+      <li><Icon name="wrench" /><span>The owner does the work</span></li>
+      <li><Icon name="tag" /><span>Price before any work</span></li>
+      <li><Icon name="building" /><span>Homes and multifamily</span></li>
     </ul>
   </section>
 
-  <a class="pm-bar" href="/services/property-management">
-    <span class="pm-bar-in">
-      <strong>Property manager or landlord?</strong>
-      <span>Units down across a building? Send the property and the unit, and Gerald will take it from there.</span>
-      <span class="pm-go">Property service <Icon name="arrow" /></span>
-    </span>
-  </a>
+  <section class="svc" aria-label="Heating and cooling services">
+    <div class="wrap svc-grid">
+      {panels.map((pn) => (
+        <article class={`svc-panel svc-${pn.tone}`}>
+          <h2 class="svc-bar"><a href={pn.href}>{pn.title}</a></h2>
+          <div class="svc-body">
+            <img class="svc-photo" src={pn.img} alt={pn.alt} width="1100" height="733" loading="lazy" />
+            <div class="svc-side">
+              <ul class="svc-items">
+                {pn.items.map((it) => (
+                  <li><Icon name={it.icon} /><span>{it.t}</span></li>
+                ))}
+              </ul>
+              <a class="svc-more" href={pn.href}>All {pn.title.toLowerCase()} services <Icon name="arrow" /></a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="reviews" aria-label="Reviews">
+    <div class="wrap reviews-in">
+      <a class="reviews-read" href={GOOGLE.reviewsUrl} target="_blank" rel="noopener">Read Gerald's reviews on Google <Icon name="arrow" /></a>
+      <span class="reviews-sep" aria-hidden="true"></span>
+      <a class="reviews-write" href={GOOGLE.writeReviewUrl} target="_blank" rel="noopener">Worked with Gerald? Leave a review</a>
+    </div>
+  </section>
 
   <section class="owner section">
     <div class="wrap owner-grid">
@@ -114,52 +130,25 @@ const faqSchema = {
     </div>
   </section>
 
-  <section class="svc section" aria-labelledby="svc-h">
-    <div class="wrap">
-      <h2 id="svc-h" class="svc-title">What Gerald works on</h2>
-      <div class="svc-grid">
-        {panels.map((pn) => (
-          <article class={`svc-panel svc-${pn.tone}`}>
-            <div class="svc-photo">
-              <img src={pn.img} alt={pn.alt} width="1536" height="1024" loading="lazy" />
-            </div>
-            <div class="svc-head">
-              <Icon name={pn.icon} />
-              <h3><a href={pn.href}>{pn.title}</a></h3>
-            </div>
-            <ul class="svc-items">
-              {pn.items.map((it) => (
-                <li>
-                  <span class="svc-ico"><Icon name={it.icon} /></span>
-                  <span><strong>{it.t}</strong>{it.d}</span>
-                </li>
-              ))}
-            </ul>
-            <a class="svc-more" href={pn.href}>All {pn.title.toLowerCase()} services <Icon name="arrow" /></a>
-          </article>
-        ))}
-      </div>
-      <div class="svc-wide">
-        <span class="svc-wide-ico"><Icon name="calendar" /></span>
-        <div>
-          <h3><a href="/services/maintenance">Tune-ups before each season</a></h3>
-          <p>A spring AC check and a fall furnace check catch the cheap problems before they become the expensive ones. You'll get a reminder every spring.</p>
-        </div>
+  <section class="tune">
+    <div class="wrap tune-in">
+      <img class="tune-photo" src="/photos/tuneup.webp" alt="Service gauges connected to an outdoor air conditioner" width="1100" height="733" loading="lazy" />
+      <div>
+        <h2><a href="/services/maintenance">Tune-ups before each season</a></h2>
+        <p>A spring AC check and a fall furnace check catch the cheap problems before they become the expensive ones. You'll get a reminder every spring.</p>
         <a class="btn btn-line" href="/services/maintenance">Book a tune-up <Icon name="arrow" /></a>
       </div>
     </div>
   </section>
 
-  <section class="reviews section">
-    <div class="wrap reviews-in">
-      <h2>Hear it from his customers</h2>
-      <p>Real reviews live on Google, where nobody can edit them but the people who wrote them.</p>
-      <div class="reviews-act">
-        <a class="btn btn-navy" href={GOOGLE.reviewsUrl} target="_blank" rel="noopener">Read Google reviews <Icon name="arrow" /></a>
-        <a class="btn btn-line" href={GOOGLE.writeReviewUrl} target="_blank" rel="noopener">Worked with Gerald? Leave a review</a>
-      </div>
-    </div>
-  </section>
+  <a class="pm-bar" href="/services/property-management">
+    <span class="pm-bar-in">
+      <Icon name="building" />
+      <strong>Property manager or landlord?</strong>
+      <span>Units down across a building? Send the property and the unit, and Gerald will take it from there.</span>
+      <span class="pm-go">Property service <Icon name="arrow" /></span>
+    </span>
+  </a>
 
   <CallBand />
 
@@ -179,95 +168,85 @@ const faqSchema = {
 </Base>
 
 <style>
-  /* ---------- Hero: copy left, photo right, quote card over it ---------- */
+  /* ---------- Hero: dusk photo under a navy tint, copy left, quote card right ---------- */
   .hero {
     position: relative;
-    background: var(--white);
+    color: var(--white);
+    background: var(--navy);
     overflow: hidden;
   }
-  .hero-photo {
-    display: block;
-    aspect-ratio: 16 / 10;
-  }
+  .hero-photo,
   .hero-photo img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
+  }
+  .hero-photo img {
     object-fit: cover;
-    object-position: 70% center;
+    object-position: 38% center;
+  }
+  .hero-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgb(10 22 44 / 0.92) 0%, rgb(10 22 44 / 0.78) 34%, rgb(10 22 44 / 0.25) 62%, rgb(10 22 44 / 0.1) 100%);
+  }
+  .hero-copy,
+  .hero-form {
+    position: relative;
+    z-index: 1;
   }
   .hero-copy {
-    position: relative;
-    padding: 1.75rem var(--gutter) 0.5rem;
+    padding: clamp(2.5rem, 7vw, 4rem) var(--gutter) 1.5rem;
   }
   .hero h1 {
-    font-size: clamp(2rem, 3.6vw, 3.5rem);
-    line-height: 1.04;
+    font-size: clamp(2.3rem, 4.6vw, 4.5rem);
+    line-height: 1.02;
     letter-spacing: -0.02em;
-  }
-  .hero-hl {
-    color: var(--red);
+    max-width: 16ch;
+    text-shadow: 0 2px 18px rgb(0 0 0 / 0.35);
   }
   .hero-sub {
-    margin-top: clamp(1.1rem, 1.6vw, 1.6rem);
-    font-size: clamp(1.05rem, 1.35vw, 1.3rem);
-    line-height: 1.45;
-    color: var(--ink-soft);
-    max-width: 34rem;
+    margin-top: clamp(1rem, 1.6vw, 1.5rem);
+    font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+    line-height: 1.4;
+    max-width: 28rem;
+    color: var(--white);
   }
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: clamp(1.4rem, 2vw, 2rem);
-  }
-  .btn-lg {
-    min-height: 60px;
-    padding-inline: 1.6rem;
-    font-size: 1.05rem;
+  .hero-call {
+    margin-top: clamp(1.5rem, 2.4vw, 2.25rem);
+    min-height: 64px;
+    padding-inline: 1.75rem;
+    font-size: clamp(1.1rem, 1.5vw, 1.4rem);
   }
   .hero-form {
-    padding: 1.5rem var(--gutter) 2.25rem;
+    padding: 0 var(--gutter) 2.5rem;
   }
   .hero-form :global(.qc) {
-    border: 2px solid var(--line);
+    color: var(--ink);
+    box-shadow: 0 30px 60px -24px rgb(0 0 0 / 0.6);
   }
   @media (min-width: 960px) {
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) clamp(380px, 31vw, 460px);
-      gap: clamp(2rem, 4vw, 4.5rem);
+      grid-template-columns: minmax(0, 1fr) clamp(400px, 37vw, 560px);
+      gap: clamp(2rem, 4vw, 4rem);
       align-items: center;
-      padding: clamp(2.5rem, 3.6vw, 3.75rem) var(--gutter);
-      min-height: calc(100svh - var(--header-h) - 64px);
+      padding: clamp(2rem, 3vw, 2.75rem) var(--gutter);
+      min-height: min(640px, calc(100svh - var(--header-h) - 96px));
     }
-    .hero-photo {
-      position: absolute;
-      inset: 0 0 0 auto;
-      width: 68%;
-      aspect-ratio: auto;
-      -webkit-mask-image: linear-gradient(to right, transparent 0, rgb(0 0 0 / 0.35) 16%, #000 40%);
-      mask-image: linear-gradient(to right, transparent 0, rgb(0 0 0 / 0.35) 16%, #000 40%);
-    }
-    .hero-photo img {
-      object-position: 62% center;
-    }
-    .hero-copy {
-      padding: 0;
-      max-width: 600px;
-      z-index: 1;
-    }
+    .hero-copy,
     .hero-form {
       padding: 0;
-      z-index: 1;
-    }
-    .hero-form :global(.qc) {
-      border: 0;
-      box-shadow: 0 30px 60px -24px rgb(16 35 63 / 0.55);
     }
   }
-  @media (min-width: 960px) and (max-width: 1179px) {
-    .hero-photo {
-      width: 58%;
+  @media (min-width: 1180px) {
+    .hero-form :global(.qc-fields) {
+      grid-template-columns: 1.1fr 1.1fr 0.8fr;
+    }
+    .hero-form :global(.qc-wide) {
+      grid-column: auto;
     }
   }
   @media (min-width: 1600px) {
@@ -276,41 +255,43 @@ const faqSchema = {
     }
   }
 
-  /* ---------- Trust strip ---------- */
+  /* ---------- Trust bar (from mockup 1) ---------- */
   .trust {
-    background: var(--wash);
-    border-top: 1px solid var(--line);
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
   }
   .trust-list {
     list-style: none;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    padding-block: 1.6rem;
+    padding-block: clamp(1.25rem, 2.2vw, 1.75rem);
   }
   .trust li {
-    display: grid;
-    grid-template-columns: 2rem 1fr;
-    gap: 0.75rem;
-    align-items: start;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-inline: clamp(1rem, 2.5vw, 2rem);
+  }
+  .trust li + li {
+    border-left: 1px solid var(--line);
+  }
+  .trust li:first-child {
+    padding-left: 0;
   }
   .trust li :global(svg) {
-    width: 1.6rem;
-    height: 1.6rem;
+    width: clamp(2.4rem, 3.4vw, 3rem);
+    height: clamp(2.4rem, 3.4vw, 3rem);
+    flex: none;
     color: var(--blue);
+    stroke-width: 1.6;
   }
-  .trust li:first-child :global(svg) {
-    color: var(--red);
-  }
-  .t-h {
+  .trust li span {
     font-family: var(--display);
     font-weight: 700;
-    font-size: 1.02rem;
-  }
-  .t-s {
-    color: var(--ink-soft);
-    font-size: 0.95rem;
+    font-size: clamp(1.1rem, 1.7vw, 1.5rem);
+    line-height: 1.15;
+    max-width: 12ch;
   }
 
   /* ---------- Property manager lane ---------- */
@@ -329,6 +310,11 @@ const faqSchema = {
     margin-inline: auto;
     min-height: 64px;
     padding: 0.9rem var(--gutter);
+  }
+  .pm-bar-in > :global(svg:first-child) {
+    width: 1.6rem;
+    height: 1.6rem;
+    color: #ff8fa3;
   }
   .pm-bar strong {
     font-family: var(--display);
@@ -410,13 +396,12 @@ const faqSchema = {
     color: var(--ink-soft);
   }
 
-  /* ---------- Services: two photo panels ---------- */
+  /* ---------- Heating | Cooling panels (approved mockup) ---------- */
   .svc {
-    background: var(--wash);
+    padding-block: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2.25rem);
   }
-  .svc-title {
-    font-size: clamp(2rem, 4vw, 3.25rem);
-    margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+  .svc .wrap {
+    max-width: 1440px;
   }
   .svc-grid {
     display: grid;
@@ -424,101 +409,80 @@ const faqSchema = {
     gap: clamp(1.25rem, 2.5vw, 2rem);
   }
   .svc-panel {
-    background: var(--white);
+    border: 1px solid var(--line);
     display: flex;
     flex-direction: column;
-    box-shadow: 0 18px 40px -28px rgb(16 35 63 / 0.45);
   }
-  .svc-photo {
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-  }
-  .svc-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: scale 0.8s var(--ease);
-  }
-  .svc-panel:hover .svc-photo img {
-    scale: 1.04;
-  }
-  .svc-head {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1.1rem clamp(1.25rem, 2.5vw, 2rem);
+  .svc-bar {
+    padding: 0.85rem clamp(1.1rem, 2vw, 1.6rem);
+    font-size: clamp(1.9rem, 3.2vw, 2.9rem);
+    line-height: 1.05;
     color: var(--white);
   }
-  .svc-heat .svc-head {
+  .svc-heat .svc-bar {
     background: var(--red);
   }
-  .svc-cool .svc-head {
+  .svc-cool .svc-bar {
     background: var(--blue);
   }
-  .svc-head :global(svg) {
-    width: 1.9rem;
-    height: 1.9rem;
-  }
-  .svc-head h3 {
-    font-size: clamp(1.6rem, 2.6vw, 2.2rem);
-  }
-  .svc-head a {
+  .svc-bar a {
     text-decoration: none;
+  }
+  .svc-body {
+    display: grid;
+    grid-template-columns: 46% 1fr;
+    flex: 1;
+  }
+  .svc-photo {
+    width: 100%;
+    height: 100%;
+    min-height: 240px;
+    object-fit: cover;
+  }
+  .svc-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: clamp(1.1rem, 2vw, 1.6rem);
   }
   .svc-items {
     list-style: none;
     margin: 0;
-    padding: 0.5rem clamp(1.25rem, 2.5vw, 2rem) 0;
+    padding: 0;
     display: grid;
+    gap: 0.95rem;
   }
   .svc-items li {
     display: grid;
-    grid-template-columns: 2.6rem 1fr;
-    gap: 0.9rem;
+    grid-template-columns: 1.75rem 1fr;
+    gap: 0.75rem;
     align-items: center;
-    padding: 0.9rem 0;
-    border-bottom: 1px solid var(--line);
+    font-size: clamp(1rem, 1.25vw, 1.12rem);
+    line-height: 1.3;
   }
-  .svc-items li:last-child {
-    border-bottom: 0;
+  .svc-items :global(svg) {
+    width: 1.6rem;
+    height: 1.6rem;
+    stroke-width: 1.75;
   }
-  .svc-ico {
-    width: 2.6rem;
-    height: 2.6rem;
-    display: grid;
-    place-items: center;
-    box-shadow: inset 0 0 0 2px currentColor;
-  }
-  .svc-heat .svc-ico {
+  .svc-heat .svc-items li:first-child :global(svg) {
     color: var(--red);
   }
-  .svc-cool .svc-ico {
+  .svc-cool .svc-items li:first-child :global(svg) {
     color: var(--blue);
-  }
-  .svc-ico :global(svg) {
-    width: 1.3rem;
-    height: 1.3rem;
-  }
-  .svc-items strong {
-    display: block;
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: 1.05rem;
-    line-height: 1.25;
-  }
-  .svc-items li span:last-child {
-    color: var(--ink-soft);
-    font-size: 0.97rem;
-    line-height: 1.45;
   }
   .svc-more {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    margin: auto clamp(1.25rem, 2.5vw, 2rem) 1.6rem;
-    padding-top: 1rem;
     font-weight: 700;
     color: var(--ink);
+  }
+  .svc-more :global(svg) {
+    width: 1.05em;
+    height: 1.05em;
+    transition: transform 0.3s var(--ease);
   }
   .svc-heat .svc-more :global(svg) {
     color: var(--red);
@@ -526,68 +490,75 @@ const faqSchema = {
   .svc-cool .svc-more :global(svg) {
     color: var(--blue);
   }
-  .svc-more :global(svg) {
-    width: 1.05em;
-    height: 1.05em;
-    transition: transform 0.3s var(--ease);
-  }
   .svc-more:hover :global(svg) {
     transform: translateX(4px);
   }
-  .svc-wide {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
+
+  /* ---------- Reviews line ---------- */
+  .reviews-in {
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 1.25rem 1.75rem;
-    margin-top: clamp(1.25rem, 2.5vw, 2rem);
-    padding: clamp(1.4rem, 2.5vw, 2rem);
-    background: var(--white);
-    box-shadow: 0 18px 40px -28px rgb(16 35 63 / 0.45);
+    justify-content: center;
+    gap: 0.75rem 1.75rem;
+    padding-block: clamp(1rem, 2vw, 1.5rem) clamp(3rem, 6vw, 4.5rem);
   }
-  .svc-wide-ico {
-    width: 3.5rem;
-    height: 3.5rem;
-    display: grid;
-    place-items: center;
-    background: var(--navy);
-    color: var(--white);
-  }
-  .svc-wide-ico :global(svg) {
-    width: 1.7rem;
-    height: 1.7rem;
-  }
-  .svc-wide h3 {
-    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
-    margin-bottom: 0.35rem;
-  }
-  .svc-wide h3 a {
+  .reviews-read {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(1.3rem, 2.2vw, 1.85rem);
     text-decoration: none;
+    color: var(--ink);
   }
-  .svc-wide p {
+  .reviews-read :global(svg) {
+    width: 0.85em;
+    height: 0.85em;
+    color: var(--red);
+    transition: transform 0.3s var(--ease);
+  }
+  .reviews-read:hover :global(svg) {
+    transform: translateX(5px);
+  }
+  .reviews-sep {
+    width: 1px;
+    height: 2rem;
+    background: var(--line);
+  }
+  .reviews-write {
     color: var(--ink-soft);
   }
 
-  /* ---------- Reviews ---------- */
-  .reviews-in {
-    text-align: center;
+  /* ---------- Tune-ups ---------- */
+  .tune {
+    background: var(--wash);
+  }
+  .tune-in {
     display: grid;
-    justify-items: center;
-    gap: 1rem;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: center;
+    padding-block: clamp(2.5rem, 5vw, 4rem);
   }
-  .reviews h2 {
-    font-size: clamp(2rem, 4vw, 3.25rem);
+  .tune-photo {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
   }
-  .reviews p {
+  .tune h2 {
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    margin-bottom: 0.75rem;
+  }
+  .tune h2 a {
+    text-decoration: none;
+  }
+  .tune p {
     color: var(--ink-soft);
-    font-size: 1.125rem;
-    max-width: 36rem;
-  }
-  .reviews-act {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 0.75rem;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    max-width: 34rem;
   }
 
   /* ---------- FAQ ---------- */
@@ -643,23 +614,46 @@ const faqSchema = {
     .faq-grid {
       grid-template-columns: 1fr;
     }
+    .svc-grid {
+      grid-template-columns: 1fr;
+    }
   }
   @media (max-width: 760px) {
-    .trust-list {
-      grid-template-columns: 1fr;
-      gap: 1rem;
+    .hero-photo::after {
+      background: linear-gradient(180deg, rgb(10 22 44 / 0.3) 0%, rgb(10 22 44 / 0.7) 32%, rgb(10 22 44 / 0.94) 60%);
     }
-    .hero-actions .btn {
+    .hero-call {
       width: 100%;
     }
-    .svc-wide {
+    .trust-list {
       grid-template-columns: 1fr;
+      gap: 0.9rem;
+    }
+    .trust li,
+    .trust li:first-child {
+      padding: 0;
+    }
+    .trust li + li {
+      border-left: 0;
+    }
+    .trust li span {
+      max-width: none;
+    }
+    .svc-body {
+      grid-template-columns: 1fr;
+    }
+    .svc-photo {
+      aspect-ratio: 16 / 9;
+      height: auto;
+    }
+    .tune-in {
+      grid-template-columns: 1fr;
+    }
+    .reviews-sep {
+      display: none;
     }
     .pm-go {
       margin-left: 0;
-    }
-    .svc-grid {
-      grid-template-columns: 1fr;
     }
   }
 </style>

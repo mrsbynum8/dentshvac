@@ -1,0 +1,100 @@
+{
+  "tool": "build-phase",
+  "version": 2,
+  "startedAt": "2026-11-11T00:20:47.426Z",
+  "comp": ".impeccable/mocks/comp-3.png",
+  "direction": "f869b223",
+  "breakpoint": "1536x1024",
+  "artifact": "src/pages/index.astro",
+  "phase": "spec",
+  "phases": {
+    "comps": {
+      "status": "closed",
+      "openedAt": "2026-11-11T00:20:47.426Z",
+      "closedAt": "2026-11-11T00:24:32.934Z",
+      "attempts": 1,
+      "notes": [],
+      "gate": {
+        "ok": true,
+        "reasons": [],
+        "summary": "3 comps, 1 approved",
+        "approved": ".impeccable/mocks/comp-3.png",
+        "at": "2026-11-11T00:24:32.934Z"
+      },
+      "forced": null
+    },
+    "spec": {
+      "status": "open",
+      "openedAt": "2026-11-11T00:24:32.952Z",
+      "closedAt": null,
+      "attempts": 1,
+      "notes": [],
+      "gate": {
+        "ok": false,
+        "reasons": [
+          "region logo: the comp's artwork runs off its box on the left and right and top and bottom; widen the region's span so the box holds the whole shape with a margin (or set \"bleed\": true if the page really crops it there), then re-run comp-spec.mjs --regions",
+          "region hero-photo: the comp's artwork runs off its box on the top and bottom; widen the region's span so the box holds the whole shape with a margin (or set \"bleed\": true if the page really crops it there), then re-run comp-spec.mjs --regions",
+          "region heat-photo: the comp's artwork runs off its box on the left and top; widen the region's span so the box holds the whole shape with a margin (or set \"bleed\": true if the page really crops it there), then re-run comp-spec.mjs --regions",
+          "region cool-photo: the comp's artwork runs off its box on the right; widen the region's span so the box holds the whole shape with a margin (or set \"bleed\": true if the page really crops it there), then re-run comp-spec.mjs --regions"
+        ],
+        "at": "2026-11-11T00:29:53.427Z"
+      },
+      "forced": null
+    },
+    "plates": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "hero": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "sections": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "motion": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "responsive": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "review": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    }
+  },
+  "finish": null
+}

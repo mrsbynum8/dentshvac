@@ -1,0 +1,40 @@
+{
+  "title": "Dent's homepage: pick the mockup to build",
+  "question": "Three full homepage mockups in Dent's real brand. Pick the one to build. Invented claims in the images (same-day, 5.0 stars, Google logo, emergencies) will not be copied; the build uses only true copy.",
+  "options": [
+    {
+      "id": "comp-1",
+      "label": "Photo-led",
+      "kicker": "MOCKUP 1",
+      "thesis": "A full house photo behind a white headline panel, quote card on the right, proof strip, then two service photo cards.",
+      "palette": ["#FFFFFF", "#D8183C", "#2470B4", "#10233F"],
+      "materials": ["full-bleed house photo", "white panels", "line icons"],
+      "viewport": "Brick bungalow photo fills the hero; headline panel left, quote card right overlapping down; three proof points; Heating and Cooling photo cards.",
+      "risk": "The most conventional of the three.",
+      "comp": ".impeccable/mocks/comp-1.png"
+    },
+    {
+      "id": "comp-2",
+      "label": "Owner-led with logo arc",
+      "kicker": "MOCKUP 2",
+      "thesis": "A red-and-blue arc from his logo frames the photo; quote card overlaps it; a navy How a visit goes band.",
+      "palette": ["#FFFFFF", "#D8183C", "#2470B4", "#10233F"],
+      "materials": ["logo arc", "framed photo with the Arch", "navy step band"],
+      "viewport": "Headline and big call button on white at left; arc-framed brick-row photo right with the Gateway Arch; quote card overlapping; four numbered visit steps in navy.",
+      "risk": "The arc has to be built cleanly or it looks clip-art.",
+      "comp": ".impeccable/mocks/comp-2.png"
+    },
+    {
+      "id": "comp-3",
+      "label": "Heat and cool panels",
+      "kicker": "MOCKUP 3",
+      "thesis": "Dusk photo under a navy tint with the skyline; icon choice buttons; red Heating and blue Cooling panels below.",
+      "palette": ["#10233F", "#D8183C", "#2470B4", "#FFFFFF"],
+      "materials": ["dusk photo with navy tint", "icon choices", "red/blue header panels"],
+      "viewport": "White headline on a darkened brick home at dusk with the Arch skyline; quote card right with icon choices; Heating and Cooling panels with photos and icon lists.",
+      "risk": "Dark hero is moodier; needs real Google review proof, not invented stars.",
+      "comp": ".impeccable/mocks/comp-3.png"
+    }
+  ],
+  "steer": true
+}

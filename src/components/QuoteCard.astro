@@ -4,7 +4,14 @@ import Consent from './Consent.astro';
 import { BRAND, GHL } from '../data/site';
 interface Props { id?: string; source?: string; preset?: string }
 const { id = 'q', source = 'Website Hero Form', preset = '' } = Astro.props;
-const choices = ['No heat', 'No AC', 'Tune-up', 'New system', 'Property unit', 'Other'];
+const choices: { v: string; icon: 'flame' | 'snowflake' | 'wrench' | 'vent' | 'building' | 'ellipsis' }[] = [
+  { v: 'No heat', icon: 'flame' },
+  { v: 'No AC', icon: 'snowflake' },
+  { v: 'Tune-up', icon: 'wrench' },
+  { v: 'New system', icon: 'vent' },
+  { v: 'Property unit', icon: 'building' },
+  { v: 'Other', icon: 'ellipsis' },
+];
 ---
 <form class="rf qc" data-webhook={GHL.webhook} data-source={source} novalidate aria-labelledby={`${id}-title`}>
   <h2 class="qc-title" id={`${id}-title`}>Get help from Gerald</h2>
@@ -14,7 +21,7 @@ const choices = ['No heat', 'No AC', 'Tune-up', 'New system', 'Property unit', '
     <legend>What do you need?</legend>
     <div class="qc-grid">
       {choices.map((c, i) => (
-        <button type="button" class:list={['qc-choice', { heat: i === 0, cool: i === 1 }]} aria-pressed={c === preset ? 'true' : 'false'} data-v={c}>{c}</button>
+        <button type="button" class:list={['qc-choice', { heat: i === 0, cool: i === 1 }]} aria-pressed={c.v === preset ? 'true' : 'false'} data-v={c.v}><Icon name={c.icon} /><span>{c.v}</span></button>
       ))}
     </div>
     <input type="hidden" name="service" value={preset} />
@@ -101,6 +108,27 @@ const choices = ['No heat', 'No AC', 'Tune-up', 'New system', 'Property unit', '
     border: 2px solid var(--line);
     cursor: pointer;
     transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease), color 0.2s var(--ease);
+  }
+  .qc-choice {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+  .qc-choice :global(svg) {
+    width: 1.05rem;
+    height: 1.05rem;
+    flex: none;
+    color: var(--navy);
+  }
+  .qc-choice.heat :global(svg) {
+    color: var(--red);
+  }
+  .qc-choice.cool :global(svg) {
+    color: var(--blue);
+  }
+  .qc-choice[aria-pressed='true'] :global(svg) {
+    color: var(--white);
   }
   .qc-choice:hover {
     border-color: var(--navy);
