@@ -24,6 +24,10 @@ export const GOOGLE = {
   placeId: 'ChIJxRxea72mxqARM9vFKag4bvg',
   reviewsUrl: 'https://www.google.com/maps/place/?q=place_id:ChIJxRxea72mxqARM9vFKag4bvg',
   writeReviewUrl: 'https://search.google.com/local/writereview?placeid=ChIJxRxea72mxqARM9vFKag4bvg',
+  // GA4 (account 415954165, property 563868686, stream "Dent's website", measurement ID G-LTYP71WPMX), owned by systems@getbookedfirst.com
+  tagId: 'GTM-N72FKKDF',
+  // Search Console URL-prefix property https://www.dentsheatingandcooling.com/ (HTML tag method)
+  searchConsoleVerification: 'H1YMGhpxAeWRTuP5jNnPXvSP6Wi59G8uMsX1YjFRS-E',
 };
 
 export const GHL = {

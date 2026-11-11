@@ -32,6 +32,11 @@ for (const form of document.querySelectorAll<HTMLFormElement>('form.rf')) {
           body: JSON.stringify({ ...data, source: form.dataset.source, location: 'St. Louis, MO' }),
         });
         if (!res.ok) throw new Error(String(res.status));
+        // GA4 lead event (mark generate_lead as a key event in GA4 admin). No personal data is sent.
+        (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag?.('event', 'generate_lead', {
+          form_source: form.dataset.source,
+          service: data.service || undefined,
+        });
         form.classList.add('is-sent');
         form.innerHTML =
           '<div class="rf-done"><h3>Got it. Thank you.</h3><p>Your request went straight to Gerald. He’ll reach out using the number or email you gave. If it can’t wait, call <a href="tel:+13144207803">314-420-7803</a>.</p></div>';

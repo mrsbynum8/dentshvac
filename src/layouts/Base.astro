@@ -54,6 +54,23 @@ const graph = [business, ...schema];
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {!bare && (
+      <>
+        {/* Google tag (GA4 property 563868686, systems@getbookedfirst.com). Owner-only bare pages are not tracked. */}
+        <script is:inline async src={`https://www.googletagmanager.com/gtm.js?id=${GOOGLE.tagId}`}></script>
+        <script is:inline>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          // Count click-to-call taps as leads-in-waiting (phone is Gerald's main channel).
+          document.addEventListener('click', function (e) {
+            var a = e.target.closest && e.target.closest('a[href^="tel:"]');
+            if (a) gtag('event', 'phone_call_click', { link_url: a.getAttribute('href'), page_path: location.pathname });
+          });
+        </script>
+      </>
+    )}
+    <meta name="google-site-verification" content={GOOGLE.searchConsoleVerification} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
