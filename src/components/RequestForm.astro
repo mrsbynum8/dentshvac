@@ -16,13 +16,14 @@ const { id = 'req', source = 'Website Form' } = Astro.props;
       <input id={`${id}-phone`} name="phone" type="tel" autocomplete="tel" inputmode="tel" />
     </div>
     <div class="rf-row">
-      <label for={`${id}-service`}>What's going on?</label>
+      <label for={`${id}-service`}>Topic</label>
       <select id={`${id}-service`} name="service">
-        <option>No heat / furnace problem</option>
-        <option>No AC / cooling problem</option>
-        <option>Tune-up / maintenance</option>
-        <option>New system / installation</option>
-        <option>Property management unit</option>
+        <option>General question</option>
+        <option>No heat</option>
+        <option>No AC</option>
+        <option>Tune-up</option>
+        <option>New system</option>
+        <option>Property unit</option>
         <option>Other</option>
       </select>
     </div>
@@ -32,7 +33,7 @@ const { id = 'req', source = 'Website Form' } = Astro.props;
     <input id={`${id}-email`} name="email" type="email" autocomplete="email" />
   </div>
   <div class="rf-row">
-    <label for={`${id}-message`}>Anything Gerald should know?</label>
+    <label for={`${id}-message`}>Your message</label>
     <textarea id={`${id}-message`} name="message" rows="3"></textarea>
   </div>
   <div class="rf-hp" aria-hidden="true">

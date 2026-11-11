@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import PhotoHero from '../components/PhotoHero.astro';
-import QuoteCard from '../components/QuoteCard.astro';
+import RequestForm from '../components/RequestForm.astro';
 import Icon from '../components/Icon.astro';
 import { BRAND } from '../data/site';
 ---
@@ -19,7 +19,11 @@ import { BRAND } from '../data/site';
   >
     <a class="btn btn-red btn-lg" href={BRAND.phoneHref}><Icon name="phone" /> Call {BRAND.phone}</a>
     <p class="mail-alt">Rather not get a call? Email <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a></p>
-    <QuoteCard slot="side" id="contact" source="Website Contact Page" />
+    <div slot="side" class="msg-card">
+      <h2>Send Gerald a message</h2>
+      <p class="msg-note">Questions, scheduling, or anything else. He'll get back to you by phone or email.</p>
+      <RequestForm id="contact" source="Website Contact Page" />
+    </div>
   </PhotoHero>
 
   <section class="section">
@@ -48,6 +52,20 @@ import { BRAND } from '../data/site';
 </Base>
 
 <style>
+  .msg-card {
+    background: var(--white);
+    color: var(--ink);
+    padding: clamp(1.4rem, 2.4vw, 2rem);
+    box-shadow: 0 30px 60px -24px rgb(0 0 0 / 0.6);
+  }
+  .msg-card h2 {
+    font-size: clamp(1.6rem, 2.5vw, 2.3rem);
+    margin-bottom: 0.4rem;
+  }
+  .msg-note {
+    color: var(--ink-soft);
+    margin-bottom: 1.25rem;
+  }
   .mail-alt {
     margin-top: 1.25rem;
     color: #c9d6e8;

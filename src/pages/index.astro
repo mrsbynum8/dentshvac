@@ -97,6 +97,25 @@ const faqSchema = {
     </div>
   </section>
 
+  <section class="pm section">
+    <div class="wrap pm-in">
+      <img class="pm-photo" src="/photos/apartments.webp" alt="A brick apartment building with a row of outdoor air conditioning units" width="1100" height="733" loading="lazy" />
+      <div class="pm-copy">
+        <h2>Property managers and landlords</h2>
+        <p>Units down across a building? Send the property and the unit. Gerald diagnoses it, fixes it on the spot when the part is on the truck, and schedules the return with your office when it isn't.</p>
+        <ul class="pm-points">
+          <li><Icon name="building" /><span>Apartments, multifamily and rentals</span></li>
+          <li><Icon name="wrench" /><span>Same owner on every call</span></li>
+          <li><Icon name="calendar" /><span>Seasonal maintenance across a property</span></li>
+        </ul>
+        <div class="pm-act">
+          <a class="btn btn-navy" href="/pm-request">Send a property request <Icon name="arrow" /></a>
+          <a class="link-arrow" href="/services/property-management">Property management service <Icon name="arrow" /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="owner section">
     <div class="wrap owner-grid">
       <div class="owner-copy">
@@ -132,7 +151,7 @@ const faqSchema = {
 
   <section class="tune">
     <div class="wrap tune-in">
-      <img class="tune-photo" src="/photos/tuneup.webp" alt="Service gauges connected to an outdoor air conditioner" width="1100" height="733" loading="lazy" />
+      <img class="tune-photo" src="/photos/tuneup.webp" alt="A new furnace filter next to a dirty used one in a basement" width="1100" height="733" loading="lazy" />
       <div>
         <h2><a href="/services/maintenance">Tune-ups before each season</a></h2>
         <p>A spring AC check and a fall furnace check catch the cheap problems before they become the expensive ones. You'll get a reminder every spring.</p>
@@ -141,14 +160,6 @@ const faqSchema = {
     </div>
   </section>
 
-  <a class="pm-bar" href="/services/property-management">
-    <span class="pm-bar-in">
-      <Icon name="building" />
-      <strong>Property manager or landlord?</strong>
-      <span>Units down across a building? Send the property and the unit, and Gerald will take it from there.</span>
-      <span class="pm-go">Property service <Icon name="arrow" /></span>
-    </span>
-  </a>
 
   <CallBand />
 
@@ -294,51 +305,56 @@ const faqSchema = {
     max-width: 12ch;
   }
 
-  /* ---------- Property manager lane ---------- */
-  .pm-bar {
-    display: block;
-    background: var(--navy);
-    color: var(--white);
-    text-decoration: none;
+  /* ---------- Property managers section ---------- */
+  .pm {
+    background: var(--wash);
   }
-  .pm-bar-in {
+  .pm-in {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+  }
+  .pm-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .pm h2 {
+    font-size: clamp(1.9rem, 3.4vw, 2.75rem);
+    margin-bottom: 1rem;
+  }
+  .pm-copy > p {
+    color: var(--ink-soft);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  .pm-points {
+    list-style: none;
+    margin: 0 0 1.75rem;
+    padding: 0;
+    display: grid;
+    gap: 0.85rem;
+  }
+  .pm-points li {
+    display: grid;
+    grid-template-columns: 1.75rem 1fr;
+    gap: 0.75rem;
+    align-items: center;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  .pm-points :global(svg) {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--blue);
+  }
+  .pm-act {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.4rem 1.25rem;
-    max-width: 1440px;
-    margin-inline: auto;
-    min-height: 64px;
-    padding: 0.9rem var(--gutter);
-  }
-  .pm-bar-in > :global(svg:first-child) {
-    width: 1.6rem;
-    height: 1.6rem;
-    color: #ff8fa3;
-  }
-  .pm-bar strong {
-    font-family: var(--display);
-    font-weight: 700;
-  }
-  .pm-bar-in > span:not(.pm-go) {
-    color: #c9d6e8;
-  }
-  .pm-go {
-    margin-left: auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    font-weight: 700;
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-  }
-  .pm-go :global(svg) {
-    width: 1.05em;
-    height: 1.05em;
-    transition: transform 0.3s var(--ease);
-  }
-  .pm-bar:hover .pm-go :global(svg) {
-    transform: translateX(4px);
+    gap: 1rem 1.5rem;
   }
 
   /* ---------- Owner ---------- */
@@ -614,7 +630,8 @@ const faqSchema = {
   /* ---------- Small screens ---------- */
   @media (max-width: 960px) {
     .owner-grid,
-    .faq-grid {
+    .faq-grid,
+    .pm-in {
       grid-template-columns: 1fr;
     }
     .svc-grid {
@@ -659,8 +676,8 @@ const faqSchema = {
       flex-direction: column;
       align-items: flex-start;
     }
-    .pm-go {
-      margin-left: 0;
+    .pm-in {
+      grid-template-columns: 1fr;
     }
   }
 </style>
