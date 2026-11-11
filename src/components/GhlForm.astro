@@ -21,7 +21,7 @@ const { form } = Astro.props;
     data-layout-iframe-id={`inline-${form.id}`}
     data-form-id={form.id}
     title={form.name}
-    loading="lazy"
+    loading="eager"
     onload="this.previousElementSibling.hidden=true"
   ></iframe>
 </div>

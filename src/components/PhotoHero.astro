@@ -70,6 +70,9 @@ const { title, lead, img, alt, crumb, accent = 'both' } = Astro.props;
     margin-top: 1.1rem;
     background: linear-gradient(90deg, var(--red) 0 50%, var(--blue) 50% 100%);
   }
+  .ph:not(.ph-has-side) h1 {
+    max-width: 22ch;
+  }
   .ph-heat h1::after {
     background: var(--red);
   }
