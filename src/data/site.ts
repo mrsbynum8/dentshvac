@@ -10,12 +10,18 @@ export const BRAND = {
   phone: '314-420-7803',
   phoneHref: 'tel:+13144207803',
   email: 'info@dentsheatingandcooling.com',
-  // CONFIRM: GHL says "Forest Hill Dr", onboarding doc + old site say "Forest Hills Dr".
-  street: '6942 Forest Hills Dr',
+  // Street kept private (Gerald, 2026-11-12): Google shows a service area, so the site shows city + ZIP only.
+  // For the record it's "Forest Hill Dr" (no s). Don't publish it.
   city: 'St. Louis',
   region: 'MO',
   zip: '63121',
-  area: 'St. Louis City & North St. Louis County',
+  area: 'St. Louis City & St. Louis County',
+  // Hours confirmed by Gerald via Ty, 2026-11-12. Not 24/7: after hours, callers leave a voicemail.
+  hours: 'Monday–Saturday, 8 a.m.–6 p.m.',
+  hoursShort: 'Mon–Sat, 8 a.m.–6 p.m.',
+  afterHours: "After hours, leave a voicemail and say it's an emergency. Gerald returns emergency calls as soon as he's able, but after-hours service isn't guaranteed.",
+  // Warranty confirmed by Gerald 2026-11-12: 1 year on new system installs. Repair warranty (~30 days) not published until exact terms are confirmed.
+  installWarranty: '1-year warranty on new system installs',
   website: 'dentsheatingandcooling.com',
   geo: { lat: 38.64, lng: -90.321 },
 };
@@ -68,7 +74,7 @@ export const SERVICES: Service[] = [
     nav: 'Heating',
     title: "Furnace & Heating Repair in St. Louis | Dent's Heating And Cooling",
     description:
-      'Furnace repair, furnace replacement, heat pumps and tune-ups in St. Louis and North County. The owner diagnoses and does the work. Call 314-420-7803.',
+      'Furnace repair, furnace replacement, heat pumps and tune-ups across St. Louis City and County. The owner diagnoses and does the work. Call 314-420-7803.',
     h1: 'Furnace and heating repair in St. Louis',
     lead:
       "When the house won't warm up, you get Gerald: the owner, on the phone and at your door. He finds what failed, tells you the price before any work starts, and gets the heat back on.",
@@ -112,7 +118,7 @@ export const SERVICES: Service[] = [
     nav: 'Cooling',
     title: "AC Repair & Installation in St. Louis | Dent's Heating And Cooling",
     description:
-      'Air conditioning repair, AC installation, refrigerant leak checks and tune-ups in St. Louis and North County. Owner-operated. Call 314-420-7803.',
+      'Air conditioning repair, AC installation, refrigerant leak checks and tune-ups across St. Louis City and County. Owner-operated. Call 314-420-7803.',
     h1: 'AC repair and installation in St. Louis',
     lead:
       'St. Louis summers are hard on air conditioners. When yours quits, Gerald finds the failure, from a burnt-out capacitor to a refrigerant leak, quotes it at today’s parts price, and fixes it.',
@@ -156,7 +162,7 @@ export const SERVICES: Service[] = [
     nav: 'Maintenance',
     title: "AC & Furnace Tune-Ups in St. Louis | Dent's Heating And Cooling",
     description:
-      'Spring AC maintenance and fall furnace tune-ups in St. Louis and North County, with yearly reminders so you never forget. Call 314-420-7803.',
+      'Spring AC maintenance and fall furnace tune-ups across St. Louis City and County, with yearly reminders so you never forget. Call 314-420-7803.',
     h1: 'AC and furnace tune-ups in St. Louis',
     lead:
       'Most breakdowns start as small wear: a weak capacitor, a dirty flame sensor, a clogged filter. A tune-up before each season catches them while they are still cheap.',

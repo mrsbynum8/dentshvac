@@ -26,10 +26,9 @@ const year = new Date().getFullYear();
       </ul>
     </nav>
     <div>
-      <h2>Visit</h2>
-      <address>
-        {BRAND.street}<br />{BRAND.city}, {BRAND.region} {BRAND.zip}
-      </address>
+      <h2>Hours</h2>
+      <p class="ftr-hours">{BRAND.hoursShort}<br />After hours: leave a voicemail</p>
+      <address>{BRAND.city}, {BRAND.region} {BRAND.zip}</address>
     </div>
   </div>
   <div class="wrap ftr-base">
@@ -101,6 +100,9 @@ const year = new Date().getFullYear();
   }
   address {
     font-style: normal;
+  }
+  .ftr-hours {
+    margin-bottom: 0.75rem;
   }
   .ftr-base {
     display: flex;

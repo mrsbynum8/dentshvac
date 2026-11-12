@@ -7,7 +7,7 @@ import { BRAND, GOOGLE } from '../data/site';
 ---
 <Base
   title="About Gerald Pickett | Dent's Heating And Cooling, St. Louis"
-  description="Dent's Heating And Cooling is owner-operated by Gerald Pickett: the person who answers your call diagnoses your system and does the work. St. Louis and North County."
+  description="Dent's Heating And Cooling is owner-operated by Gerald Pickett: the person who answers your call diagnoses your system and does the work. St. Louis City and County."
 >
   <PhotoHero
     title="The owner is the technician."
@@ -41,6 +41,9 @@ import { BRAND, GOOGLE } from '../data/site';
           <div><dt>Owner</dt><dd>{BRAND.owner}</dd></div>
           <div><dt>Business</dt><dd>{BRAND.legalName}</dd></div>
           <div><dt>Based in</dt><dd>{BRAND.city}, {BRAND.region} {BRAND.zip}</dd></div>
+          <div><dt>Serves</dt><dd>{BRAND.area}</dd></div>
+          <div><dt>Hours</dt><dd>{BRAND.hoursShort}</dd></div>
+          <div><dt>Warranty</dt><dd>1 year on new system installs</dd></div>
           <div><dt>Works on</dt><dd>Homes, apartments, multifamily</dd></div>
           <div><dt>Phone</dt><dd><a href={BRAND.phoneHref}>{BRAND.phone}</a></dd></div>
         </dl>

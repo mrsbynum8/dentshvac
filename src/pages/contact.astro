@@ -7,7 +7,7 @@ import { BRAND } from '../data/site';
 ---
 <Base
   title="Contact Dent's Heating And Cooling | 314-420-7803 | St. Louis"
-  description="Call or text Gerald at 314-420-7803, email info@dentsheatingandcooling.com, or send a service request. Heating and cooling for St. Louis and North County."
+  description="Call or text Gerald at 314-420-7803, email info@dentsheatingandcooling.com, or send a service request. Heating and cooling for St. Louis City and County."
 >
   <PhotoHero
     title="Call, text, or send a request."
@@ -39,7 +39,11 @@ import { BRAND } from '../data/site';
         </a>
         <div class="way">
           <Icon name="pin" />
-          <span><strong>Based in</strong>{BRAND.street}, {BRAND.city}, {BRAND.region} {BRAND.zip}</span>
+          <span><strong>Based in</strong>{BRAND.city}, {BRAND.region} {BRAND.zip}. Serving {BRAND.area}.</span>
+        </div>
+        <div class="way">
+          <Icon name="calendar" />
+          <span><strong>Hours</strong>{BRAND.hours} {BRAND.afterHours}</span>
         </div>
         <div class="forms">
           <h2>Full request forms</h2>

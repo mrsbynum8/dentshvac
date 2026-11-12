@@ -32,12 +32,19 @@ const business = {
   image: ogImage,
   address: {
     '@type': 'PostalAddress',
-    streetAddress: BRAND.street,
     addressLocality: BRAND.city,
     addressRegion: BRAND.region,
     postalCode: BRAND.zip,
     addressCountry: 'US',
   },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      opens: '08:00',
+      closes: '18:00',
+    },
+  ],
   geo: { '@type': 'GeoCoordinates', latitude: BRAND.geo.lat, longitude: BRAND.geo.lng },
   areaServed: [
     { '@type': 'City', name: 'St. Louis', containedInPlace: { '@type': 'State', name: 'Missouri' } },
